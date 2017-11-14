@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.see.dao.AccountMapper">
+	
+	<resultMap type="Account" id="accountMap">
+		<id column="aid" property="aid"/>
+		<result column="nick_name" property="nickName"/>
+		<result column="pic" property="pic"/>
+		<collection property="weibos" ofType="Weibo">
+			<id column="wid" property="wid"/>
+			<result column="wcontent" property="wcontent"/>
+			<result column="last_update_time" property="lastUpdateTime"/>
+			<result column="service" property="service"/>
+			<result column="comment" property="comment"/>
+			<result column="liked" property="liked"/>
+		</collection>
+	</resultMap>
+
+
+  <select id="findById" parameterType="int" resultMap="accountMap">
+    SELECT
+		a.aid,
+		a.nick_name,
+		a.pic,
+		w.wid,
+		w.wcontent,
+		w.last_update_time,
+		w.service,
+		w.`comment`,
+		w.liked 
+	FROM
+		account a
+		INNER JOIN weibo w ON a.aid = w.aid 
+	WHERE
+		a.aid = #{id}
+  </select>
+  
+  <select id="findByEmail" parameterType="String" resultType="Account">
+  	SELECT
+		aid,
+		email,
+		nick_name,
+		`password`,
+		pic 
+	FROM
+		account 
+	WHERE
+		email = #{email}
+  </select>
+  
+  
+  <select id="findAll" resultType="Account">
+  	SELECT
+		aid,
+		email,
+		nick_name,
+		`password`,
+		pic 
+	FROM
+		account 
+	<where>
+		<if test="list != null">
+			aid in 
+			<foreach collection="list" index="index" item="id" open="(" separator="," close=")">
+				#{id}
+			</foreach>
+		</if>
+	</where>
+  </select>
+  
+  <select id="count" parameterType="string" resultType="int">
+  	SELECT
+		count( 1 ) 
+	FROM
+		account 
+  	<trim prefix="WHERE" prefixOverrides="AND |OR ">
+	  	<if test="value != null">
+			nick_name LIKE CONCAT('%',#{value},'%')  	
+		</if>
+	</trim>
+  </select>
+  
+  <select id="search" parameterType="SearchVO" resultType="Account">
+	SELECT 
+		aid,
+		email,
+		nick_name,
+		`password`,
+		pic  
+	FROM account
+	
+	<trim prefix="WHERE" prefixOverrides="AND |OR ">
+	  	<if test="q != null">
+			nick_name LIKE CONCAT('%',#{q},'%')  	
+		</if>
+	</trim>
+	LIMIT #{offset}, #{size}
+  </select>
+  
+  <insert id="insert" parameterType="Account" keyProperty="aid">
+  	<selectKey order="BEFORE" keyProperty="aid" resultType="int">
+  		select TIME_TO_SEC(NOW())
+  	</selectKey>
+  	INSERT INTO ACCOUNT(aid,email,nick_name,`password`,pic) VALUES(#{aid},#{email},#{nickName},#{password},#{pic})
+  </insert>
+  
+  <update id="update" parameterType="Account">
+  	UPDATE ACCOUNT
+  	<set>
+  		<if test="email != null">
+  			 email=#{email}, 
+  		</if>
+  		<if test="nickName != null">
+  			nick_name = #{nickName},
+  		</if>
+  		<if test="password != null">
+  			`password` = #{password}, 
+  		</if>
+  		<if test="pic != null">
+  			pic = #{pic},
+  		</if>
+  		<if test="fans != null">
+  			fans = fans +  #{fans}
+  		</if>
+  	</set>
+  	WHERE AID = #{aid}
+  </update>
+  
+  <delete id="delete" parameterType="_int">
+  		DELETE FROM ACCOUNT WHERE aid = #{id}
+  </delete>
+  
+</mapper>
