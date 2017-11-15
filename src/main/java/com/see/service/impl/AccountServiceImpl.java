@@ -79,4 +79,16 @@ public class AccountServiceImpl implements AccountService {
 		return rows;
 	}
 
+	@Override
+	public int insert(Account account) {
+		// TODO Auto-generated method stub
+		
+		int user=accountMapper.insert(account);
+		if( user != 1 ) {
+			throw new RuntimeException("注册失败");
+		}
+		
+		return user;
+	}
+
 }
