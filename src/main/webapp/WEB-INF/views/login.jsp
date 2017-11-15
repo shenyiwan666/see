@@ -4,7 +4,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>登录界面</title>
+    <title>SEE</title>
 
     <link rel="stylesheet" type="text/css" href="resources/login.css"/>
    
@@ -28,7 +28,7 @@
 
             <div id="div_username"><input type="text" id="username" class="text_field" placeholder="请输入账号" name="email"/></div>
 
-            <div id="div_password"><input type="text" id="password" class="text_field" placeholder="请输入密码" name="password"/></div>
+            <div id="div_password"><input type="password" id="password" class="text_field" placeholder="请输入密码" name="password"/></div>
 
             <div id="div_forget"><a id="forget_pwd" href="forget_pwd.html" target="_blank">忘记密码？</a></div>
 
