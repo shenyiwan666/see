@@ -15,7 +15,7 @@
 
     <h1>还没有账号？</h1>
     <p>相比之前的那个【简单版】登录界面，该模板新增：1、js 回车事件，并且能够兼容多个浏览器2、界面布局的层次结构优化3、按钮监听响应事件的实现方式优化4、包含全屏方法的实现5、连个div块的叠加</p>
-    <div id="div_btn_register"><input type="button" id="btn_register" value="注册账号"/></div>
+    <div id="div_btn_register"><input type="button" id="btn_register" value="注册账号" onclick="/register"/></div>
 </div>
 
 
@@ -40,3 +40,6 @@
 </div>
 </body>
 </html>
+
+
+
