@@ -52,26 +52,26 @@ public class WeiboMapperTest {
 	}
 
 
-	@Test
-	public void testFindAll() {
-		List<Weibo> weibos = weiboMapper.findAll();
-		
-		String email = null; String nickName = null;String password = null;
-		
-		//select * from account where nick_name = nickName
-		//select * from account where email = email and nick_name = nickName
-		//select * from account
-		
-		// update account set email=?, nick_name=?, password=? where aid = 1
-		StringBuilder sql = new StringBuilder("update account ");
-		if( null != email && !"".equals(email) ) {
-			sql.append( " SET email = ? ,");
-		}
-		if( null != nickName && ! "".equals( nickName) ) {
-			sql.append(", nick_name = ? ");
-		}
-		
-		System.out.println( weibos );
-	}
+//	@Test
+//	public void testFindAll() {
+//		List<Weibo> weibos = weiboMapper.findAll();
+//		
+//		String email = null; String nickName = null;String password = null;
+//		
+//		//select * from account where nick_name = nickName
+//		//select * from account where email = email and nick_name = nickName
+//		//select * from account
+//		
+//		// update account set email=?, nick_name=?, password=? where aid = 1
+//		StringBuilder sql = new StringBuilder("update account ");
+//		if( null != email && !"".equals(email) ) {
+//			sql.append( " SET email = ? ,");
+//		}
+//		if( null != nickName && ! "".equals( nickName) ) {
+//			sql.append(", nick_name = ? ");
+//		}
+//		
+//		System.out.println( weibos );
+//	}
 
 }

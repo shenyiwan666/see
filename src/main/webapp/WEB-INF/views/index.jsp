@@ -6,7 +6,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>主页</title>
-		
+		<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.js"></script>
 		<style type="text/css">
 			body {
 				margin: 0;
@@ -34,6 +34,24 @@
 			.wb > h3 {
 				margin: 0;
 			}
+			.top {
+				background:#fff;
+				margin: 10px;
+				padding: 10px 10px 10px 80px;
+				position: relative;
+				border-radius: 5px;
+			}
+			.top > img {
+				width: 50px;
+				height: 50px;
+				border-radius: 50%;
+				position: absolute;
+				left:10px;
+				top:10px;
+			}
+			.top > h3 {
+				margin: 0;
+			}
 		</style>
 	</head>
 	
@@ -44,7 +62,7 @@
             <div id="div_btn_fabu"><input type="submit" id="btn_fabu" value="发布"  /></div>
 
         </form>
-    </div>
+        </div>
 	
 		<div class="wrapper">
 			<c:set var="account" value="${requestScope.account }"/>
@@ -53,11 +71,44 @@
 				<img src="/resources/image/${account.pic }"/>
 				<h3><a href="#">${account.nickName}</a></h3>
 				<p>${w.wcontent }</p>
-				<a href="#" onclick="js_method();return false;">推荐(${w.liked})</a>
+				<a class="liked" href="/like/${w.wid}">推荐(${w.liked })</a>
 				<a>评论(${w.comment})</a>
 				<p>
 			</div>
 			</c:forEach>
 		</div>
+		
+		<br/><br/><p>推荐TOP10</p>
+		<div class="wrapper">
+			<c:set var="weibo" value="${requestScope.weibo}"/>
+			<c:forEach items="${weibo}" var="weibo">
+			<div class="top">
+				<img src="/resources/image/${weibo.account.pic }"/>
+				<h3><a href="#">${weibo.account.nickName}</a></h3>
+				<p>${weibo.wcontent }</p>
+				
+			</div>
+			</c:forEach>
+		</div>
+		
+		
+		
+		
 	</body>
+	<script type="text/javascript">
+	
+	$(function(){
+		
+		$('.wb > a.liked').click(function( e ){
+			e.preventDefault();
+			var _a = $( this );
+			$.get(_a.attr('href'), function( data ){
+				_a.html( '推荐(' + data + ')' );
+			}, 'json');
+		});
+		
+	});
+	
+	
+	</script>
 </html>

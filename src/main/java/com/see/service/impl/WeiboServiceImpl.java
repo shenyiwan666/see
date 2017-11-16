@@ -1,6 +1,8 @@
 package com.see.service.impl;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,6 +27,27 @@ public class WeiboServiceImpl implements WeiboService {
 		}
 		
 		return wb;
+	}
+
+	@Override
+	public List<Weibo> findTop() {
+		// TODO Auto-generated method stub
+		return weiboMapper.findTop();
+	}
+
+	@Override
+	public Weibo findByWid(int wid) {
+		// TODO Auto-generated method stub
+		return weiboMapper.findByWid(wid);
+	}
+
+	@Override
+	public int update(Weibo weibo) {
+		weiboMapper.update(weibo);
+		int wid=weibo.getWid();
+		Weibo newweibo=weiboMapper.findByWid(wid);
+
+		return newweibo.getLiked();
 	}
 
 	
