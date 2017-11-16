@@ -11,12 +11,9 @@ public interface AccountMapper {
 	//Account findById(@Param("id") int id, @Param("fans") int fans);
 	Account findById(int id);
 	
-	
 	Account findByEmail(String email);
 	
-	
 	List<Account> findAll(List<Integer> aid);
-	
 	
 	int count(String q);
 	

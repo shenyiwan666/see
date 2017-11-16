@@ -19,7 +19,7 @@
 		</association>
 	</resultMap>
 	
-  <select id="findAll" resultMap="weiboMap">
+  <select id="findTOP" resultMap="weiboMap">
   	SELECT
 		a.aid,
 		a.nick_name,
@@ -33,10 +33,12 @@
 	FROM
 		weibo w
 		LEFT JOIN account a ON a.aid = w.aid
+			ORDER BY liked DESC
+	    LIMIT 10
   </select>
   -->
    
-  <select id="findAll" resultType="Weibo">
+  <select id="findTop" resultType="Weibo">
   	SELECT
 		a.aid "account.aid",
 		a.nick_name "account.nickName",
@@ -50,7 +52,42 @@
 	FROM
 		weibo w
 		LEFT JOIN account a ON a.aid = w.aid
+	ORDER BY liked DESC
+	LIMIT 10
   </select>
+  
+  
+  <select id="findByWid" parameterType="int" resultType="Weibo">
+  	SELECT
+  		wid,
+		aid,
+		`wcontent`,
+		liked,
+		comment
+	FROM
+		weibo
+	WHERE
+		wid = #{wid}
+  </select>
+  
+  <update id="update" parameterType="Weibo">
+  	UPDATE WEIBO
+  	<set>
+  		<if test="wcontent != null">
+  			 `wcontent`=#{wcontent}, 
+  		</if>
+  		<if test="liked!= null">
+  			liked = #{liked},
+  		</if>
+  		<if test="comment != null">
+  			comment= #{comment}, 
+  		</if>
+  		
+  	</set>
+  	WHERE WID = #{wid}
+  </update>
+  
+  
   
   <insert id="insert" parameterType="Weibo" keyProperty="wid">
   	<selectKey order="BEFORE" keyProperty="wid" resultType="int">

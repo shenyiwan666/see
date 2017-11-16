@@ -1,12 +1,18 @@
 package com.see.controller;
 
+
+
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.see.entity.Account;
 import com.see.entity.Weibo;
@@ -31,8 +37,13 @@ public class HomeController {
 		
 		Account account = accountService.findById(aid);
 		
+		model.addAttribute("account", account);
 		
-		model.addAttribute("account", account);}
+		List<Weibo> weibo = weiboService.findTop();
+		
+		model.addAttribute("weibo", weibo);
+		
+		}
 		return "index";
 	}
 	
@@ -53,6 +64,16 @@ public class HomeController {
 		weiboService.insert(weibo);
 		
 		return "redirect:/";
-	}		
+	}	
+	
+	@RequestMapping(value="/like/{wid}")
+	public @ResponseBody int update(@PathVariable("wid") int wid,Model model) {
+		
+		Weibo weibo=weiboService.findByWid(wid);
+		
+		weibo.setLiked(weibo.getLiked()+1);
+		
+		return weiboService.update(weibo);
+	}
 		
 }
