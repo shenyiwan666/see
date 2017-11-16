@@ -2,6 +2,7 @@ package com.see.service;
 
 
 import com.see.entity.Account;
+import com.see.entity.Weibo;
 import com.see.vo.Page;
 
 public interface AccountService {
@@ -16,11 +17,10 @@ public interface AccountService {
 	Account login(String email, String password);
 	
 	int insert(Account account);
-	
+
+	Account findById(int id);
 	
 	Account getAccount(int id);
-	
-	
 	
 	int transfer(int a, int b, int fans);
 	

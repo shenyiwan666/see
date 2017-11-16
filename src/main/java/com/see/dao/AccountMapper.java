@@ -24,7 +24,6 @@ public interface AccountMapper {
 	
 	int insert(Account account);
 	
-	
 	int update(Account account);
 	
 	int delete(int id);

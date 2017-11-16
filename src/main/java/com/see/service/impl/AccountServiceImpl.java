@@ -91,4 +91,10 @@ public class AccountServiceImpl implements AccountService {
 		return user;
 	}
 
+	@Override
+	public Account findById(int id) {
+		// TODO Auto-generated method stub
+		return accountMapper.findById(id);
+	}
+
 }

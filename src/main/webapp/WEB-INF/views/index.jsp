@@ -5,7 +5,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>Insert title here</title>
+		<title>主页</title>
 		
 		<style type="text/css">
 			body {
@@ -36,14 +36,26 @@
 			}
 		</style>
 	</head>
+	
 	<body>
+		 <div id="fabuForm">
+        <form method="post" action="/fabu">
+ 			<div id="div_content"><input type="text" id="wcontent" class="text_field" placeholder="分享此刻看见" name="wcontent" /></div>
+            <div id="div_btn_fabu"><input type="submit" id="btn_fabu" value="发布"  /></div>
+
+        </form>
+    </div>
+	
 		<div class="wrapper">
 			<c:set var="account" value="${requestScope.account }"/>
 			<c:forEach items="${account.weibos }" var="w">
 			<div class="wb">
 				<img src="/resources/image/${account.pic }"/>
-				<h3><a href="#">${account.nickName }</a></h3>
+				<h3><a href="#">${account.nickName}</a></h3>
 				<p>${w.wcontent }</p>
+				<a href="#" onclick="js_method();return false;">推荐(${w.liked})</a>
+				<a>评论(${w.comment})</a>
+				<p>
 			</div>
 			</c:forEach>
 		</div>

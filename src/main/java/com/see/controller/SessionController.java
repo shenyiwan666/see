@@ -67,6 +67,7 @@ public class SessionController {
 			
 			account.setPic(pic);
 			
+			System.out.println(account);
 			accountService.insert(account);
 		
 			

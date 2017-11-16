@@ -6,6 +6,8 @@ public class Weibo {
 	
 	private Integer wid;
 	
+	private Integer aid;
+	
 	private Account account;
 	
 	private String wcontent;
@@ -24,6 +26,16 @@ public class Weibo {
 
 	public void setWid(Integer wid) {
 		this.wid = wid;
+	}
+
+	
+
+	public Integer getAid() {
+		return aid;
+	}
+
+	public void setAid(Integer aid) {
+		this.aid = aid;
 	}
 
 	public Account getAccount() {
@@ -76,7 +88,7 @@ public class Weibo {
 
 	@Override
 	public String toString() {
-		return "Weibo [wid=" + wid + ", account=" + account + ", wcontent=" + wcontent + ", lastUpdateTime="
+		return "Weibo [wid=" + wid + ",aid=" + aid +" account=" + account + ", wcontent=" + wcontent + ", lastUpdateTime="
 				+ lastUpdateTime + ", service=" + service + ", liked=" + liked + ", comment=" + comment + "]";
 	}
 
