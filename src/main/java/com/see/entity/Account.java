@@ -10,6 +10,7 @@ public class Account {
 	private String password;
 	private String pic;
 	private Integer fans;
+	private Weibo weibo;
 	
 	private List<Weibo> weibos;
 	
@@ -55,6 +56,13 @@ public class Account {
 	}
 	public void setWeibos(List<Weibo> weibos) {
 		this.weibos = weibos;
+	}
+	
+	public Weibo getWeibo() {
+		return weibo;
+	}
+	public void setWeibo(Weibo weibo) {
+		this.weibo = weibo;
 	}
 	@Override
 	public String toString() {
