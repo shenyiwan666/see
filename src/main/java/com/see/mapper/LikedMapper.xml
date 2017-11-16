@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.see.dao.LikedMapper">
+	
+
+  <select id="findByAidWid" resultType="Boolean">
+  	SELECT
+  		aid,
+		wid,
+		ltime
+	FROM
+		liked
+	WHERE
+		aid = #{arg0} AND wid = #{arg1}
+  </select>
+  
+  <delete id="delete" parameterType="_int">
+  		DELETE FROM liked WHERE aid = #{aid}
+  </delete>
+
+   <insert id="insert" parameterType="Liked" keyProperty="aid">
+ 	 INSERT INTO LIKED(aid,wid,ltime)VALUES(#{aid},#{wid},#{ltime})
+   </insert>
+   
+  
+</mapper>

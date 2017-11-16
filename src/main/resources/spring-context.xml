@@ -30,7 +30,7 @@
         <property name="configuration">
         	<bean class="org.apache.ibatis.session.Configuration">
         		<property name="mapUnderscoreToCamelCase" value="true" />
-        		<property name="useGeneratedKeys" value="true" />
+        		<property name="useGeneratedKeys" value="true" /> 
         	</bean>
         </property>
         <!-- 扫描多个包可以用 空格( )、分号(;)、逗号(,) 隔离 -->
