@@ -2,6 +2,7 @@ package com.see.service;
 
 import java.util.List;
 
+import com.see.entity.Follow;
 import com.see.entity.Liked;
 import com.see.entity.Weibo;
 
@@ -20,4 +21,10 @@ public interface WeiboService {
 	int likeddelete(int aid);
 	
 	int likedinsert(Liked liked);
+	
+	String findFollow(int aid,int followAid);
+	
+	int followdelete(int aid);
+	
+	int followinsert(Follow follow);
 }
