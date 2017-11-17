@@ -35,6 +35,7 @@
 		INNER JOIN weibo w ON a.aid = w.aid 
 	WHERE
 		a.aid = #{id}
+		ORDER BY w.last_update_time DESC
   </select>
   
   <select id="findByEmail" parameterType="String" resultType="Account">

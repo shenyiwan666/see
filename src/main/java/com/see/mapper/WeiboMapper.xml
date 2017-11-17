@@ -76,6 +76,9 @@
   		<if test="wcontent != null">
   			 `wcontent`=#{wcontent}, 
   		</if>
+  		<if test="lastUpdateTime != null">
+  			 last_update_time= #{lastUpdateTime}, 
+  		</if>
   		<if test="liked!= null">
   			liked = #{liked},
   		</if>
@@ -93,7 +96,7 @@
   	<selectKey order="BEFORE" keyProperty="wid" resultType="int">
   		select TIME_TO_SEC(NOW())
   	</selectKey>
-  	INSERT INTO WEIBO(wid,aid,wcontent,liked,comment) VALUES(#{wid},#{aid},#{wcontent},#{liked},#{comment})
+  	INSERT INTO WEIBO(wid,aid,wcontent,last_update_time,liked,comment) VALUES(#{wid},#{aid},#{wcontent},#{lastUpdateTime},#{liked},#{comment})
   </insert>
   
    

@@ -1,5 +1,9 @@
 package com.see.service.impl;
 
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -91,10 +95,27 @@ public class AccountServiceImpl implements AccountService {
 		return user;
 	}
 
+	
 	@Override
 	public Account findById(int id) {
 		// TODO Auto-generated method stub
-		return accountMapper.findById(id);
+		Account account=accountMapper.findById(id);
+		SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		
+		int size=account.getWeibos().size();
+		try {
+			for (int i = 0; i < size; i++) {
+				Timestamp timestamp=new Timestamp(account.getWeibos().get(i).getLastUpdateTime().getTime());
+				
+				account.getWeibos().get(i).setLastUpdateTime(timestamp);
+			
+	
+			} 
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
+		return account;
 	}
 
 }

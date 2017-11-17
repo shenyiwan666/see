@@ -2,6 +2,10 @@ package com.see.controller;
 
 
 
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -50,11 +54,14 @@ public class HomeController {
 	
 	
 	@RequestMapping(value="/fabu",method=RequestMethod.POST)
-	public String fabu(HttpSession session,Weibo weibo) {
-		
-
+	public String fabu(HttpSession session,Weibo weibo) throws ParseException {
 		int aid = ((Account)session.getAttribute("account")).getAid();
 		
+		SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		java.util.Date now=dateFormat.parse(dateFormat.format(new Date()));
+		java.sql.Date time=new java.sql.Date(now.getTime());
+	
+		weibo.setLastUpdateTime(time);
 		weibo.setAid(aid);
 		weibo.setLiked(0);
 		weibo.setComment(0);
