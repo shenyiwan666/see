@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.see.entity.Account;
+import com.see.entity.Follow;
 import com.see.entity.Liked;
 import com.see.entity.Weibo;
 import com.see.service.AccountService;
@@ -80,8 +81,6 @@ public class HomeController {
 		
 		String s=weiboService.findLiked(aid, weibo.getWid());
 		
-		System.out.println(s);
-		
 		if(s.equals("null")) {
 			
 			weibo.setLiked(weibo.getLiked()+1);
@@ -99,6 +98,27 @@ public class HomeController {
 		}
 		
 		return weiboService.update(weibo);
+	}
+	
+	
+	@RequestMapping(value="/follow/{aid}")
+	public @ResponseBody String follow(@PathVariable("aid") int aid,Model model,HttpSession session) {
+		
+		
+		int useraid = ((Account)session.getAttribute("account")).getAid();
+		
+		String s=weiboService.findFollow(useraid, aid);
+		
+		if(s.equals("null")) {
+			Follow follow=new Follow();
+			follow.setAid(useraid);
+			follow.setFollowAid(aid);
+			weiboService.followinsert(follow);
+		}else {
+			weiboService.followdelete(aid);
+		}
+		
+		return "redirect:/";
 	}
 		
 }

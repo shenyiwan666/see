@@ -70,7 +70,7 @@
 			<c:forEach items="${account.weibos }" var="w">
 			<div class="wb">
 				<img src="/resources/image/${account.pic }"/>
-				<h3><a href="#">${account.nickName}</a></h3>
+				<h3><a href="/follow/${account.aid}">${account.nickName}</a></h3>
 				<p>${w.wcontent }</p><br/>
 				<p><fmt:formatDate value="${w.lastUpdateTime}" pattern="yyyy-MM-dd HH:mm:ss" /></p>
 				<a class="liked" href="/like/${w.wid}">推荐(${w.liked })</a>
