@@ -24,7 +24,7 @@ public interface WeiboService {
 	
 	String findFollow(int aid,int followAid);
 	
-	int followdelete(int aid);
+	int followdelete(int followAid);
 	
 	int followinsert(Follow follow);
 }

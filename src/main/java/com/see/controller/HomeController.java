@@ -47,8 +47,18 @@ public class HomeController {
 		
 		List<Weibo> weibo = weiboService.findTop();
 		
+			for(int i=0;i<10;i++) {
+				int topuser=weibo.get(i).getAccount().getAid();
+				
+				if(weiboService.findFollow(aid, topuser).equals("null")) {
+					weibo.get(i).getAccount().setFollow("关注");
+				}else {
+					weibo.get(i).getAccount().setFollow("已关注");
+				}
+			}
+			
 		model.addAttribute("weibo", weibo);
-		
+			
 		}
 		return "index";
 	}
@@ -102,7 +112,7 @@ public class HomeController {
 	
 	
 	@RequestMapping(value="/follow/{aid}")
-	public @ResponseBody String follow(@PathVariable("aid") int aid,Model model,HttpSession session) {
+	public @ResponseBody int follow(@PathVariable("aid") int aid,Model model,HttpSession session) {
 		
 		
 		int useraid = ((Account)session.getAttribute("account")).getAid();
@@ -114,11 +124,12 @@ public class HomeController {
 			follow.setAid(useraid);
 			follow.setFollowAid(aid);
 			weiboService.followinsert(follow);
+			return 1;
 		}else {
 			weiboService.followdelete(aid);
+			return 0;
 		}
-		
-		return "redirect:/";
+	
 	}
 		
 }
