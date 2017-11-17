@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -71,7 +72,7 @@
 				<img src="/resources/image/${account.pic }"/>
 				<h3><a href="#">${account.nickName}</a></h3>
 				<p>${w.wcontent }</p><br/>
-				<p>${w.lastUpdateTime }</p>
+				<p><fmt:formatDate value="${w.lastUpdateTime}" pattern="yyyy-MM-dd HH:mm:ss" /></p>
 				<a class="liked" href="/like/${w.wid}">推荐(${w.liked })</a>
 				<a>评论(${w.comment})</a>
 				<p>

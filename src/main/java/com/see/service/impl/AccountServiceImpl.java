@@ -100,21 +100,21 @@ public class AccountServiceImpl implements AccountService {
 	public Account findById(int id) {
 		// TODO Auto-generated method stub
 		Account account=accountMapper.findById(id);
-		SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		
-		int size=account.getWeibos().size();
-		try {
-			for (int i = 0; i < size; i++) {
-				Timestamp timestamp=new Timestamp(account.getWeibos().get(i).getLastUpdateTime().getTime());
-				
-				account.getWeibos().get(i).setLastUpdateTime(timestamp);
-			
-	
-			} 
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-		
+//		SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//		
+//		int size=account.getWeibos().size();
+//		try {
+//			for (int i = 0; i < size; i++) {
+//				Timestamp timestamp=new Timestamp(account.getWeibos().get(i).getLastUpdateTime().getTime());
+//				
+//				account.getWeibos().get(i).setLastUpdateTime(timestamp);
+//				
+//				
+//			} 
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//		}
+//		
 		return account;
 	}
 
