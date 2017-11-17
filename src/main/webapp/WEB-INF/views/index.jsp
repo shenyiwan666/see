@@ -70,7 +70,8 @@
 			<div class="wb">
 				<img src="/resources/image/${account.pic }"/>
 				<h3><a href="#">${account.nickName}</a></h3>
-				<p>${w.wcontent }</p>
+				<p>${w.wcontent }</p><br/>
+				<p>${w.lastUpdateTime }</p>
 				<a class="liked" href="/like/${w.wid}">推荐(${w.liked })</a>
 				<a>评论(${w.comment})</a>
 				<p>
