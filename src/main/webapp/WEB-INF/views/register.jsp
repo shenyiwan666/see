@@ -5,15 +5,28 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>用户注册</title>
+		
+		<link rel="stylesheet" type="text/css" href="resources/register.css"/>
 	</head>
 	<body>
-		<form action="/register" method="post" enctype="multipart/form-data">			
-			用户邮箱:<input type="text" name="email" value="" /><br/>
+		
+		<div id="register">
+			<div id="image_logo"><img src="resources/image/fly_icon.png"></div>
+			<form action="/register" method="post" enctype="multipart/form-data">
+			
+				<div id="div_email"><input type="email" id="email" class="text_field" placeholder="注册邮箱" name="email" /></div>
+	            <div id="div_username"><input type="username" id="username" class="text_field" placeholder="请输入昵称" name="username"/></div>
+	            <div id="div_password"><input type="password" id="password" class="text_field" placeholder="请输入密码" name="password"></div>
+	            <div id="div_headimage"><input type="file" id="headigimage" name="file"></div>
+	            
+	            <div id="div_btn_login"><input type="submit" id="btn_login" value="马上注册"  /></div>
+            </form>
+		</div>	
+			<!-- 用户邮箱:<input type="text" name="email" value="" /><br/>
 			昵称:<input type="text" name="nickName" value=""/><br/>
 			密码:<input type="text" name="password" value=""/><br/>
 			头像:<input type="file" name="file"/><br/>
-			
-			<input type="submit" value="注册"/>
-		</form>
+			<input type="submit" value="注册"/> -->
+		
 	</body>
 </html>
