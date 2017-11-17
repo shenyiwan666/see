@@ -70,7 +70,7 @@
 			<c:forEach items="${account.weibos }" var="w">
 			<div class="wb">
 				<img src="/resources/image/${account.pic }"/>
-				<h3><a href="/follow/${account.aid}">${account.nickName}</a></h3>
+				<h3><a href="#">${account.nickName}</a></h3>
 				<p>${w.wcontent }</p><br/>
 				<p><fmt:formatDate value="${w.lastUpdateTime}" pattern="yyyy-MM-dd HH:mm:ss" /></p>
 				<a class="liked" href="/like/${w.wid}">推荐(${w.liked })</a>
@@ -80,13 +80,15 @@
 			</c:forEach>
 		</div>
 		
-		<br/><br/><p>推荐TOP10</p>
+		<br/><br/>
+		<p>热门TOP10</p>
 		<div class="wrapper">
 			<c:set var="weibo" value="${requestScope.weibo}"/>
 			<c:forEach items="${weibo}" var="weibo">
 			<div class="top">
 				<img src="/resources/image/${weibo.account.pic }"/>
 				<h3><a href="#">${weibo.account.nickName}</a></h3>
+				<a class="follow" href="/follow/${weibo.account.aid}">${weibo.account.follow }</a>
 				<p>${weibo.wcontent }</p>
 				
 			</div>
@@ -110,7 +112,24 @@
 		});
 		
 	});
+	</script>
 	
-	
+	<script type="text/javascript">
+	$(function(){
+
+		$('.top > a.follow').click(function( e ){
+			e.preventDefault();
+			var _a = $( this );
+			$.get(_a.attr('href'), function(data){
+				if(data==1){
+					_a.html( '已关注' );
+				}
+				if(data==0){
+					_a.html( '关注' );
+				}
+			}, 'json');
+		});
+		
+	});
 	</script>
 </html>

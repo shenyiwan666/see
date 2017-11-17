@@ -94,9 +94,9 @@ public class WeiboServiceImpl implements WeiboService {
 	}
 
 	@Override
-	public int followdelete(int aid) {
+	public int followdelete(int followAid) {
 		// TODO Auto-generated method stub
-		return followMapper.delete(aid);
+		return followMapper.delete(followAid);
 	}
 
 	@Override
