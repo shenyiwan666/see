@@ -72,11 +72,11 @@ body {
     left:50%;
     margin-left: -38px;
     margin-top: -240px;
-
-    background:#fff;
+	
+	background: url("image/login_bac.png") no-repeat;   /*  background:#fff; */
     border: 4px;
-    box-shadow:0px 0px 5px #999;/*阴影效果 水平偏移 垂直偏移  半边 颜色*/
-    border-radius:5px;/*圆角*/
+    box-shadow:0px 0px 5px #999;
+    border-radius:5px;
 
     text-align: center;
 }

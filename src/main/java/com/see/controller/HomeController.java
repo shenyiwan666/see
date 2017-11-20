@@ -16,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.see.entity.Account;
@@ -24,6 +25,7 @@ import com.see.entity.Liked;
 import com.see.entity.Weibo;
 import com.see.service.AccountService;
 import com.see.service.WeiboService;
+import com.see.vo.Page;
 
 @Controller
 public class HomeController {
@@ -61,8 +63,18 @@ public class HomeController {
 		
 		List<Weibo> weibo = weiboService.findTop();
 		
+			for(int i=0;i<10;i++) {
+				int topuser=weibo.get(i).getAccount().getAid();
+				
+				if(weiboService.findFollow(aid, topuser).equals("null")) {
+					weibo.get(i).getAccount().setFollow("关注");
+				}else {
+					weibo.get(i).getAccount().setFollow("已关注");
+				}
+			}
+			
 		model.addAttribute("weibo", weibo);
-		
+			
 		}
 		return "index";
 	}
@@ -116,8 +128,7 @@ public class HomeController {
 	
 	
 	@RequestMapping(value="/follow/{aid}")
-	public @ResponseBody String follow(@PathVariable("aid") int aid,Model model,HttpSession session) {
-		
+	public @ResponseBody int follow(@PathVariable("aid") int aid,Model model,HttpSession session) {
 		
 		int useraid = ((Account)session.getAttribute("account")).getAid();
 		
@@ -128,11 +139,25 @@ public class HomeController {
 			follow.setAid(useraid);
 			follow.setFollowAid(aid);
 			weiboService.followinsert(follow);
+			return 1;
 		}else {
 			weiboService.followdelete(aid);
+			return 0;
 		}
+	
+	}
+	
+	
+	@RequestMapping(value="/search",method=RequestMethod.GET)
+	public String search(String q, @RequestParam(defaultValue="1") int p, Model model) {
 		
-		return "redirect:/";
+		Page page = accountService.search(q, p);
+		model.addAttribute("page", page);
+		
+		System.out.println(page);
+		
+		//request.getRequestDispatcher("/WEB-INF/views/account/index.jsp")
+		return "/search";
 	}
 		
 }

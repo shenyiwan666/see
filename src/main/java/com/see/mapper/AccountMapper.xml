@@ -96,12 +96,10 @@ FROM
   <select id="search" parameterType="SearchVO" resultType="Account">
 	SELECT 
 		aid,
-		email,
 		nick_name,
-		`password`,
-		pic  
-	FROM account
-	
+ 		pic
+	FROM 
+		account 
 	<trim prefix="WHERE" prefixOverrides="AND |OR ">
 	  	<if test="q != null">
 			nick_name LIKE CONCAT('%',#{q},'%')  	

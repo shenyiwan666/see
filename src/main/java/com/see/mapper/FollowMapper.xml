@@ -17,11 +17,11 @@
   </select>
   
   <delete id="delete" parameterType="_int">
-  		DELETE FROM FOLLOW WHERE aid = #{aid}
+  		DELETE FROM FOLLOW WHERE follow_aid = #{followAid}
   </delete>
 
    <insert id="insert" parameterType="Liked" keyProperty="fid">
- 	 INSERT INTO LIKED(aid,follow_aid,ftime)VALUES(#{aid},#{followAid},#{ftime})
+ 	 INSERT INTO FOLLOW(aid,follow_aid,ftime)VALUES(#{aid},#{followAid},#{ftime})
    </insert>
    
   
