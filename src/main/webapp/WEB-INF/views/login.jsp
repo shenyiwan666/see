@@ -22,7 +22,7 @@
 
 <div id="login">
 
-    <div id="image_logo"><img src="resources/image/fly_icon.png"></div>
+    <div id="image_logo"><img src="resources/image/eyes_icon.png"></div>
 
     <div id="loginForm">
         <form method="post" action="/login">
