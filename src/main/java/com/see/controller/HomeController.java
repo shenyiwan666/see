@@ -41,9 +41,23 @@ public class HomeController {
 		
 		int aid = ((Account)session.getAttribute("account")).getAid();
 		
-		Account account = accountService.findById(aid);
+		/****   Account account = accountService.findById(aid);   *****/
 		
-		model.addAttribute("account", account);
+		
+		
+		/***********修改***************/
+		List<Weibo> weibos =accountService.findAll(aid);
+		/***********修改***************/
+		
+		
+		
+		
+		
+		model.addAttribute("weibos", weibos);/***********修改***************/
+		
+		System.out.println(weibos.size());
+		System.out.println(weibos);
+		
 		
 		List<Weibo> weibo = weiboService.findTop();
 		

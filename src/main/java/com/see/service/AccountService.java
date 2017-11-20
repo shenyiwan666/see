@@ -1,6 +1,8 @@
 package com.see.service;
 
 
+import java.util.List;
+
 import com.see.entity.Account;
 import com.see.entity.Weibo;
 import com.see.vo.Page;
@@ -32,5 +34,12 @@ public interface AccountService {
 	Page search(String q, Integer p);
 	
 	int delete(int aid);
-
+/************修改********/
+	
+	List<Weibo> findAll(int aid);
+	
+	
+/************修改********/
+	
+	
 }

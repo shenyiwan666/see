@@ -12,6 +12,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.see.dao.AccountMapper;
 import com.see.entity.Account;
+import com.see.entity.Weibo;
 import com.see.service.AccountService;
 import com.see.vo.Page;
 import com.see.vo.SearchVO;
@@ -101,6 +102,14 @@ public class AccountServiceImpl implements AccountService {
 		// TODO Auto-generated method stub
 		Account account=accountMapper.findById(id);	
 		return account;
+	}
+
+	@Override
+	public List<Weibo> findAll(int aid) {
+		// TODO Auto-generated method stub
+	List<Weibo> accounts = accountMapper.findAll(aid);
+	System.out.println(accounts.size());
+		return accounts;
 	}
 
 }

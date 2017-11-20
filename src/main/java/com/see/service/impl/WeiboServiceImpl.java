@@ -42,6 +42,7 @@ public class WeiboServiceImpl implements WeiboService {
 	@Override
 	public List<Weibo> findTop() {
 		// TODO Auto-generated method stub
+  
 		return weiboMapper.findTop();
 	}
 

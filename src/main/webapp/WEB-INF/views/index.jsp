@@ -64,7 +64,22 @@
 
         </form>
         </div>
-	
+        
+        <div class="wrapper">
+			<c:forEach items="${requestScope.weibos }" var="w">
+			<div class="wb">
+				<img src="/resources/image/${w.account.pic }"/>
+				<h3><a href="/follow/${w.account.aid}">${w.account.nickName}</a></h3>
+				<p>${w.wcontent }</p><br/>
+				<p><fmt:formatDate value="${w.lastUpdateTime}" pattern="yyyy-MM-dd HH:mm:ss" /></p>
+				<a class="liked" href="/like/${w.wid}">推荐(${w.liked })</a>
+				<a>评论(${w.comment})</a>
+				<p>
+			</div>
+			</c:forEach>
+		</div>
+		
+	<!-- 
 		<div class="wrapper">
 			<c:set var="account" value="${requestScope.account }"/>
 			<c:forEach items="${account.weibos }" var="w">
@@ -79,6 +94,7 @@
 			</div>
 			</c:forEach>
 		</div>
+		 -->
 		
 		<br/><br/><p>推荐TOP10</p>
 		<div class="wrapper">
