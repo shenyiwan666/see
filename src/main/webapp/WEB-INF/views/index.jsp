@@ -58,12 +58,16 @@
 	
 	<body>
 		 <div id="fabuForm">
-        <form method="post" action="/fabu">
- 			<div id="div_content"><input type="text" id="wcontent" class="text_field" placeholder="分享此刻看见" name="wcontent" /></div>
-            <div id="div_btn_fabu"><input type="submit" id="btn_fabu" value="发布"  /></div>
-
-        </form>
+	        <form method="post" action="/fabu">
+	 			<div id="div_content"><input type="text" id="wcontent" class="text_field" placeholder="分享此刻看见" name="wcontent" /></div>
+	            <div id="div_btn_fabu"><input type="submit" id="btn_fabu" value="发布"  /></div>
+	
+	        </form>
         </div>
+        
+        <form action="/search" method="get">
+			搜索:<input type="text" name="q" value="${param.q }"/><input type="submit" value="搜索" />
+		</form>
         
         <div class="wrapper">
 			<c:forEach items="${requestScope.weibos }" var="w">
@@ -78,7 +82,11 @@
 			</div>
 			</c:forEach>
 		</div>
+<<<<<<< HEAD
 	
+=======
+		
+>>>>>>> f6f23e715c7f1d4866a549a077cacf12f029bbc8
 		
 		<br/><br/>
 		<p>热门TOP10</p>
