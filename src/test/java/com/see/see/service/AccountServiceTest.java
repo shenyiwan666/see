@@ -1,7 +1,5 @@
 package com.see.see.service;
 
-import static org.junit.Assert.*;
-
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,9 +23,4 @@ public class AccountServiceTest {
 		Assert.assertNotNull(account);
 	}
 	
-	@Test
-	public void testTransfer() {
-		accountService.transfer(1, 4, 300);
-	}
-
 }
