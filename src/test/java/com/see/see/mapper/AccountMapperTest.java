@@ -50,18 +50,18 @@ public class AccountMapperTest {
 		fail("Not yet implemented");
 	}
 
-	@Test
-	public void testFindAll() {
-		List<Integer> list = new ArrayList<>();
-		list.add(1);
-		list.add(2);
-		list.add(3);
-		list.add(4);
-		
-		List<Account> accounts =  accountMapper.findAll(list);
-		System.out.println( accounts );
-		
-	}
+//	@Test
+//	public void testFindAll() {
+//		List<Integer> list = new ArrayList<>();
+//		list.add(1);
+//		list.add(2);
+//		list.add(3);
+//		list.add(4);
+//		
+//		List<Account> accounts =  accountMapper.findAll(list);
+//		System.out.println( accounts );
+//		
+//	}
 	@Test
 	public void testInsert() {
 		Account account = new Account();

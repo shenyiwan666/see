@@ -108,7 +108,7 @@ public class AccountServiceImpl implements AccountService {
 	public List<Weibo> findAll(int aid) {
 		// TODO Auto-generated method stub
 	List<Weibo> accounts = accountMapper.findAll(aid);
-	System.out.println(accounts.size());
+	
 		return accounts;
 	}
 

@@ -42,24 +42,14 @@ public class HomeController {
 		if(session.getAttribute("account") != null){
 		
 		int aid = ((Account)session.getAttribute("account")).getAid();
-		
+	
 		/****   Account account = accountService.findById(aid);   *****/
-		
-		
 		
 		/***********修改***************/
 		List<Weibo> weibos =accountService.findAll(aid);
 		/***********修改***************/
 		
-		
-		
-		
-		
 		model.addAttribute("weibos", weibos);/***********修改***************/
-		
-		System.out.println(weibos.size());
-		System.out.println(weibos);
-		
 		
 		List<Weibo> weibo = weiboService.findTop();
 		
@@ -73,8 +63,7 @@ public class HomeController {
 				}
 			}
 			
-		model.addAttribute("weibo", weibo);
-			
+		model.addAttribute("weibo", weibo);	
 		}
 		return "index";
 	}
@@ -103,16 +92,17 @@ public class HomeController {
 		
 		Weibo weibo=weiboService.findByWid(wid);
 		
-		int aid = ((Account)session.getAttribute("account")).getAid();
+
+		int useraid=((Account)session.getAttribute("account")).getAid();
 		
-		String s=weiboService.findLiked(aid, weibo.getWid());
+		String s=weiboService.findLiked(useraid,weibo.getWid());
 		
 		if(s.equals("null")) {
 			
 			weibo.setLiked(weibo.getLiked()+1);
 			
 			Liked liked=new Liked();
-			liked.setAid(aid);
+			liked.setAid(useraid);
 			liked.setWid(weibo.getWid());
 			weiboService.likedinsert(liked);
 			
@@ -120,7 +110,7 @@ public class HomeController {
 		
 			weibo.setLiked(weibo.getLiked()-1);
 			
-			weiboService.likeddelete(aid);
+			weiboService.likeddelete(useraid);
 		}
 		
 		return weiboService.update(weibo);
@@ -131,6 +121,8 @@ public class HomeController {
 	public @ResponseBody int follow(@PathVariable("aid") int aid,Model model,HttpSession session) {
 		
 		int useraid = ((Account)session.getAttribute("account")).getAid();
+		
+		
 		
 		String s=weiboService.findFollow(useraid, aid);
 		
@@ -153,8 +145,6 @@ public class HomeController {
 		
 		Page page = accountService.search(q, p);
 		model.addAttribute("page", page);
-		
-		System.out.println(page);
 		
 		//request.getRequestDispatcher("/WEB-INF/views/account/index.jsp")
 		return "/search";
