@@ -39,7 +39,7 @@ public class AccountServiceImpl implements AccountService {
 		int count = accountMapper.count(q);
 		page.setCount(count);
 		
-		List<Account> accounts = accountMapper.search(new SearchVO(q, page.getOffset(), page.getSize()));
+		List<Weibo> accounts = accountMapper.search(new SearchVO(q, page.getOffset(), page.getSize()));
 		page.setList( accounts );
 		
 		

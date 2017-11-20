@@ -18,7 +18,7 @@ public interface AccountMapper {
 	
 	int count(String q);
 	
-	List<Account> search(SearchVO svo);
+	List<Weibo> search(SearchVO svo);
 	
 	int insert(Account account);
 	

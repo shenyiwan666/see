@@ -7,6 +7,7 @@
 	<resultMap type="weibo" id="accountMap">
 		<id column="wid" property="wid" />
 		<result column="wcontent" property="wcontent" />
+		<result column="aid" property="aid" />
 		<result column="last_update_time" property="lastUpdateTime" />
 		<result column="service" property="service" />
 		<result column="comment" property="comment" />
@@ -26,6 +27,7 @@
 		a.nick_name,
 		a.pic,
 		w.wid,
+		w.aid,
 		w.wcontent,
 		w.last_update_time,
 		w.service,
@@ -81,28 +83,38 @@ FROM
 	t.last_update_time DESC
   </select>
   
+  
+  
   <select id="count" parameterType="string" resultType="int">
   	SELECT
 		count( 1 ) 
 	FROM
-		account 
+		weibo w
+	LEFT JOIN account a ON a.aid=w.aid  
   	<trim prefix="WHERE" prefixOverrides="AND |OR ">
 	  	<if test="value != null">
-			nick_name LIKE CONCAT('%',#{value},'%')  	
+			a.nick_name LIKE CONCAT('%',#{value},'%')  		
 		</if>
 	</trim>
   </select>
   
-  <select id="search" parameterType="SearchVO" resultType="Account">
+  <select id="search" parameterType="SearchVO" resultMap="accountMap">
 	SELECT 
-		aid,
-		nick_name,
- 		pic
+		a.aid,
+		a.nick_name,
+		a.pic,
+		w.wid,
+		w.wcontent,
+		w.last_update_time,
+		w.`comment`,
+		w.liked 
 	FROM 
-		account 
+		account a 
+		RIGHT JOIN weibo w ON a.aid = w.aid 
 	<trim prefix="WHERE" prefixOverrides="AND |OR ">
 	  	<if test="q != null">
-			nick_name LIKE CONCAT('%',#{q},'%')  	
+			nick_name LIKE CONCAT('%',#{q},'%')  
+			ORDER BY w.last_update_time DESC	
 		</if>
 	</trim>
 	LIMIT #{offset}, #{size}

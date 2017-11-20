@@ -1,8 +1,5 @@
 package com.see.controller;
 
-
-
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -84,6 +81,7 @@ public class HomeController {
 	public String search(String q, @RequestParam(defaultValue="1") int p, Model model) {
 		
 		Page page = accountService.search(q, p);
+		System.out.println(page);
 		model.addAttribute("page", page);
 		
 		//request.getRequestDispatcher("/WEB-INF/views/account/index.jsp")
