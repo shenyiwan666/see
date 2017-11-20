@@ -1,6 +1,9 @@
 package com.see.service.impl;
 
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,86 +32,102 @@ public class WeiboServiceImpl implements WeiboService {
 	private FollowMapper followMapper;
 	
 	@Override
-	public int insert(Weibo weibo) {
-		
-		int wb=weiboMapper.insert(weibo);
-		if( wb != 1 ) {
-			throw new RuntimeException("发送失败");
+	public int insert(int aid,Weibo weibo){
+	
+		try {
+			SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			java.util.Date now;
+			now = dateFormat.parse(dateFormat.format(new Date()));
+			java.sql.Date time=new java.sql.Date(now.getTime());
+			
+			weibo.setLastUpdateTime(time);
+			weibo.setAid(aid);
+			weibo.setLiked(0);
+			weibo.setComment(0);
+			
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
-		return wb;
-	}
-
-	@Override
-	public List<Weibo> findTop() {
-		// TODO Auto-generated method stub
-  
-		return weiboMapper.findTop();
-	}
-
-	@Override
-	public Weibo findByWid(int wid) {
-		// TODO Auto-generated method stub
-		return weiboMapper.findByWid(wid);
-	}
-
-	@Override
-	public int update(Weibo weibo) {
-		int wid=weibo.getWid();
-		
-		weiboMapper.update(weibo);
-		
-		Weibo newweibo=weiboMapper.findByWid(wid);
-
-		return newweibo.getLiked();
-	}
-
-	@Override
-	public String findLiked(int aid,int wid) {
-		
-		Boolean bool=likedMapper.findByAidWid(aid, wid);
-		String s=String.valueOf(bool);
-		return s;
-	}
-
-	@Override
-	public int likeddelete(int aid) {
-		// TODO Auto-generated method stub
-		return likedMapper.delete(aid);
-	}
-
-	@Override
-	public int likedinsert(Liked liked) {
-		int like=likedMapper.insert(liked);
-		if(like != 1 ) {
-			throw new RuntimeException("添加失败");
-		}
-		
-		return like;
-	}
-
-	@Override
-	public String findFollow(int aid, int followAid) {
-		Boolean bool=followMapper.findFollow(aid, followAid);
-		String s=String.valueOf(bool);
-		return s;
-	}
-
-	@Override
-	public int followdelete(int followAid) {
-		// TODO Auto-generated method stub
-		return followMapper.delete(followAid);
-	}
-
-	@Override
-	public int followinsert(Follow follow) {
-		int followed=followMapper.insert(follow);
-		if(followed != 1 ) {
-			throw new RuntimeException("添加失败");
-		}
-		
-		return followed;
+		return weiboMapper.insert(weibo);
 	}
 
 	
+	@Override
+	public List<Weibo> findTop(int aid) {
+		// TODO Auto-generated method stub
+		List<Weibo> weibo=weiboMapper.findTop();
+		
+		for(int i=0;i<10;i++) {
+			int topuser=weibo.get(i).getAccount().getAid();
+			
+			String s=String.valueOf(followMapper.findFollow(aid, topuser));
+			
+			if(s.equals("null")) {
+				weibo.get(i).getAccount().setFollow("关注");
+			}else {
+				weibo.get(i).getAccount().setFollow("已关注");
+			}
+		}
+		
+		return weibo;
+	}
+
+
+	@Override
+	public int setLiked(int aid,int wid) {
+		
+		Weibo weibo=weiboMapper.findByWid(wid);
+		
+		Boolean bool=likedMapper.findByAidWid(aid, wid);
+		
+		String s=String.valueOf(bool);
+		
+		if(s.equals("null")) {
+			
+			weibo.setLiked(weibo.getLiked()+1);
+			
+			Liked liked=new Liked();
+			liked.setAid(aid);
+			liked.setWid(weibo.getWid());
+			likedMapper.insert(liked);
+			
+		}else {
+		
+			weibo.setLiked(weibo.getLiked()-1);
+			likedMapper.delete(aid);
+		}
+		
+		weiboMapper.update(weibo);
+		
+		return weibo.getLiked();
+	}
+
+
+	@Override
+	public int setFollow(int aid, int followAid) {
+		
+		String s=String.valueOf(followMapper.findFollow(aid, followAid));
+		
+		if(s.equals("null")) {
+			
+			Follow follow=new Follow();
+			follow.setAid(aid);
+			follow.setFollowAid(followAid);
+			followMapper.insert(follow);
+			return 1;
+			
+		}else {
+			
+			followMapper.delete(followAid);
+			return 0;
+		}
+				
+	}
+	
+	
 }
+
+	
+

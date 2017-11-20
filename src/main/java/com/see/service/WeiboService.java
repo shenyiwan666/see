@@ -2,29 +2,16 @@ package com.see.service;
 
 import java.util.List;
 
-import com.see.entity.Follow;
-import com.see.entity.Liked;
 import com.see.entity.Weibo;
 
 public interface WeiboService {
 	
-	int insert(Weibo weibo);
+	int insert(int aid,Weibo weibo);
 	
-	List<Weibo> findTop();
+	List<Weibo> findTop(int aid);
 	
-	Weibo findByWid(int wid);
+	int setLiked(int aid,int wid);
 	
-	int update(Weibo weibo);
+	int setFollow(int aid,int followAid);
 	
-	String findLiked(int aid,int wid);
-	
-	int likeddelete(int aid);
-	
-	int likedinsert(Liked liked);
-	
-	String findFollow(int aid,int followAid);
-	
-	int followdelete(int followAid);
-	
-	int followinsert(Follow follow);
 }
