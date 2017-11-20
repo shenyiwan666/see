@@ -7,6 +7,7 @@
 	<resultMap type="weibo" id="accountMap">
 		<id column="wid" property="wid" />
 		<result column="wcontent" property="wcontent" />
+		<result column="aid" property="aid" />
 		<result column="last_update_time" property="lastUpdateTime" />
 		<result column="service" property="service" />
 		<result column="comment" property="comment" />
@@ -26,6 +27,7 @@
 		a.nick_name,
 		a.pic,
 		w.wid,
+		w.aid,
 		w.wcontent,
 		w.last_update_time,
 		w.service,
