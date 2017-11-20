@@ -3,19 +3,20 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.see.dao.AccountMapper">
-	
-	<resultMap type="Account" id="accountMap">
-		<id column="aid" property="aid"/>
-		<result column="nick_name" property="nickName"/>
-		<result column="pic" property="pic"/>
-		<collection property="weibos" ofType="Weibo">
-			<id column="wid" property="wid"/>
-			<result column="wcontent" property="wcontent"/>
-			<result column="last_update_time" property="lastUpdateTime"/>
-			<result column="service" property="service"/>
-			<result column="comment" property="comment"/>
-			<result column="liked" property="liked"/>
-		</collection>
+
+	<resultMap type="weibo" id="accountMap">
+		<id column="wid" property="wid" />
+		<result column="wcontent" property="wcontent" />
+		<result column="last_update_time" property="lastUpdateTime" />
+		<result column="service" property="service" />
+		<result column="comment" property="comment" />
+		<result column="liked" property="liked" />
+		<association property="account" javaType="Account">
+			<id column="aid" property="aid" />
+			<result column="nick_name" property="nickName" />
+			<result column="fans" property="fans" />
+			<result column="pic" property="pic" />
+		</association>
 	</resultMap>
 
 
@@ -37,7 +38,9 @@
 		a.aid = #{id}
 		ORDER BY w.last_update_time DESC
   </select>
+ 
   
+   
   <select id="findByEmail" parameterType="String" resultType="Account">
   	SELECT
 		aid,
@@ -52,23 +55,30 @@
   </select>
   
   
-  <select id="findAll" resultType="Account">
+  <select id="findAll" parameterType="int" resultMap="accountMap">
   	SELECT
-		aid,
-		email,
-		nick_name,
-		`password`,
-		pic 
-	FROM
-		account 
-	<where>
-		<if test="list != null">
-			aid in 
-			<foreach collection="list" index="index" item="id" open="(" separator="," close=")">
-				#{id}
-			</foreach>
-		</if>
-	</where>
+	*
+FROM
+	(
+		SELECT
+			w.*
+		FROM
+			weibo w
+		WHERE
+			EXISTS (
+				SELECT
+					1
+				FROM
+					follow f
+				WHERE
+					w.aid = f.follow_aid
+				AND f.aid = #{id}
+			)
+		OR w.aid =#{id}
+	) t
+  LEFT JOIN account a ON t.aid = a.aid
+  ORDER BY
+	t.last_update_time DESC
   </select>
   
   <select id="count" parameterType="string" resultType="int">
@@ -86,12 +96,10 @@
   <select id="search" parameterType="SearchVO" resultType="Account">
 	SELECT 
 		aid,
-		email,
 		nick_name,
-		`password`,
-		pic  
-	FROM account
-	
+ 		pic
+	FROM 
+		account 
 	<trim prefix="WHERE" prefixOverrides="AND |OR ">
 	  	<if test="q != null">
 			nick_name LIKE CONCAT('%',#{q},'%')  	

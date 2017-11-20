@@ -74,7 +74,7 @@ public class Account {
 	}
 	@Override
 	public String toString() {
-		return "Account [aid=" + aid + ", nickName=" + nickName + ", email=" + email + ", password=" + password
+		return "Account [aid=" + aid + ", nickName=" + nickName + ", fans=" + fans + ", weibo=" +weibo+", email=" + email + ", password=" + password
 				+ ", pic=" + pic + ", fans=" + fans + ", weibo=" + weibo + ", follow=" + follow + ", weibos=" + weibos
 				+ "]";
 	}

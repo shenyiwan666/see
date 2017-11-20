@@ -3,6 +3,7 @@ package com.see.dao;
 import java.util.List;
 
 import com.see.entity.Account;
+import com.see.entity.Weibo;
 import com.see.vo.SearchVO;
 
 public interface AccountMapper {
@@ -13,7 +14,7 @@ public interface AccountMapper {
 	
 	Account findByEmail(String email);
 	
-	List<Account> findAll(List<Integer> aid);
+	List<Weibo> findAll(int aid);
 	
 	int count(String q);
 	
