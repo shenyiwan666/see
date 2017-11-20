@@ -81,6 +81,8 @@ FROM
 	t.last_update_time DESC
   </select>
   
+  
+  
   <select id="count" parameterType="string" resultType="int">
   	SELECT
 		count( 1 ) 
@@ -93,16 +95,24 @@ FROM
 	</trim>
   </select>
   
-  <select id="search" parameterType="SearchVO" resultType="Account">
+  <select id="search" parameterType="SearchVO" resultMap="accountMap">
 	SELECT 
-		aid,
-		nick_name,
- 		pic
+		a.aid,
+		a.nick_name,
+		a.pic,
+		w.wid,
+		w.wcontent,
+		w.last_update_time,
+		w.service,
+		w.`comment`,
+		w.liked 
 	FROM 
-		account 
+		account a 
+		LEFT JOIN weibo w ON a.aid = w.aid 
 	<trim prefix="WHERE" prefixOverrides="AND |OR ">
 	  	<if test="q != null">
-			nick_name LIKE CONCAT('%',#{q},'%')  	
+			nick_name LIKE CONCAT('%',#{q},'%')  
+			ORDER BY w.last_update_time DESC	
 		</if>
 	</trim>
 	LIMIT #{offset}, #{size}

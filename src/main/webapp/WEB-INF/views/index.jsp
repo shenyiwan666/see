@@ -82,11 +82,7 @@
 			</div>
 			</c:forEach>
 		</div>
-<<<<<<< HEAD
-	
-=======
-		
->>>>>>> f6f23e715c7f1d4866a549a077cacf12f029bbc8
+
 		
 		<br/><br/>
 		<p>热门TOP10</p>
