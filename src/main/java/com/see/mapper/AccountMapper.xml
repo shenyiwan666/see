@@ -78,7 +78,7 @@ FROM
 	) t
   LEFT JOIN account a ON t.aid = a.aid
   ORDER BY
-	t.wid DESC
+	t.last_update_time DESC
   </select>
   
   <select id="count" parameterType="string" resultType="int">
