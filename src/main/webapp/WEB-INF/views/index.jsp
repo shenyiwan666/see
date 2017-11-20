@@ -64,6 +64,11 @@
 
         </form>
         </div>
+        
+        <form action="/search" method="get">
+			搜索:<input type="text" name="q" value="${param.q }"/><input type="submit" value="搜索" />
+		</form>
+        
 	
 		<div class="wrapper">
 			<c:set var="account" value="${requestScope.account }"/>

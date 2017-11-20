@@ -16,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.see.entity.Account;
@@ -24,6 +25,7 @@ import com.see.entity.Liked;
 import com.see.entity.Weibo;
 import com.see.service.AccountService;
 import com.see.service.WeiboService;
+import com.see.vo.Page;
 
 @Controller
 public class HomeController {
@@ -114,7 +116,6 @@ public class HomeController {
 	@RequestMapping(value="/follow/{aid}")
 	public @ResponseBody int follow(@PathVariable("aid") int aid,Model model,HttpSession session) {
 		
-		
 		int useraid = ((Account)session.getAttribute("account")).getAid();
 		
 		String s=weiboService.findFollow(useraid, aid);
@@ -130,6 +131,19 @@ public class HomeController {
 			return 0;
 		}
 	
+	}
+	
+	
+	@RequestMapping(value="/search",method=RequestMethod.GET)
+	public String search(String q, @RequestParam(defaultValue="1") int p, Model model) {
+		
+		Page page = accountService.search(q, p);
+		model.addAttribute("page", page);
+		
+		System.out.println(page);
+		
+		//request.getRequestDispatcher("/WEB-INF/views/account/index.jsp")
+		return "/search";
 	}
 		
 }
