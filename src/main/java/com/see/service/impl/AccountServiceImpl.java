@@ -1,14 +1,10 @@
 package com.see.service.impl;
 
-import java.sql.Timestamp;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+
 
 import com.see.dao.AccountMapper;
 import com.see.entity.Account;
@@ -23,7 +19,6 @@ public class AccountServiceImpl implements AccountService {
 	@Autowired
 	private AccountMapper accountMapper;
 	
-
 	@Override
 	public Account login(String email, String password) {
 		
@@ -36,27 +31,6 @@ public class AccountServiceImpl implements AccountService {
 		return account;
 	}
 
-	@Transactional
-	@Override
-	public int transfer(int a, int b, int fans) {
-		Account ab = new Account();
-		ab.setAid(b);
-		ab.setFans( fans );
-		accountMapper.update(ab);
-		
-		Account aa = new Account();
-		aa.setAid(a);
-		aa.setFans(-fans);
-		accountMapper.update(aa);
-		
-		return 0;
-	}
-
-	@Override
-	public Account getAccount(int id) {
-		// TODO Auto-generated method stub
-		return accountMapper.findById(id);
-	}
 
 	@Override
 	public Page search(String q, Integer p) {
@@ -107,7 +81,7 @@ public class AccountServiceImpl implements AccountService {
 	@Override
 	public List<Weibo> findAll(int aid) {
 		// TODO Auto-generated method stub
-	List<Weibo> accounts = accountMapper.findAll(aid);
+		List<Weibo> accounts = accountMapper.findAll(aid);
 	
 		return accounts;
 	}

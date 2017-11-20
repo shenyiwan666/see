@@ -22,10 +22,7 @@ public interface AccountService {
 
 	Account findById(int id);
 	
-	Account getAccount(int id);
-	
-	int transfer(int a, int b, int fans);
-	
+
 	/**
 	 * 帐号搜索
 	 * @param q 搜索关键字
