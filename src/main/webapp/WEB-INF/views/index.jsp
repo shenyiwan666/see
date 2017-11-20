@@ -8,51 +8,8 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>主页</title>
 		<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.js"></script>
-		<style type="text/css">
-			body {
-				margin: 0;
-				background: #ccc;
-			}
-			.wrapper {
-				width:960px;
-				margin: 0 auto;
-			}
-			.wb {
-				background:#fff;
-				margin: 10px;
-				padding: 10px 10px 10px 80px;
-				position: relative;
-				border-radius: 5px;
-			}
-			.wb > img {
-				width: 50px;
-				height: 50px;
-				border-radius: 50%;
-				position: absolute;
-				left:10px;
-				top:10px;
-			}
-			.wb > h3 {
-				margin: 0;
-			}
-			.top {
-				background:#fff;
-				margin: 10px;
-				padding: 10px 10px 10px 80px;
-				position: relative;
-				border-radius: 5px;
-			}
-			.top > img {
-				width: 50px;
-				height: 50px;
-				border-radius: 50%;
-				position: absolute;
-				left:10px;
-				top:10px;
-			}
-			.top > h3 {
-				margin: 0;
-			}
+		<link rel="stylesheet" type="text/css" href="resources/index.css"/>
+			
 		</style>
 	</head>
 	
@@ -72,13 +29,18 @@
         <div class="wrapper">
 			<c:forEach items="${requestScope.weibos }" var="w">
 			<div class="wb">
-				<img src="/resources/image/${w.account.pic }"/>
-				<h3><a href="/follow/${w.account.aid}">${w.account.nickName}</a></h3>
-				<p>${w.wcontent }</p><br/>
-				<p><fmt:formatDate value="${w.lastUpdateTime}" pattern="yyyy-MM-dd HH:mm:ss" /></p>
-				<a class="liked" href="/like/${w.wid}">推荐(${w.liked })</a>
-				<a>评论(${w.comment})</a>
-				<p>
+				<div>
+					<img src="/resources/image/${w.account.pic }"/>
+				</div>
+				<div>
+					<h3><a href="/follow/${w.account.aid}">${w.account.nickName}</a></h3>
+					<p>${w.wcontent }</p><br/>
+					<p><fmt:formatDate value="${w.lastUpdateTime}" pattern="yyyy-MM-dd HH:mm:ss" /></p>
+					<a class="liked" href="/like/${w.wid}">推荐(${w.liked })</a>
+					<a>评论(${w.comment})</a>
+					<p>
+				</div>
+				
 			</div>
 			</c:forEach>
 		</div>
