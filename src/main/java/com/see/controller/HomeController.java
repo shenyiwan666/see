@@ -87,15 +87,12 @@ public class HomeController {
 		return "/search";
 	}
 		
-	@RequestMapping(value="/comment/{wid}")
-	public String comment(@PathVariable("wid") int wid,Model model) {
+	@RequestMapping(value="/showcomment/{wid}")
+	public @ResponseBody List<Comment> comment(@PathVariable("wid") int wid,Model model) {
 		
 		List<Comment> comment=weiboService.showComment(wid);
 		
-		model.addAttribute("comments",comment);
-		System.out.println(comment);
-		
-		return "redirect:/";
+		return comment;
 	}
 	
 	@RequestMapping(value="/comment/{wid}",method=RequestMethod.POST)

@@ -9,7 +9,38 @@
 		<title>主页</title>
 		<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.js"></script>
 		<link rel="stylesheet" type="text/css" href="resources/index.css"/>
-			
+		<style>
+		table img {
+			width:50px;
+			height: 50px;
+		}
+		.cur {
+			border: 1px solid #000;
+			padding: 3px 5px;
+			color: red;
+		}
+		.wrapper {
+					width:960px;
+					margin: 0 auto;
+				}
+				.wb {
+					background:#fff;
+					margin: 10px;
+					padding: 10px 10px 10px 80px;
+					position: relative;
+					border-radius: 5px;
+				}
+				.wb > img {
+					width: 50px;
+					height: 50px;
+					border-radius: 50%;
+					position: absolute;
+					left:10px;
+					top:10px;
+				}
+				.wb > h3 {
+					margin: 0;
+				}	
 		</style>
 	</head>
 	
@@ -30,21 +61,22 @@
 			<c:forEach items="${requestScope.weibos }" var="w">
 			<div class="wb">
 				<img src="/resources/image/${w.account.pic }"/>
-				<h3><a href="/follow/${w.account.aid}">${w.account.nickName}</a></h3>
+				<h3><p>${w.account.nickName}</p></h3>
 				<p>${w.wcontent }</p><br/>
 				<p><fmt:formatDate value="${w.lastUpdateTime}" pattern="yyyy-MM-dd HH:mm:ss" /></p>
 				<a class="liked" href="/like/${w.wid}">推荐(${w.liked })</a>
-				<a class="commented" href="/comment/${w.wid }">评论(${w.comment})</a>
+				<a class="showcomment" href="/showcomment/${w.wid }">评论(${w.comment})</a>
+				
 				<form method="post" action="/comment/${w.wid }">
 	 				<div id="div_content"><input type="text" id="ccontent" placeholder="留下你的评论" name="ccontent" /></div>
 	            	<div id="div_btn_pinglun"><input type="submit" id="btn_pinglun" value="评论"  /></div>
 				</form>
-				<c:forEach items="${requestScope.comments}" var ="c">
-					<div class="comment">
-						<p>${c.ccontent}</p>
-					</div>
-				</c:forEach>
-				<p>
+				
+				<div class="comment">
+				
+				</div>
+				
+				
 			</div>
 			</c:forEach>
 		</div>
@@ -81,11 +113,8 @@
 		});
 		
 	});
-	</script>
-	
-	<script type="text/javascript">
-	$(function(){
 
+	$(function(){
 		$('.top > a.follow').click(function( e ){
 			e.preventDefault();
 			var _a = $( this );
@@ -100,5 +129,22 @@
 		});
 		
 	});
+	
+	$(function(){
+		$('.wb > a.showcomment').click(function( e ){
+			e.preventDefault();
+			var _a = $( this );
+			$.get(_a.attr('href'), function(data){
+				var comment = _a.parent().children(".comment");
+				for(var i=0;i<data.length;i++){
+					$("img").attr("src", "/resources/image/data[i].account.pic").appendTo( comment );
+					
+					$('<p></p>').html(data[i].account.nickName+":"+data[i].ccontent ).appendTo( comment );
+				}
+			}, 'json');
+		});
+	});
+	
+
 	</script>
 </html>

@@ -19,6 +19,7 @@ public class Weibo {
 	private int liked;
 	
 	private int comment;
+	
 
 	public Integer getWid() {
 		return wid;
@@ -85,6 +86,8 @@ public class Weibo {
 	public void setComment(int comment) {
 		this.comment = comment;
 	}
+	
+	
 
 	@Override
 	public String toString() {
