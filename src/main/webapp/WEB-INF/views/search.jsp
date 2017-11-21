@@ -7,6 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>搜索结果</title>
+<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.js"></script>
 <style type="text/css">
 	table img {
 		width:50px;
@@ -48,6 +49,20 @@
 	
 	
 	
+	  <div class="users">
+	  <c:forEach items="${accounts}" var="a">
+		  <div class="user">
+		  <a>${a.nickName}</a>
+		  
+		  <a href="/find/${a.aid }">
+		  <img src="/resources/image/${a.pic }"/>
+		  </a>
+		  </div>
+	  </c:forEach>
+	  </div>
+	
+	
+	
 		 <div class="wrapper">
 			<c:forEach items="${page.list }" var="w">
 			<div class="wb">
@@ -84,4 +99,22 @@
 			</c:if>
 		</div>
 </body>
+
+
+<script type="text/javascript">
+	
+	$(function(){
+		
+		$('.wb > a.liked').click(function( e ){
+			e.preventDefault();
+			var _a = $( this );
+			$.get(_a.attr('href'), function( data ){
+				_a.html( '推荐(' + data + ')' );
+			}, 'json');
+		});
+		
+	});
+</script>
+	
+	
 </html>

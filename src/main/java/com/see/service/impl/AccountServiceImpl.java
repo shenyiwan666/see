@@ -75,7 +75,9 @@ public class AccountServiceImpl implements AccountService {
 	public Account findById(int id) {
 		// TODO Auto-generated method stub
 		Account account=accountMapper.findById(id);	
+		System.out.println(account);
 		return account;
+	
 	}
 
 	@Override
@@ -85,5 +87,16 @@ public class AccountServiceImpl implements AccountService {
 	
 		return accounts;
 	}
+
+
+	@Override
+	public List<Account> searchuser(String q) {
+		// TODO Auto-generated method stub
+		 List<Account> accounts=accountMapper.searchuser(q);
+		 return accounts;
+	}
+
+
+	
 
 }
