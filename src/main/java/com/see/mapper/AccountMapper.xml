@@ -19,15 +19,42 @@
 			<result column="pic" property="pic" />
 		</association>
 	</resultMap>
+	
+	   <resultMap type="Account" id="findMap">
+		<id column="aid" property="aid"/>
+		<result column="nick_name" property="nickName"/>
+		<result column="pic" property="pic"/>
+		<result column="fans" property="fans"/>
+		<collection property="weibos" ofType="Weibo">
+			<id column="wid" property="wid"/>
+			<result column="wcontent" property="wcontent"/>
+			<result column="last_update_time" property="lastUpdateTime"/>
+			<result column="service" property="service"/>
+			<result column="comment" property="comment"/>
+			<result column="liked" property="liked"/>
+		</collection>
+	</resultMap>
 
+		
+		<resultMap type="Account" id="accountsMap">
+			
+			
+			<id column="aid" property="aid" />
+			<result column="nick_name" property="nickName" />
+			<result column="fans" property="fans" />
+			<result column="pic" property="pic" />
+			
+		</resultMap>
+		
+		
 
-  <select id="findById" parameterType="int" resultMap="accountMap">
-    SELECT
+  <select id="findById" parameterType="int" resultMap="findMap">
+     SELECT
 		a.aid,
 		a.nick_name,
 		a.pic,
+		a.fans,
 		w.wid,
-		w.aid,
 		w.wcontent,
 		w.last_update_time,
 		w.service,
@@ -35,7 +62,7 @@
 		w.liked 
 	FROM
 		account a
-		INNER JOIN weibo w ON a.aid = w.aid 
+		LEFT JOIN weibo w ON a.aid = w.aid 
 	WHERE
 		a.aid = #{id}
 		ORDER BY w.last_update_time DESC
@@ -89,11 +116,11 @@ FROM
   	SELECT
 		count( 1 ) 
 	FROM
-		weibo w
-	LEFT JOIN account a ON a.aid=w.aid  
+    weibo w
+    LEFT JOIN account a  ON a.aid = w.aid
   	<trim prefix="WHERE" prefixOverrides="AND |OR ">
 	  	<if test="value != null">
-			a.nick_name LIKE CONCAT('%',#{value},'%')  		
+			a.nick_name LIKE CONCAT('%', #{value}, '%')	
 		</if>
 	</trim>
   </select>
@@ -106,6 +133,7 @@ FROM
 		w.wid,
 		w.wcontent,
 		w.last_update_time,
+		w.service,
 		w.`comment`,
 		w.liked 
 	FROM 
@@ -113,12 +141,32 @@ FROM
 		RIGHT JOIN weibo w ON a.aid = w.aid 
 	<trim prefix="WHERE" prefixOverrides="AND |OR ">
 	  	<if test="q != null">
-			nick_name LIKE CONCAT('%',#{q},'%')  
+			w.wcontent LIKE CONCAT('%',#{q},'%')  
 			ORDER BY w.last_update_time DESC	
 		</if>
 	</trim>
 	LIMIT #{offset}, #{size}
   </select>
+  
+  
+  <select id="searchuser" parameterType="string" resultMap="accountsMap">
+	SELECT 
+	a.aid,
+	a.nick_name,
+	a.pic,
+	a.fans
+	FROM 
+		account a 
+	<trim prefix="WHERE" prefixOverrides="AND |OR ">
+	  	
+			a.nick_name LIKE CONCAT('%', #{q}, '%')
+            ORDER BY a.fans DESC
+		
+	</trim>
+  </select>
+  
+  
+  
   
   <insert id="insert" parameterType="Account" keyProperty="aid">
   	<selectKey order="BEFORE" keyProperty="aid" resultType="int">

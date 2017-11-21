@@ -83,8 +83,22 @@ public class HomeController {
 		//System.out.println(page);
 		model.addAttribute("page", page);
 		
+		
+		List<Account> accounts=accountService.searchuser(q);
+		System.out.println(accounts);
+		model.addAttribute("accounts", accounts);
+		
 		//request.getRequestDispatcher("/WEB-INF/views/account/index.jsp")
 		return "/search";
+	}
+	@RequestMapping(value="/find/{aid}",method=RequestMethod.GET)
+	public String findUsers(@PathVariable("aid") int aid,Model model,HttpSession session)
+	{
+		Account account=accountService.findById(aid);
+		System.out.println(aid);
+		System.out.println(account);
+		model.addAttribute("account", account);
+		return "/find" ;
 	}
 		
 	@RequestMapping(value="/showcomment/{wid}")
