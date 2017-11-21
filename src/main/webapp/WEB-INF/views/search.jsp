@@ -6,7 +6,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>搜索结果</title>
+	<title>搜索结果</title>
+	<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.js"></script>
 	<style type="text/css">
 		table img {
 			width:50px;
@@ -46,13 +47,12 @@
 		搜索:<input type="text" name="q" value="${param.q }"/><input type="submit" value="搜索" />
 	</form>
 	
-	
-	
 		 <div class="wrapper">
-			<c:forEach items="${page.list }" var="w">
+			<c:forEach items="${page.list}" var="w">
 			<div class="wb">
 				<img src="/resources/image/${w.account.pic }"/>
-				<h3><a href="/follow/${w.account.aid}">${w.account.nickName}</a></h3>
+				<h3><a>${w.account.nickName}</a></h3>
+				<a class="follow" href="/follow/${w.account.aid}">${w.account.follow}</a>
 				<p>${w.wcontent }</p><br/>
 				<p><fmt:formatDate value="${w.lastUpdateTime}" pattern="yyyy-MM-dd HH:mm:ss" /></p>
 				<a class="liked" href="/like/${w.wid}">推荐(${w.liked })</a>
@@ -83,10 +83,9 @@
 				<a href="/search/?p=${page.cur + 1 }&q=${param.q}">下一页</a>
 			</c:if>
 		</div>
-</body>
+	</body>
 
 	<script type="text/javascript">
-	
 	$(function(){
 		
 		$('.wb > a.liked').click(function( e ){
@@ -94,6 +93,24 @@
 			var _a = $( this );
 			$.get(_a.attr('href'), function( data ){
 				_a.html( '推荐(' + data + ')' );
+			}, 'json');
+		});
+		
+	});
+	</script>
+	
+	<script type="text/javascript">
+	$(function(){
+		$('.wb > a.follow').click(function( e ){
+			e.preventDefault();
+			var _a = $( this );
+			$.get(_a.attr('href'), function(data){
+				if(data==1){
+					_a.html( '已关注' );
+				}
+				if(data==0){
+					_a.html( '关注' );
+				}
 			}, 'json');
 		});
 		

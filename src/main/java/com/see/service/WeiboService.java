@@ -2,6 +2,7 @@ package com.see.service;
 
 import java.util.List;
 
+import com.see.entity.Comment;
 import com.see.entity.Weibo;
 
 public interface WeiboService {
@@ -14,4 +15,7 @@ public interface WeiboService {
 	
 	int setFollow(int aid,int followAid);
 	
+	List<Comment> showComment(int wid);
+	
+	int insertComment(int wid,int aid,Comment comment);
 }

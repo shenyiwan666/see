@@ -60,7 +60,7 @@
 		 <div id="fabuForm">
 	        <form method="post" action="/fabu">
 	 			<div id="div_content"><input type="text" id="wcontent" class="text_field" placeholder="分享此刻看见" name="wcontent" /></div>
-	            <div id="div_btn_fabu"><input type="submit" id="btn_fabu" value="发布"  /></div>
+	            <div id="div_btn_fabu"><input type="submit" id="btn_fabu" value="分享"  /></div>
 	
 	        </form>
         </div>
@@ -77,7 +77,16 @@
 				<p>${w.wcontent }</p><br/>
 				<p><fmt:formatDate value="${w.lastUpdateTime}" pattern="yyyy-MM-dd HH:mm:ss" /></p>
 				<a class="liked" href="/like/${w.wid}">推荐(${w.liked })</a>
-				<a>评论(${w.comment})</a>
+				<a class="commented" href="/comment/${w.wid }">评论(${w.comment})</a>
+				<form method="post" action="/comment/${w.wid }">
+	 				<div id="div_content"><input type="text" id="ccontent" placeholder="留下你的评论" name="ccontent" /></div>
+	            	<div id="div_btn_pinglun"><input type="submit" id="btn_pinglun" value="评论"  /></div>
+				</form>
+				<c:forEach items="${requestScope.comments}" var ="c">
+					<div class="comment">
+						<p>${c.ccontent}</p>
+					</div>
+				</c:forEach>
 				<p>
 			</div>
 			</c:forEach>

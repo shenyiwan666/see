@@ -28,7 +28,7 @@ public interface AccountService {
 	 * @param q 搜索关键字
 	 * @return  List<Account>
 	 */
-	Page search(String q, Integer p);
+	Page search(String q, Integer p, int aid);
 	
 	int delete(int aid);
 /************修改********/
