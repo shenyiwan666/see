@@ -8,51 +8,8 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>主页</title>
 		<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.js"></script>
-		<style type="text/css">
-			body {
-				margin: 0;
-				background: #ccc;
-			}
-			.wrapper {
-				width:960px;
-				margin: 0 auto;
-			}
-			.wb {
-				background:#fff;
-				margin: 10px;
-				padding: 10px 10px 10px 80px;
-				position: relative;
-				border-radius: 5px;
-			}
-			.wb > img {
-				width: 50px;
-				height: 50px;
-				border-radius: 50%;
-				position: absolute;
-				left:10px;
-				top:10px;
-			}
-			.wb > h3 {
-				margin: 0;
-			}
-			.top {
-				background:#fff;
-				margin: 10px;
-				padding: 10px 10px 10px 80px;
-				position: relative;
-				border-radius: 5px;
-			}
-			.top > img {
-				width: 50px;
-				height: 50px;
-				border-radius: 50%;
-				position: absolute;
-				left:10px;
-				top:10px;
-			}
-			.top > h3 {
-				margin: 0;
-			}
+		<link rel="stylesheet" type="text/css" href="resources/index.css"/>
+			
 		</style>
 	</head>
 	
@@ -60,7 +17,7 @@
 		 <div id="fabuForm">
 	        <form method="post" action="/fabu">
 	 			<div id="div_content"><input type="text" id="wcontent" class="text_field" placeholder="分享此刻看见" name="wcontent" /></div>
-	            <div id="div_btn_fabu"><input type="submit" id="btn_fabu" value="发布"  /></div>
+	            <div id="div_btn_fabu"><input type="submit" id="btn_fabu" value="分享"  /></div>
 	
 	        </form>
         </div>
@@ -77,7 +34,16 @@
 				<p>${w.wcontent }</p><br/>
 				<p><fmt:formatDate value="${w.lastUpdateTime}" pattern="yyyy-MM-dd HH:mm:ss" /></p>
 				<a class="liked" href="/like/${w.wid}">推荐(${w.liked })</a>
-				<a>评论(${w.comment})</a>
+				<a class="commented" href="/comment/${w.wid }">评论(${w.comment})</a>
+				<form method="post" action="/comment/${w.wid }">
+	 				<div id="div_content"><input type="text" id="ccontent" placeholder="留下你的评论" name="ccontent" /></div>
+	            	<div id="div_btn_pinglun"><input type="submit" id="btn_pinglun" value="评论"  /></div>
+				</form>
+				<c:forEach items="${requestScope.comments}" var ="c">
+					<div class="comment">
+						<p>${c.ccontent}</p>
+					</div>
+				</c:forEach>
 				<p>
 			</div>
 			</c:forEach>

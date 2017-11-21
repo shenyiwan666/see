@@ -23,8 +23,8 @@ public class AccountController {
 	public String search(String q, @RequestParam(defaultValue="1") int p, Model model) {
 		
 		
-		Page page = accountService.search(q, p);
-		model.addAttribute("page", page);
+		//Page page = accountService.search(q, p);
+		//model.addAttribute("page", page);
 		
 		//request.getRequestDispatcher("/WEB-INF/views/account/index.jsp")
 		return "account/index";

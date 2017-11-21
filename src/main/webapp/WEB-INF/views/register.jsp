@@ -11,7 +11,7 @@
 	<body>
 		
 		<div id="register">
-			<div id="image_logo"><img src="resources/image/fly_icon.png"></div>
+			<div id="image_logo"><img src="resources/image/eyes_icon.png"></div>
 			<form action="/register" method="post" enctype="multipart/form-data">
 			
 				<div id="div_email"><input type="email" id="email" class="text_field" placeholder="注册邮箱" name="email" /></div>

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 
 import com.see.dao.AccountMapper;
+import com.see.dao.FollowMapper;
 import com.see.entity.Account;
 import com.see.entity.Weibo;
 import com.see.service.AccountService;
@@ -18,6 +19,9 @@ public class AccountServiceImpl implements AccountService {
 	
 	@Autowired
 	private AccountMapper accountMapper;
+	
+	@Autowired
+	private FollowMapper followMapper;
 	
 	@Override
 	public Account login(String email, String password) {
@@ -33,17 +37,32 @@ public class AccountServiceImpl implements AccountService {
 
 
 	@Override
-	public Page search(String q, Integer p) {
+	public Page search(String q, Integer p, int aid) {
 		Page page = new Page(p);
 		
 		int count = accountMapper.count(q);
 		page.setCount(count);
 		
 		List<Weibo> accounts = accountMapper.search(new SearchVO(q, page.getOffset(), page.getSize()));
+		int size=accounts.size();
+		
+		for(int i=0;i<size;i++) {
+			int searchuser=accounts.get(i).getAccount().getAid();
+			String s=String.valueOf(followMapper.findFollow(aid, searchuser));
+			
+			if(s.equals("null")) {
+				accounts.get(i).getAccount().setFollow("关注");
+			}else {
+				accounts.get(i).getAccount().setFollow("已关注");
+			}
+			
+			if(searchuser==aid) {
+				accounts.get(i).getAccount().setFollow("");
+			}
+		}
+		
 		page.setList( accounts );
-		
-		
-		System.out.println( page );
+				
 		return page;
 	}
 
