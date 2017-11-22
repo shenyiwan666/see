@@ -41,6 +41,7 @@
 				.wb > h3 {
 					margin: 0;
 				}	
+			
 		</style>
 	</head>
 	
@@ -68,15 +69,14 @@
 				<a class="showcomment" href="/showcomment/${w.wid }">评论(${w.comment})</a>
 				
 				<form method="post" action="/comment/${w.wid }">
-	 				<div id="div_content"><input type="text" id="ccontent" placeholder="留下你的评论" name="ccontent" /></div>
-	            	<div id="div_btn_pinglun"><input type="submit" id="btn_pinglun" value="评论"  /></div>
+	 				<input type="text" id="ccontent" placeholder="留下你的评论" name="ccontent" />
+	            	<input type="submit" id="btn_pinglun" value="评论"  />
 				</form>
 				
 				<div class="comment">
 				
 				</div>
-				
-				
+			
 			</div>
 			</c:forEach>
 		</div>
@@ -136,15 +136,20 @@
 			var _a = $( this );
 			$.get(_a.attr('href'), function(data){
 				var comment = _a.parent().children(".comment");
-				for(var i=0;i<data.length;i++){
-					$("img").attr("src", "/resources/image/data[i].account.pic").appendTo( comment );
-					
+			
+				if(data[0].show==1){
+					for(var i=0;i<data.length;i++){
 					$('<p></p>').html(data[i].account.nickName+":"+data[i].ccontent ).appendTo( comment );
-				}
+					
+					$('<a></a>').attr("class","closecomment").css("cursor","pointer").html("收起 ").on('click',function(){
+						comment.empty();
+					}).appendTo( comment );
+					}
+			}
+					
 			}, 'json');
 		});
 	});
 	
-
 	</script>
 </html>
