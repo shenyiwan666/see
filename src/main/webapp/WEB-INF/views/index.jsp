@@ -12,22 +12,24 @@
 	</head>
 	
 	<body>
-		 <div id="fabuForm">
-	        <form method="post" action="/fabu">
-	 			<div id="div_content"><input type="text" id="wcontent" class="text_field" placeholder="分享此刻看见" name="wcontent" /></div>
-	            <div id="div_btn_fabu"><input type="submit" id="btn_fabu" value="分享"  /></div>
-	
-	        </form>
-        </div>
-        <div class="searchform">
-        	<form id="formsearch" name="formsearch" action="/search" method="get">
-				<%-- 搜索:<input type="text" name="q" value="${param.q }"/><input type="submit" value="搜索" /> --%>
-				<span>
-	            <input name="q" class="editbox_search" id="editbox_search" maxlength="80" value="${param.q }" type="text" />
-	            </span>
-	            <input name="button_search" class="button_search" type="submit" value="     "/>
-			</form>
-        </div>
+		<div id="head_menu">
+			<div id="fabuForm">
+		        <form method="post" action="/fabu">
+		 			<div id="div_content"><input type="text" id="wcontent" class="text_field" placeholder="分享此刻看见" name="wcontent" /></div>
+		            <div id="div_btn_fabu"><input type="submit" id="btn_fabu" value="分享"  /></div>
+		        </form>
+	        </div>
+	        <div class="searchform">
+	        	<form id="formsearch" name="formsearch" action="/search" method="get">
+					<%-- 搜索:<input type="text" name="q" value="${param.q }"/><input type="submit" value="搜索" /> --%>
+					<span>
+		            <input name="q" class="editbox_search" id="editbox_search" maxlength="80" value="${param.q }" type="text" />
+		            </span>
+		            <input name="button_search" class="button_search" type="submit" value="     "/>
+				</form>
+	        </div>
+		</div>
+		
         
         
         <div class="wrapper">
@@ -73,7 +75,7 @@
 	
 	$(function(){
 		
-		$('.wb > a.liked').click(function( e ){
+		$('.wb > .comment_line > a.liked ').click(function( e ){
 			e.preventDefault();
 			var _a = $( this );
 			$.get(_a.attr('href'), function( data ){
@@ -100,7 +102,7 @@
 	});
 	
 	$(function(){
-		$('.wb > a.showcomment').click(function( e ){
+		$('.wb > .comment_line > a.showcomment').click(function( e ){
 			e.preventDefault();
 			var _a = $( this );
 			$.get(_a.attr('href'), function(data){
