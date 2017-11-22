@@ -12,6 +12,11 @@
 	</head>
 	
 	<body>
+		<div>
+			<img src="eyes_icon.png">
+			<h1>See</h1>
+		</div>
+		<br></br>
 		<div id="head_menu">
 			<div id="fabuForm">
 		        <form method="post" action="/fabu">
@@ -29,7 +34,7 @@
 				</form>
 	        </div>
 		</div>
-		
+		<div class="clr"></div>
         
         
         <div class="wrapper">
@@ -50,8 +55,12 @@
 				
 				<div class="comment">
 				
+<<<<<<< HEAD
+				</div>	
+=======
 				</div>
 			
+>>>>>>> 83789e82fb3b7487c29e0963054c9c93493ca1f0
 			</div>
 			</c:forEach>
 		</div>
