@@ -19,10 +19,16 @@
 	
 	        </form>
         </div>
+        <div class="searchform">
+        	<form id="formsearch" name="formsearch" action="/search" method="get">
+				<%-- 搜索:<input type="text" name="q" value="${param.q }"/><input type="submit" value="搜索" /> --%>
+				<span>
+	            <input name="q" class="editbox_search" id="editbox_search" maxlength="80" value="${param.q }" type="text" />
+	            </span>
+	            <input name="button_search" class="button_search" type="submit" value="     "/>
+			</form>
+        </div>
         
-        <form action="/search" method="get">
-			搜索:<input type="text" name="q" value="${param.q }"/><input type="submit" value="搜索" />
-		</form>
         
         <div class="wrapper">
 			<c:forEach items="${requestScope.weibos }" var="w">
@@ -30,10 +36,11 @@
 				<img src="/resources/image/${w.account.pic }"/>
 				<h3><p>${w.account.nickName}</p></h3>
 				<p>${w.wcontent }</p><br/>
-				<p><fmt:formatDate value="${w.lastUpdateTime}" pattern="yyyy-MM-dd HH:mm:ss" /></p>
-				<a class="liked" href="/like/${w.wid}">推荐(${w.liked })</a>
-				<a class="showcomment" href="/showcomment/${w.wid }">评论(${w.comment})</a>
-				
+				<div class="comment_line">
+					<a><fmt:formatDate value="${w.lastUpdateTime}" pattern="yyyy-MM-dd HH:mm:ss" /></a>
+					<a class="liked" href="/like/${w.wid}">推荐(${w.liked })</a>
+					<a class="showcomment" href="/showcomment/${w.wid }">评论(${w.comment})</a>
+				</div>
 				<form method="post" action="/comment/${w.wid }">
 	 				<div id="div_content"><input type="text" id="ccontent" placeholder="留下你的评论" name="ccontent" /></div>
 	            	<div id="div_btn_pinglun"><input type="submit" id="btn_pinglun" value="评论"  /></div>
@@ -58,14 +65,9 @@
 				<h3><a href="#">${weibo.account.nickName}</a></h3>
 				<a class="follow" href="/follow/${weibo.account.aid}">${weibo.account.follow }</a>
 				<p>${weibo.wcontent }</p>
-				
 			</div>
 			</c:forEach>
-		</div>
-		
-		
-		
-		
+		</div>		
 	</body>
 	<script type="text/javascript">
 	
