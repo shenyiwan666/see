@@ -29,7 +29,7 @@
 				</form>
 	        </div>
 		</div>
-		
+		<div class="clr"></div>
         
         
         <div class="wrapper">
@@ -50,9 +50,7 @@
 				
 				<div class="comment">
 				
-				</div>
-				
-				
+				</div>	
 			</div>
 			</c:forEach>
 		</div>

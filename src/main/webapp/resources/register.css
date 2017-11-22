@@ -81,6 +81,12 @@ body {
     text-align: center;
 }
 
+#register-form {
+	position:absolute;
+	top:150px;
+	left:30px;
+}
+
 #image_logo{
    margin-top: 40px;
     margin-bottom:80px ;
@@ -98,12 +104,40 @@ body {
     background: url("image/password.png") no-repeat 5px center;
 }
 
+/* #head_image {
+	width: 50px;
+	height:50px;
+	background: url("image/head_icon.png");
+	border:none;
+} */
+
+.btn-head {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background: #e4e4e4 url("image/head_icon.png") no-repeat center center;
+    text-align: center;
+    line-height: 68px;
+    overflow: hidden;
+}
+    
+.btn-head input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 50px;
+    opacity: 0;
+    filter: alpha(opacity: 0);
+    cursor: pointer;
+}
+
 .text_field{
     width: 330px;
     height: 28px;
     border: 0;
     border-bottom:2px solid #eaeaea;
-
     text-indent: 50px;
 }
 
@@ -135,7 +169,7 @@ body {
 }
 
 #div_email{
-	
+	margin-top:10px;
 }
 
 #div_username{
@@ -152,9 +186,10 @@ body {
 } */
 
 #div_headimage{
-	margin-top: 30px;
+	margin-top: 10px;
 }
 
 #div_btn_login{
-    margin-top: 30px;
+    margin-top: 15px;
 }
+
