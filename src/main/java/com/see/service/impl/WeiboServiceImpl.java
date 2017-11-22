@@ -144,12 +144,6 @@ public class WeiboServiceImpl implements WeiboService {
 		
 		List<Comment> comment=commentMapper.findByWid(wid);	
 		
-		if(comment.get(0).getShow()==1) {
-			comment.get(0).setShow(0);
-		}else{
-			comment.get(0).setShow(1);
-		}
-	
 		return comment;
 	}
 	

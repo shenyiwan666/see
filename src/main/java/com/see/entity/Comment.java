@@ -8,7 +8,7 @@ public class Comment {
 	private int wid;
 	private String ccontent;
 	private Date ctime;
-	private int show=0;
+	private int show;
 	
 	private Account account;
 	public int getCid() {
