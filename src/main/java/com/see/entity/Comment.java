@@ -8,6 +8,7 @@ public class Comment {
 	private int wid;
 	private String ccontent;
 	private Date ctime;
+	private int show;
 	
 	private Account account;
 	public int getCid() {
@@ -46,11 +47,22 @@ public class Comment {
 	public void setAccount(Account account) {
 		this.account = account;
 	}
+	public int getShow() {
+		return show;
+	}
+	public void setShow(int show) {
+		this.show = show;
+	}
 	@Override
 	public String toString() {
 		return "Comment [cid=" + cid + ", aid=" + aid + ", wid=" + wid + ", ccontent=" + ccontent + ", ctime=" + ctime
-				+ ", account=" + account + "]";
+				+ ", show=" + show + ", account=" + account + "]";
 	}
+
+
+	
+	
+
 
 	
 	

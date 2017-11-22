@@ -105,16 +105,20 @@ public class HomeController {
 	public @ResponseBody List<Comment> comment(@PathVariable("wid") int wid,Model model) {
 		
 		List<Comment> comment=weiboService.showComment(wid);
+	
+		System.out.println(comment.get(0));
 		
 		return comment;
 	}
 	
 	@RequestMapping(value="/comment/{wid}",method=RequestMethod.POST)
-	public String insercomment(@PathVariable("wid") int wid,HttpSession session,Comment comment){
+	public @ResponseBody String insercomment(@PathVariable("wid") int wid,HttpSession session,Comment comment){
 		int aid = ((Account)session.getAttribute("account")).getAid();
 		
-		weiboService.insertComment(wid, aid, comment);
+		weiboService.insertComment(wid, aid, comment);	
 	
-		return "redirect:/";
+		return comment.getCcontent();
+		
+
 	}	
 }

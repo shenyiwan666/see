@@ -35,6 +35,8 @@ public class WeiboServiceImpl implements WeiboService {
 	
 	@Autowired
 	private CommentMapper commentMapper;
+
+
 	
 	@Override
 	public int insert(int aid,Weibo weibo){
@@ -140,14 +142,14 @@ public class WeiboServiceImpl implements WeiboService {
 	@Override
 	public List<Comment> showComment(int wid) {
 		
-		List<Comment> comment=commentMapper.findByWid(wid);
+		List<Comment> comment=commentMapper.findByWid(wid);	
 		
 		return comment;
 	}
 	
 	@Override
 	public int insertComment(int wid,int aid,Comment comment){
-	
+		
 		try {
 			SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			java.util.Date now;
