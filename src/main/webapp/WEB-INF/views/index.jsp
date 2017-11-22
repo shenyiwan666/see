@@ -43,9 +43,9 @@
 					<a class="liked" href="/like/${w.wid}">推荐(${w.liked })</a>
 					<a class="showcomment" href="/showcomment/${w.wid }">评论(${w.comment})</a>
 				</div>
-				<form method="post" action="/comment/${w.wid }">
+				<form id="subcom" method="post" action="/comment/${w.wid }">
 	 				<input type="text" id="ccontent" placeholder="留下你的评论" name="ccontent" />
-	            	<input type="submit" id="btn_pinglun" value="评论"  />
+	            	<input type="button" id="btn_pinglun"  value="评论"  />
 				</form>
 				
 				<div class="comment">
@@ -100,25 +100,33 @@
 		
 	});
 	
+	
 	$(function(){
-		$('.wb > .comment_line > a.showcomment').click(function( e ){
-			e.preventDefault();
-			var _a = $( this );
-			$.get(_a.attr('href'), function(data){
-				var comment = _a.parent().parent().children(".comment");
-					
+		var i=0;
+		$('.wb > .comment_line > a.showcomment').click(
+			function( e ){
+				e.preventDefault();
+				var _a = $( this );
+				if(i==0){
+				$.get(_a.attr('href'), function(data){
+					var comment = _a.parent().parent().children(".comment");
 						for(var i=0;i<data.length;i++){
 							$('<p></p>').html(data[i].account.nickName+":"+data[i].ccontent ).appendTo( comment );
 						}
 							$('<a></a>').attr("class","closecomment").css("cursor","pointer").html("收起 ").on('click',function(){
 								comment.empty();
 							}).appendTo( comment );
-						
-					
-				
-			}, 'json');
+				}, 'json');
+				i=1;
+			}else{
+				var comment = _a.parent().parent().children(".comment");
+				comment.empty();
+				i=0;
+			}
 		});
 	});
+
 	
+
 	</script>
 </html>
