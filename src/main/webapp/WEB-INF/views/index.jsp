@@ -9,39 +9,6 @@
 		<title>主页</title>
 		<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.js"></script>
 		<link rel="stylesheet" type="text/css" href="resources/index.css"/>
-		<style>
-		table img {
-			width:50px;
-			height: 50px;
-		}
-		.cur {
-			border: 1px solid #000;
-			padding: 3px 5px;
-			color: red;
-		}
-		.wrapper {
-					width:960px;
-					margin: 0 auto;
-				}
-				.wb {
-					background:#fff;
-					margin: 10px;
-					padding: 10px 10px 10px 80px;
-					position: relative;
-					border-radius: 5px;
-				}
-				.wb > img {
-					width: 50px;
-					height: 50px;
-					border-radius: 50%;
-					position: absolute;
-					left:10px;
-					top:10px;
-				}
-				.wb > h3 {
-					margin: 0;
-				}	
-		</style>
 	</head>
 	
 	<body>
