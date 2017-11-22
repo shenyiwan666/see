@@ -12,6 +12,11 @@
 	</head>
 	
 	<body>
+		<div>
+			<img src="eyes_icon.png">
+			<h1>See</h1>
+		</div>
+		<br></br>
 		<div id="head_menu">
 			<div id="fabuForm">
 		        <form method="post" action="/fabu">
