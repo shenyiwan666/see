@@ -147,9 +147,7 @@ public class HomeController {
 		String ccontent=request.getParameter("comment");
 		
 		Weibo weibo=weiboService.insertComment(wid, aid, ccontent);
-		
-		System.out.println(weibo);
-		
+
 		return weibo;
 
 	}	
