@@ -44,23 +44,18 @@
 				<h3><p>${w.account.nickName}</p></h3>
 				<p>${w.wcontent }</p><br/>
 				<div class="comment_line">
-					<a><fmt:formatDate value="${w.lastUpdateTime}" pattern="yyyy-MM-dd HH:mm:ss" /></a>
+					<a class="timer"><fmt:formatDate value="${w.lastUpdateTime}" pattern="yyyy-MM-dd HH:mm:ss" /></a>
 					<a class="liked" href="/like/${w.wid}">推荐(${w.liked })</a>
 					<a class="showcomment" href="/showcomment/${w.wid }">评论(${w.comment})</a>
 				</div>
+				<div class="clr"></div>
 				<form id="subcom" method="post" action="/comment/${w.wid }">
 	 				<input type="text" id="ccontent" placeholder="留下你的评论" name="ccontent" />
 	            	<input type="button" id="btn_pinglun"  value="评论"  />
 				</form>
 				
-				<div class="comment">
-				
-<<<<<<< HEAD
-				</div>	
-=======
-				</div>
-			
->>>>>>> 83789e82fb3b7487c29e0963054c9c93493ca1f0
+				<div class="comment"></div>	
+
 			</div>
 			</c:forEach>
 		</div>
