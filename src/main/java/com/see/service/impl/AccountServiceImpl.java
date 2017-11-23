@@ -94,7 +94,7 @@ public class AccountServiceImpl implements AccountService {
 	public Account findById(int id) {
 		// TODO Auto-generated method stub
 		Account account=accountMapper.findById(id);	
-		System.out.println(account);
+		
 		return account;
 	
 	}

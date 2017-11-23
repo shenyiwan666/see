@@ -3,9 +3,12 @@ package com.see.controller;
 import java.text.ParseException;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.xml.ws.spi.http.HttpContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -106,19 +109,21 @@ public class HomeController {
 		
 		List<Comment> comment=weiboService.showComment(wid);
 	
-		System.out.println(comment.get(0));
-		
 		return comment;
 	}
 	
 	@RequestMapping(value="/comment/{wid}",method=RequestMethod.POST)
-	public @ResponseBody String insercomment(@PathVariable("wid") int wid,HttpSession session,Comment comment){
+	public @ResponseBody Weibo insercomment(@PathVariable("wid") int wid,HttpSession session,HttpServletRequest request){
+		
 		int aid = ((Account)session.getAttribute("account")).getAid();
 		
-		weiboService.insertComment(wid, aid, comment);	
-	
-		return comment.getCcontent();
+		String ccontent=request.getParameter("comment");
 		
+		Weibo weibo=weiboService.insertComment(wid, aid, ccontent);
+		
+		System.out.println(weibo);
+		
+		return weibo;
 
 	}	
 }

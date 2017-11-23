@@ -36,7 +36,20 @@
 			ORDER BY liked DESC
 	    LIMIT 10
   </select>
-  -->
+  
+  
+  <resultMap type="Weibo" id="findContent">
+		<id column="wid" property="wid"/>
+		<result column="aid" property="aid"/>
+		<result column="wcontent" property="wcontent"/>
+		<result column="liked" property="liked"/>
+		<result column="comment" property="comment"/>
+		<collection property="comments" ofType="Comment">
+			<id column="cid" property="cid"/>
+			<result column="ccontent" property="ccontent"/>
+		</collection>
+	</resultMap>
+	-->
    
   <select id="findTop" resultType="Weibo">
   	SELECT
@@ -59,15 +72,17 @@
   
   <select id="findByWid" parameterType="int" resultType="Weibo">
   	SELECT
-  		wid,
-		aid,
-		`wcontent`,
-		liked,
-		comment
+  		w.wid,
+		w.aid,
+		w.`wcontent`,
+		w.liked,
+		w.comment
+		
 	FROM
-		weibo
+		weibo w
+		
 	WHERE
-		wid = #{wid}
+		w.wid = #{wid}
   </select>
   
   <update id="update" parameterType="Weibo">

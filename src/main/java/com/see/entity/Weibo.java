@@ -20,6 +20,8 @@ public class Weibo {
 	
 	private int comment;
 	
+	private Comment comments;
+	
 
 	public Integer getWid() {
 		return wid;
@@ -89,10 +91,21 @@ public class Weibo {
 	
 	
 
+	public Comment getComments() {
+		return comments;
+	}
+
+	public void setComments(Comment comments) {
+		this.comments = comments;
+	}
+
 	@Override
 	public String toString() {
-		return "Weibo [wid=" + wid + ",aid=" + aid +" account=" + account + ", wcontent=" + wcontent + ", lastUpdateTime="
-				+ lastUpdateTime + ", service=" + service + ", liked=" + liked + ", comment=" + comment + "]";
+		return "Weibo [wid=" + wid + ", aid=" + aid + ", account=" + account + ", wcontent=" + wcontent
+				+ ", lastUpdateTime=" + lastUpdateTime + ", service=" + service + ", liked=" + liked + ", comment="
+				+ comment + ", comments=" + comments + "]";
 	}
+
+	
 
 }
