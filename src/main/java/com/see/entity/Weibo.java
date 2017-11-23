@@ -20,6 +20,8 @@ public class Weibo {
 	
 	private int comment;
 	
+	private String imgname;
+	
 	private Comment comments;
 	
 
@@ -91,6 +93,14 @@ public class Weibo {
 	
 	
 
+	public String getImgname() {
+		return imgname;
+	}
+
+	public void setImgname(String imgname) {
+		this.imgname = imgname;
+	}
+
 	public Comment getComments() {
 		return comments;
 	}
@@ -101,9 +111,11 @@ public class Weibo {
 
 	@Override
 	public String toString() {
+
 		return "Weibo [wid=" + wid + ", aid=" + aid + ", account=" + account + ", wcontent=" + wcontent
 				+ ", lastUpdateTime=" + lastUpdateTime + ", service=" + service + ", liked=" + liked + ", comment="
-				+ comment + ", comments=" + comments + "]";
+				+ comment + ", imgname=" + imgname + ", comments=" + comments + "]";
+
 	}
 
 	

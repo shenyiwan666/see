@@ -11,23 +11,47 @@ table img {
 	width:50px;
 	height: 50px;
 }
+p {
+	margin:0;
+	padding:6px;
+}
 
 h1 {
 	margin:0;
-	padding:0;
-	color:#111;
-	font:bold 38px/1.2em Arial, Helvetica, sans-serif;
-	letter-spacing:-2px;
+	padding:0 0 0 200px;
+	font-size:50px;
+	font-weight:normal;
+	line-height:1.2em;
+	text-transform:none;
+	letter-spacing:2px;
 }
 
 h1 small {
+	color:#333;
 	display:block;
-	padding:0;
-	font:normal 12px/1.2em Arial, Helvetica, sans-serif;
+	font-size:16px;
+	line-height:1.2em;
 	letter-spacing:normal;
+	text-transform:none;
+	
+   /* 字体颜色渐变效果，debug-ing 
+   	-webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-position: 50%;
+    background-size: 1123px 400px;
+    background-repeat: no-repeat;
+    background-image: url(https://images.apple.com/v/iphone-7/d/images/overview/camera_how_to_shoot_background_large.jpg); */
+
 }
 
-.searchform {
+#searchform {
+	float: right;
+	position: absolute;
+	right: 150px;
+	top:35px;
+}
+
+#searchform {
 	margin:0 0 16px;
 	padding:20px 20px 12px;
 	float:left;
@@ -49,22 +73,22 @@ h1 small {
 }
 #formsearch input.editbox_search {
 	margin:0;
-	padding-left:10px;
+	padding-left:15px;
 	float:left;
-	font-size:12px;
+	font-size:20px;
 	line-height:16px;
 	color:#111111;
 	outline:none;
 	border:none;
 	
 	background: url("image/search_bg.png") no-repeat;
-    width: 168px;
-    height: 31px;
+    width: 280px;
+    height: 50px;
 
 }
 #formsearch input.button_search {
-	width:29px;
-	height:31px;
+	width:50px;
+	height:50px;
 	background: url("image/search.png") no-repeat;
 	margin:0;
 	padding:0;

@@ -19,6 +19,10 @@ public interface AccountService {
 	Account login(String email, String password);
 	
 	int insert(Account account);
+	int updatenickName(Account account);
+	int updateemail(Account account);
+	int updatepassword(Account account);
+	int updatepic(Account account);
 
 	Account findById(int id);
 	

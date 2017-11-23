@@ -44,6 +44,9 @@
 			<div class="wb">
 				<img src="/resources/image/${account.pic }"/>
 				<h3><a href="#">${account.nickName }</a></h3>
+				<div>
+				<img src="/resources/image/${w.imgname }"/>
+				</div>
 				<p>${w.wcontent }</p>
 			</div>
 			</c:forEach>
