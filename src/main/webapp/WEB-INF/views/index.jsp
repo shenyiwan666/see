@@ -15,22 +15,30 @@
 	
 	<body>
 		 <div id="fabuForm">
-	        <form method="post" action="/fabu">
+	        <form method="post" action="/fabu" enctype="multipart/form-data">
 	 			<div id="div_content"><input type="text" id="wcontent" class="text_field" placeholder="分享此刻看见" name="wcontent" /></div>
+	 			<div id="div_img"><input type="file" id="img" name="file"></div>
 	            <div id="div_btn_fabu"><input type="submit" id="btn_fabu" value="分享"  /></div>
-	
 	        </form>
         </div>
         
         <form action="/search" method="get">
 			搜索:<input type="text" name="q" value="${param.q }"/><input type="submit" value="搜索" />
 		</form>
+		
+        <c:set var="account" value="${requestScope.account}"/>
+        <a href="/account/${account.aid }">账户管理</a>
+   
+        
         
         <div class="wrapper">
 			<c:forEach items="${requestScope.weibos }" var="w">
 			<div class="wb">
 				<img src="/resources/image/${w.account.pic }"/>
 				<h3><a href="/follow/${w.account.aid}">${w.account.nickName}</a></h3>
+				<div>
+				<img src="/resources/image/${w.imgname}"/>
+				</div>
 				<p>${w.wcontent }</p><br/>
 				<p><fmt:formatDate value="${w.lastUpdateTime}" pattern="yyyy-MM-dd HH:mm:ss" /></p>
 				<a class="liked" href="/like/${w.wid}">推荐(${w.liked })</a>

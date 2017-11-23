@@ -68,6 +68,9 @@
 			<div class="wb">
 				<img src="/resources/image/${w.account.pic }"/>
 				<h3><a href="/follow/${w.account.aid}">${w.account.nickName}</a></h3>
+				<div>
+				<img src="/resources/image/${w.imgname }"/>
+				</div>
 				<p>${w.wcontent }</p><br/>
 				<p><fmt:formatDate value="${w.lastUpdateTime}" pattern="yyyy-MM-dd HH:mm:ss" /></p>
 				<a class="liked" href="/like/${w.wid}">推荐(${w.liked })</a>

@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.see.dao.CommentMapper;
 import com.see.dao.FollowMapper;
@@ -40,11 +41,11 @@ public class WeiboServiceImpl implements WeiboService {
 	public int insert(int aid,Weibo weibo){
 	
 		try {
+			
 			SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			java.util.Date now;
 			now = dateFormat.parse(dateFormat.format(new Date()));
 			java.sql.Date time=new java.sql.Date(now.getTime());
-			
 			weibo.setLastUpdateTime(time);
 			weibo.setAid(aid);
 			weibo.setLiked(0);

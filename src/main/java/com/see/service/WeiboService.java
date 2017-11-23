@@ -2,6 +2,8 @@ package com.see.service;
 
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.see.entity.Comment;
 import com.see.entity.Weibo;
 
