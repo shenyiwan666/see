@@ -12,28 +12,33 @@
 	</head>
 	
 	<body>
-		<div>
-			<img src="eyes_icon.png">
+		<div id="site-name">
+			<img src="image/eyes_icon.png">
 			<h1>See<small>Show me your colorful life</small></h1>
 		</div>
+        <div id="searchform">
+        	<form id="formsearch" name="formsearch" action="/search" method="get">
+				<%-- 搜索:<input type="text" name="q" value="${param.q }"/><input type="submit" value="搜索" /> --%>
+				<span>
+	            <input name="q" class="editbox_search" id="editbox_search" maxlength="80" value="${param.q }" type="text" />
+	            </span>
+	            <input name="button_search" class="button_search" type="submit" value="     "/>
+			</form>
+        </div>
+
 		<br></br>
-		<div id="head_menu">
 			<div id="fabuForm">
-		        <form method="post" action="/fabu">
-		 			<div id="div_content"><input type="text" id="wcontent" class="text_field" placeholder="分享此刻看见" name="wcontent" /></div>
-		            <div id="div_btn_fabu"><input type="submit" id="btn_fabu" value="分享"  /></div>
-		        </form>
-	        </div>
-	        <div class="searchform">
-	        	<form id="formsearch" name="formsearch" action="/search" method="get">
-					<%-- 搜索:<input type="text" name="q" value="${param.q }"/><input type="submit" value="搜索" /> --%>
-					<span>
-		            <input name="q" class="editbox_search" id="editbox_search" maxlength="80" value="${param.q }" type="text" />
-		            </span>
-		            <input name="button_search" class="button_search" type="submit" value="     "/>
-				</form>
-	        </div>
-		</div>
+	        <form method="post" action="/fabu" enctype="multipart/form-data">
+	 			<div id="div_content"><input type="text" id="wcontent" class="text_field" placeholder="分享此刻看见" name="wcontent" /></div>
+	 			<div id="div_img"><input type="file" id="img" name="file"></div>
+	            <div id="div_btn_fabu"><input type="submit" id="btn_fabu" value="分享"  /></div>
+	        </form>
+             </div>
+	
+		
+        <c:set var="account" value="${requestScope.account}"/>
+        <a href="/account/${account.aid }">账户管理</a>
+   
 		<div class="clr"></div>
         
         <div class="wrapper-wb">
@@ -42,7 +47,9 @@
 				<div class="wb">
 					<img src="/resources/image/${w.account.pic }"/>
 					<h3><p>${w.account.nickName}</p></h3>
-					
+					<div>
+				   <img src="/resources/image/${w.imgname}"/>
+				    </div>
 					<p>${w.wcontent }</p><br/>
 					<div class="comment_line">
 						<a class="timer"><fmt:formatDate value="${w.lastUpdateTime}" pattern="yyyy-MM-dd HH:mm:ss" /></a>
