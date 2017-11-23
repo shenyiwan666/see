@@ -14,7 +14,7 @@
 	<body>
 		<div>
 			<img src="eyes_icon.png">
-			<h1>See</h1>
+			<h1>See<small>Show me your colorful life</small></h1>
 		</div>
 		<br></br>
 		<div id="head_menu">
@@ -36,42 +36,46 @@
 		</div>
 		<div class="clr"></div>
         
-        
-        <div class="wrapper">
-			<c:forEach items="${requestScope.weibos }" var="w">
-			<div class="wb">
-				<img src="/resources/image/${w.account.pic }"/>
-				<h3><p>${w.account.nickName}</p></h3>
-				
-				<p>${w.wcontent }</p><br/>
-				<div class="comment_line">
-					<a><fmt:formatDate value="${w.lastUpdateTime}" pattern="yyyy-MM-dd HH:mm:ss" /></a>
-					<a class="liked" href="/like/${w.wid}">推荐(${w.liked })</a>
-					<a class="showcomment" href="/showcomment/${w.wid }">评论(${w.comment})</a>
+        <div class="wrapper-wb">
+        	<div class= "dynamic-inform">
+        		<c:forEach items="${requestScope.weibos }" var="w">
+				<div class="wb">
+					<img src="/resources/image/${w.account.pic }"/>
+					<h3><p>${w.account.nickName}</p></h3>
+					
+					<p>${w.wcontent }</p><br/>
+					<div class="comment_line">
+						<a class="timer"><fmt:formatDate value="${w.lastUpdateTime}" pattern="yyyy-MM-dd HH:mm:ss" /></a>
+						<a class="liked" href="/like/${w.wid}">推荐(${w.liked })</a>
+						<a class="showcomment" href="/showcomment/${w.wid }">评论(${w.comment})</a>
+					</div>
+					<div class="clr"></div>
+					<form id="subcom"  class="commentform" method="post"  action="/comment/${w.wid }">
+		 				<input class="ccontent" type="text" id="ccontent" placeholder="留下你的评论" name="ccontent" />
+		            	<input class="cc"  type="button" id="btn_pinglun"  value="评论"  />
+					</form>
+					
+					<div class="comment"></div>	
 				</div>
-				
-				<form id="subcom"  class="commentform" method="post"  action="/comment/${w.wid }">
-	 				<input class="ccontent" type="text" id="ccontent" placeholder="留下你的评论" name="ccontent" />
-	            	<input class="cc"  type="button" id="btn_pinglun"  value="评论"  />
-				</form>
-				
-				<div class="comment"></div>	
-			</div>
-			</c:forEach>
+				</c:forEach>
+        	</div>
 		</div>
 		
-		<br/><br/>
-		<p>热门TOP10</p>
-		<div class="wrapper">
-			<c:set var="weibo" value="${requestScope.weibo}"/>
-			<c:forEach items="${weibo}" var="weibo">
-			<div class="top">
-				<img src="/resources/image/${weibo.account.pic }"/>
-				<h3><a href="#">${weibo.account.nickName}</a></h3>
-				<a class="follow" href="/follow/${weibo.account.aid}">${weibo.account.follow }</a>
-				<p>${weibo.wcontent }</p>
+		<!-- <br/><br/>
+		 -->
+		<div class="wrapper-top">
+			<div class="top-inform">
+				<p>热门TOP10</p>
+				<c:set var="weibo" value="${requestScope.weibo}"/>
+				<c:forEach items="${weibo}" var="weibo">
+				<div class="top">
+					<img src="/resources/image/${weibo.account.pic }"/>
+					<h3><a href="#">${weibo.account.nickName}</a></h3>
+					<a class="follow" href="/follow/${weibo.account.aid}">${weibo.account.follow }</a>
+					<p>${weibo.wcontent }</p>
+				</div>
+				</c:forEach>
 			</div>
-			</c:forEach>
 		</div>		
 	</body>
 	<script type="text/javascript">
@@ -128,6 +132,22 @@
 		});
 	});
 	
+/* 	侧边栏滚动效果，拷贝留用，勿动
+	$(function(){
+	    var oDiv = document.getElementById("float"),
+	    H = 0,
+	    Y = oDiv
+	    while (Y) {H += Y.offsetTop; Y = Y.offsetParent}
+	    window.onscroll = function()
+	    {
+	        var s = document.body.scrollTop || document.documentElement.scrollTop
+	        if(s>H) {
+	            oDiv.style = "position:fixed;top:0;"
+	        } else {
+	            oDiv.style = ""
+	        }
+	    }
+	}); */
 	$(function(){
 		$('.wb> #subcom > input.cc').click(function( e ){
 			e.preventDefault();
@@ -148,7 +168,6 @@
 		});
 		
 	});
-
 
 	</script>
 </html>
