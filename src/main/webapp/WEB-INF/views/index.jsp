@@ -36,13 +36,15 @@
 		</div>
 		<div class="clr"></div>
         
-        
         <div class="wrapper-wb">
         	<div class= "dynamic-inform">
+        	
+        	
         		<c:forEach items="${requestScope.weibos }" var="w">
 				<div class="wb">
 					<img src="/resources/image/${w.account.pic }"/>
 					<h3><p>${w.account.nickName}</p></h3>
+					
 					<p>${w.wcontent }</p><br/>
 					<div class="comment_line">
 						<a class="timer"><fmt:formatDate value="${w.lastUpdateTime}" pattern="yyyy-MM-dd HH:mm:ss" /></a>
@@ -50,17 +52,15 @@
 						<a class="showcomment" href="/showcomment/${w.wid }">评论(${w.comment})</a>
 					</div>
 					<div class="clr"></div>
-					<form id="subcom" method="post" action="/comment/${w.wid }">
-		 				<input type="text" id="ccontent" placeholder="留下你的评论" name="ccontent" />
-		            	<input type="button" id="btn_pinglun"  value="评论"  />
+					<form id="subcom"  class="commentform" method="post"  action="/comment/${w.wid }">
+		 				<input class="ccontent" type="text" id="ccontent" placeholder="留下你的评论" name="ccontent" />
+		            	<input class="cc"  type="button" id="btn_pinglun"  value="评论"  />
 					</form>
 					
 					<div class="comment"></div>	
-	
 				</div>
 				</c:forEach>
         	</div>
-			
 		</div>
 		
 		<!-- <br/><br/>
@@ -83,7 +83,6 @@
 	<script type="text/javascript">
 	
 	$(function(){
-		
 		$('.wb > .comment_line > a.liked ').click(function( e ){
 			e.preventDefault();
 			var _a = $( this );
@@ -109,7 +108,6 @@
 		});
 		
 	});
-	
 	
 	$(function(){
 		var i=0;
@@ -152,6 +150,26 @@
 	        }
 	    }
 	}); */
+	$(function(){
+		$('.wb> #subcom > input.cc').click(function( e ){
+			e.preventDefault();
+			var _sub = $( this );
+			var _com = _sub.prev().val();
+			var comment = _sub.parent().parent().children(".comment");
+			var _ping = $('.wb > .comment_line > a.showcomment');
+			$.post(_sub.parent(".commentform").attr('action'),{"comment": _com },function( data ){
+				_ping.html('评论 (' + data.comment + ')' );
+				
+				if(comment.html() == ""){
+					alert("评论成功 ");
+				}else{
+					$('<p></p>').html(data.comments.account.nickName+":"+data.comments.ccontent).prependTo( comment );
+					alert("评论success");
+				}
+			}, 'json');
+		});
+		
+	});
 
 	</script>
 </html>
