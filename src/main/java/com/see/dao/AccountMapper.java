@@ -27,6 +27,12 @@ public interface AccountMapper {
 	
 	int delete(int id);
 	
+	int updateemail(Account account);
+	int updatepassword(Account account);
+	int updatenickName(Account account);
+	int updatepic(Account account);
+	
+	
 	
 
 }

@@ -1,7 +1,10 @@
 package com.see.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.text.ParseException;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -16,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.see.entity.Account;
 import com.see.entity.Comment;
@@ -47,16 +51,39 @@ public class HomeController {
 			List<Weibo> weibo = weiboService.findTop(aid);
 	
 			model.addAttribute("weibo", weibo);	
+			
+			
+			
+            Account account = (Account)session.getAttribute("account");
+            System.out.println(account);
+			model.addAttribute("account", account);
 		}
 		
 		return "index";
 	}
 	
 	@RequestMapping(value="/fabu",method=RequestMethod.POST)
-	public String fabu(HttpSession session,Weibo weibo) throws ParseException {
+	public String fabu(HttpSession session,Weibo weibo,HttpServletRequest request, MultipartFile file) throws ParseException, IllegalStateException, IOException {
 		int aid = ((Account)session.getAttribute("account")).getAid();
 		
+		/*******************上传图片********************/
+		
+		String path = request.getServletContext().getRealPath("/resources/image");
+		System.out.println(path);
+		
+		System.out.println(file);
+		File target = new File(path);
+		
+		String pic = UUID.randomUUID().toString() + file.getOriginalFilename();
+		file.transferTo(new File(target, pic ));	
+		
+		weibo.setImgname(pic);	
+		
+		/*******************上传图片********************/
+	
 		weiboService.insert(aid,weibo);
+		System.out.println("test******************image**********************test");
+		System.out.println(weibo.getImgname());
 		
 		return "redirect:/";
 	}	
@@ -85,7 +112,7 @@ public class HomeController {
 		Page page = accountService.search(q, p,useraid);
 		//System.out.println(page);
 		model.addAttribute("page", page);
-		
+		System.out.println(page);
 		
 		List<Account> accounts=accountService.searchuser(q);
 		System.out.println(accounts);

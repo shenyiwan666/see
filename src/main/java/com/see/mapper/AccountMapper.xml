@@ -10,6 +10,7 @@
 		<result column="aid" property="aid" />
 		<result column="last_update_time" property="lastUpdateTime" />
 		<result column="service" property="service" />
+		<result column="imgname" property="imgname" />
 		<result column="comment" property="comment" />
 		<result column="liked" property="liked" />
 		<association property="account" javaType="Account">
@@ -24,6 +25,8 @@
 		<id column="aid" property="aid"/>
 		<result column="nick_name" property="nickName"/>
 		<result column="pic" property="pic"/>
+		<result column="email" property="email"/>
+		<result column="password" property="password"/>
 		<result column="fans" property="fans"/>
 		<collection property="weibos" ofType="Weibo">
 			<id column="wid" property="wid"/>
@@ -32,6 +35,7 @@
 			<result column="service" property="service"/>
 			<result column="comment" property="comment"/>
 			<result column="liked" property="liked"/>
+			<result column="imgname" property="imgname"/>
 		</collection>
 	</resultMap>
 
@@ -54,12 +58,15 @@
 		a.nick_name,
 		a.pic,
 		a.fans,
+		a.email,
+		a.password,
 		w.wid,
 		w.wcontent,
 		w.last_update_time,
 		w.service,
 		w.`comment`,
-		w.liked 
+		w.liked,
+		w.imgname
 	FROM
 		account a
 		LEFT JOIN weibo w ON a.aid = w.aid 
@@ -135,7 +142,8 @@ FROM
 		w.last_update_time,
 		w.service,
 		w.`comment`,
-		w.liked 
+		w.liked,
+		w.imgname
 	FROM 
 		account a 
 		RIGHT JOIN weibo w ON a.aid = w.aid 
@@ -196,6 +204,50 @@ FROM
   	</set>
   	WHERE AID = #{aid}
   </update>
+  
+   <update id="updatenickName" parameterType="Account">
+  	UPDATE ACCOUNT
+  	<set>
+  		
+  		<if test="nickName != null">
+  			nick_name = #{nickName},
+  		</if>
+  	</set>
+  	WHERE AID = #{aid}
+  </update>
+  <update id="updateemail" parameterType="Account">
+  	UPDATE ACCOUNT
+  	<set>
+  		
+  		<if test="email != null">
+  			email = #{email},
+  		</if>
+  	</set>
+  	WHERE AID = #{aid}
+  </update>
+  
+  <update id="updatepassword" parameterType="Account">
+  	UPDATE ACCOUNT
+  	<set>
+  		
+  		<if test="password != null">
+  			password = #{password},
+  		</if>
+  	</set>
+  	WHERE AID = #{aid}
+  </update>
+  <update id="updatepic" parameterType="Account">
+  	UPDATE ACCOUNT
+  	<set>
+  		
+  		<if test="pic != null">
+  			pic = #{pic},
+  		</if>
+  	</set>
+  	WHERE AID = #{aid}
+  </update>
+  
+  
   
   <delete id="delete" parameterType="_int">
   		DELETE FROM ACCOUNT WHERE aid = #{id}

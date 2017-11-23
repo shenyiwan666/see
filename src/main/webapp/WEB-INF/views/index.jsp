@@ -25,14 +25,22 @@
 	            <input name="button_search" class="button_search" type="submit" value="     "/>
 			</form>
         </div>
-        <br></br>
-		<div id="fabuForm">
-	        <form method="post" action="/fabu">
+
+		<br></br>
+			<div id="fabuForm">
+
+	        <form method="post" action="/fabu" enctype="multipart/form-data">
 	 			<div id="div_content"><input type="text" id="wcontent" class="text_field" placeholder="分享此刻看见" name="wcontent" /></div>
+	 			<div id="div_img"><input type="file" id="img" name="file"></div>
 	            <div id="div_btn_fabu"><input type="submit" id="btn_fabu" value="分享"  /></div>
 	        </form>
-        </div>
+             </div>
+
+	
 		
+        <c:set var="account" value="${requestScope.account}"/>
+        <a href="/account/${account.aid }">账户管理</a>
+   
 		<div class="clr"></div>
         
         <div class="wrapper-wb">
@@ -41,7 +49,9 @@
 				<div class="wb">
 					<img src="/resources/image/${w.account.pic }"/>
 					<h3><p>${w.account.nickName}</p></h3>
-					
+					<div>
+				   <img src="/resources/image/${w.imgname}"/>
+				    </div>
 					<p>${w.wcontent }</p><br/>
 					<div class="comment_line">
 						<a class="timer"><fmt:formatDate value="${w.lastUpdateTime}" pattern="yyyy-MM-dd HH:mm:ss" /></a>

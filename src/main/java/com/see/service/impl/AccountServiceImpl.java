@@ -116,6 +116,39 @@ public class AccountServiceImpl implements AccountService {
 	}
 
 
+	@Override
+	public int updatenickName(Account account) {
+		// TODO Auto-generated method stub
+		
+		accountMapper.updatenickName(account);
+		return 0;
+	}
+
+
+	@Override
+	public int updateemail(Account account) {
+		// TODO Auto-generated method stub
+		accountMapper.updateemail(account);
+		return 0;
+	}
+
+
+	@Override
+	public int updatepassword(Account account) {
+		// TODO Auto-generated method stub
+		accountMapper.updatepassword(account);
+		return 0;
+	}
+
+
+	@Override
+	public int updatepic(Account account) {
+		// TODO Auto-generated method stub
+		accountMapper.updatepic(account);
+		return 0;
+	}
+
+
 	
 
 }
