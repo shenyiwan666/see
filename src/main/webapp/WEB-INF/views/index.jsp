@@ -16,8 +16,17 @@
 			<img src="image/eyes_icon.png">
 			<h1>See<small>Show me your colorful life</small></h1>
 		</div>
+        <div id="searchform">
+        	<form id="formsearch" name="formsearch" action="/search" method="get">
+				<%-- 搜索:<input type="text" name="q" value="${param.q }"/><input type="submit" value="搜索" /> --%>
+				<span>
+	            <input name="q" class="editbox_search" id="editbox_search" maxlength="80" value="${param.q }" type="text" />
+	            </span>
+	            <input name="button_search" class="button_search" type="submit" value="     "/>
+			</form>
+        </div>
+
 		<br></br>
-		<div id="head_menu">
 			<div id="fabuForm">
 	        <form method="post" action="/fabu" enctype="multipart/form-data">
 	 			<div id="div_content"><input type="text" id="wcontent" class="text_field" placeholder="分享此刻看见" name="wcontent" /></div>
@@ -25,26 +34,11 @@
 	            <div id="div_btn_fabu"><input type="submit" id="btn_fabu" value="分享"  /></div>
 	        </form>
              </div>
-	        <div id="searchform">
-	        	<form id="formsearch" name="formsearch" action="/search" method="get">
-					<%-- 搜索:<input type="text" name="q" value="${param.q }"/><input type="submit" value="搜索" /> --%>
-					<span>
-		            <input name="q" class="editbox_search" id="editbox_search" maxlength="80" value="${param.q }" type="text" />
-		            </span>
-		            <input name="button_search" class="button_search" type="submit" value="     "/>
-
-				</form>
-	        </div>
-	        
-		</div>
-		
 	
 		
         <c:set var="account" value="${requestScope.account}"/>
         <a href="/account/${account.aid }">账户管理</a>
    
-        
-    
 		<div class="clr"></div>
         
         <div class="wrapper-wb">
