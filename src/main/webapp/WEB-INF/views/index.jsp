@@ -16,6 +16,17 @@
 			<img src="image/eyes_icon.png">
 			<h1>See<small>Show me your colorful life</small></h1>
 		</div>
+		
+		<div class="menu_nav">
+	       <ul>
+	         <li class="active"><a href="index.html"><span>Home Page</span></a></li>
+	         <li><a href="/account/${account.aid }"><span>Setting</span></a></li>
+	         <li><c:set var="account" value="${requestScope.account}"/><a href="about.html"><span>About Us</span></a></li>
+	         <li><a href="contact.html"><span>Contact Us</span></a></li>
+	       </ul>
+	     </div>
+		
+		
         <div id="searchform">
         	<form id="formsearch" name="formsearch" action="/search" method="get">
 				<%-- 搜索:<input type="text" name="q" value="${param.q }"/><input type="submit" value="搜索" /> --%>
@@ -35,9 +46,9 @@
 	        </form>
              </div>
 	
-		
+<%-- 		
         <c:set var="account" value="${requestScope.account}"/>
-        <a href="/account/${account.aid }">账户管理</a>
+        <a href="/account/${account.aid }">账户管理</a> --%>
    
 		<div class="clr"></div>
         

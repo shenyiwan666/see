@@ -44,11 +44,53 @@ h1 small {
 
 }
 
+
+.menu_nav {
+	margin:0;
+	padding:10px 0 0;
+	position: absolute;
+	height:48px;
+	float:right;
+	top: 20px;
+	right: 150px;
+}
+.menu_nav ul {
+	list-style:none;
+	padding:0 0 0 2px;
+	height:48px;
+	float:left;
+	border:1px solid #ececec;
+	border-radius: 10px;
+}
+.menu_nav ul li {
+	margin:0;
+	padding:0 2px 0 0;
+	float:left;
+	background:no-repeat right center;
+}
+.menu_nav ul li a {
+	display:block;
+	margin:0;
+	padding:18px 20px;
+	font-size:15px;
+	line-height:20px;
+	font-weight:normal;
+	color:#929292;
+	text-decoration:none;
+	text-transform:none;
+	text-align:center;
+}
+.menu_nav ul li.active a, .menu_nav ul li a:hover {
+	text-decoration:none;
+	color:#e77573;
+}
+
+
 #searchform {
 	float: right;
 	position: absolute;
 	right: 150px;
-	top:35px;
+	top:200px;
 }
 
 #searchform {
