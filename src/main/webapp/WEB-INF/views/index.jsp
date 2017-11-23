@@ -38,8 +38,6 @@
         
         <div class="wrapper-wb">
         	<div class= "dynamic-inform">
-        	
-        	
         		<c:forEach items="${requestScope.weibos }" var="w">
 				<div class="wb">
 					<img src="/resources/image/${w.account.pic }"/>
