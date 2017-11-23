@@ -83,7 +83,7 @@
 			</tbody>
 		</table>
 		
-		
+	    <a href="/">完成</a>
        <script type="text/javascript">
 			function show() {
 			 var message1 = document.getElementById("nickName").value;
