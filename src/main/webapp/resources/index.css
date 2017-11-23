@@ -11,11 +11,15 @@ table img {
 	width:50px;
 	height: 50px;
 }
+p {
+	margin:0;
+	padding:6px;
+}
 
 h1 {
 	margin:0;
 	padding:0 0 0 200px;
-	font-size:40px;
+	font-size:50px;
 	font-weight:normal;
 	line-height:1.2em;
 	text-transform:none;
@@ -25,7 +29,7 @@ h1 {
 h1 small {
 	color:#333;
 	display:block;
-	font-size:13px;
+	font-size:16px;
 	line-height:1.2em;
 	letter-spacing:normal;
 	text-transform:none;
@@ -44,7 +48,7 @@ h1 small {
 	float: right;
 	position: absolute;
 	right: 150px;
-	top:50px;
+	top:35px;
 }
 
 #searchform {
