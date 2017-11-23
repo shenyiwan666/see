@@ -8,8 +8,10 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.xml.ws.spi.http.HttpContext;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -129,23 +131,26 @@ public class HomeController {
 		return "/find" ;
 	}
 		
-	@RequestMapping(value="/comment/{wid}")
-	public String comment(@PathVariable("wid") int wid,Model model) {
+	@RequestMapping(value="/showcomment/{wid}")
+	public @ResponseBody List<Comment> comment(@PathVariable("wid") int wid,Model model) {
 		
 		List<Comment> comment=weiboService.showComment(wid);
-		
-		model.addAttribute("comments",comment);
-		System.out.println(comment);
-		
-		return "redirect:/";
+	
+		return comment;
 	}
 	
 	@RequestMapping(value="/comment/{wid}",method=RequestMethod.POST)
-	public String insercomment(@PathVariable("wid") int wid,HttpSession session,Comment comment){
+	public @ResponseBody Weibo insercomment(@PathVariable("wid") int wid,HttpSession session,HttpServletRequest request){
+		
 		int aid = ((Account)session.getAttribute("account")).getAid();
 		
-		weiboService.insertComment(wid, aid, comment);
-	
-		return "redirect:/";
+		String ccontent=request.getParameter("comment");
+		
+		Weibo weibo=weiboService.insertComment(wid, aid, ccontent);
+		
+		System.out.println(weibo);
+		
+		return weibo;
+
 	}	
 }

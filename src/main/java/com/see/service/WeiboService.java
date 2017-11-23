@@ -19,5 +19,5 @@ public interface WeiboService {
 	
 	List<Comment> showComment(int wid);
 	
-	int insertComment(int wid,int aid,Comment comment);
+	Weibo insertComment(int wid,int aid,String com);
 }

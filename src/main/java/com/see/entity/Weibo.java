@@ -21,6 +21,9 @@ public class Weibo {
 	private int comment;
 	
 	private String imgname;
+	
+	private Comment comments;
+	
 
 	public Integer getWid() {
 		return wid;
@@ -87,6 +90,8 @@ public class Weibo {
 	public void setComment(int comment) {
 		this.comment = comment;
 	}
+	
+	
 
 	public String getImgname() {
 		return imgname;
@@ -96,11 +101,23 @@ public class Weibo {
 		this.imgname = imgname;
 	}
 
+	public Comment getComments() {
+		return comments;
+	}
+
+	public void setComments(Comment comments) {
+		this.comments = comments;
+	}
+
 	@Override
 	public String toString() {
+
 		return "Weibo [wid=" + wid + ", aid=" + aid + ", account=" + account + ", wcontent=" + wcontent
 				+ ", lastUpdateTime=" + lastUpdateTime + ", service=" + service + ", liked=" + liked + ", comment="
-				+ comment + ", imgname=" + imgname + "]";
+				+ comment + ", imgname=" + imgname + ", comments=" + comments + "]";
+
 	}
+
+	
 
 }

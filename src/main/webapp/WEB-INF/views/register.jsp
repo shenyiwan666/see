@@ -12,13 +12,11 @@
 		
 		<div id="register">
 			<div id="image_logo"><img src="resources/image/eyes_icon.png"></div>
-			<form action="/register" method="post" enctype="multipart/form-data">
-			
+			<form id="register-form" action="/register" method="post" enctype="multipart/form-data">
 				<div id="div_email"><input type="email" id="email" class="text_field" placeholder="注册邮箱" name="email" /></div>
 	            <div id="div_username"><input type="username" id="username" class="text_field" placeholder="请输入昵称" name="username"/></div>
 	            <div id="div_password"><input type="password" id="password" class="text_field" placeholder="请输入密码" name="password"></div>
-	            <div id="div_headimage"><input type="file" id="headigimage" name="file"></div>
-	            
+	            <div id="div_headimage"><a class="btn-head"><input title="" type="file" id="head_image" name="file"></a></div>
 	            <div id="div_btn_login"><input type="submit" id="btn_login" value="马上注册"  /></div>
             </form>
 		</div>	

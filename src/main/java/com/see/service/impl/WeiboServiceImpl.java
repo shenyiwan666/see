@@ -10,10 +10,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.see.dao.AccountMapper;
 import com.see.dao.CommentMapper;
 import com.see.dao.FollowMapper;
 import com.see.dao.LikedMapper;
 import com.see.dao.WeiboMapper;
+import com.see.entity.Account;
 import com.see.entity.Comment;
 import com.see.entity.Follow;
 import com.see.entity.Liked;
@@ -36,6 +38,11 @@ public class WeiboServiceImpl implements WeiboService {
 	
 	@Autowired
 	private CommentMapper commentMapper;
+	
+	@Autowired
+	private AccountMapper accountMapper;
+
+
 	
 	@Override
 	public int insert(int aid,Weibo weibo){
@@ -141,15 +148,20 @@ public class WeiboServiceImpl implements WeiboService {
 	@Override
 	public List<Comment> showComment(int wid) {
 		
-		List<Comment> comment=commentMapper.findByWid(wid);
+		List<Comment> comment=commentMapper.findByWid(wid);	
 		
 		return comment;
 	}
 	
 	@Override
-	public int insertComment(int wid,int aid,Comment comment){
-	
-		try {
+	public Weibo insertComment(int wid,int aid,String com){
+		 	Comment comment =new Comment();
+		 	Weibo weibo=weiboMapper.findByWid(wid);
+		 	Account account=accountMapper.findById(aid);
+		 	comment.setAccount(account);
+		try 
+		{
+			
 			SimpleDateFormat dateFormat= new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			java.util.Date now;
 			now = dateFormat.parse(dateFormat.format(new Date()));
@@ -158,8 +170,9 @@ public class WeiboServiceImpl implements WeiboService {
 			comment.setCtime(time);
 			comment.setAid(aid);
 			comment.setWid(wid);
+			comment.setCcontent(com);
 			
-			Weibo weibo=weiboMapper.findByWid(wid);
+			weibo.setComments(comment);
 			weibo.setComment(weibo.getComment()+1);
 			weiboMapper.update(weibo);
 			
@@ -167,8 +180,9 @@ public class WeiboServiceImpl implements WeiboService {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		return commentMapper.insert(comment);
+		 commentMapper.insert(comment);
+		 
+		return weibo;
 	}
 	
 	
