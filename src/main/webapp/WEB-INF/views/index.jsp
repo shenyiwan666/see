@@ -20,8 +20,8 @@
 		<div class="menu_nav">
 	       <ul>
 	         <li class="active"><a href="index.html"><span>Home Page</span></a></li>
-	         <li><a href="/account/${account.aid }"><span>Setting</span></a></li>
-	         <li><c:set var="account" value="${requestScope.account}"/><a href="about.html"><span>About Us</span></a></li>
+	         <li><c:set var="account" value="${requestScope.account}"/><a href="/account/${account.aid }"><span>Setting</span></a></li>
+	         <li><a href="about.html"><span>About Us</span></a></li>
 	         <li><a href="contact.html"><span>Contact Us</span></a></li>
 	       </ul>
 	     </div>
@@ -38,14 +38,16 @@
         </div>
 
 		<br></br>
-			<div id="fabuForm">
-	        <form method="post" action="/fabu" enctype="multipart/form-data">
-	 			<div id="div_content"><input type="text" id="wcontent" class="text_field" placeholder="分享此刻看见" name="wcontent" /></div>
-	 			<div id="div_img"><input type="file" id="img" name="file"></div>
-	            <div id="div_btn_fabu"><input type="submit" id="btn_fabu" value="分享"  /></div>
-	        </form>
-             </div>
-	
+		<div id="fabuForm">
+	       <form id="formfabu" method="post" action="/fabu" enctype="multipart/form-data">
+				<span><input type="text" id="wcontent" class="text_field" placeholder="分享此刻看见" name="wcontent"  maxlength="140"/></span>
+				
+	            <input type="submit" id="btn_fabu" class= "btn_fabu" value="  " />
+	            <div class="clr"></div>
+	            <div id="div_img"><input type="file" id="img" name="file"></div>
+	       </form>
+        </div>
+
 <%-- 		
         <c:set var="account" value="${requestScope.account}"/>
         <a href="/account/${account.aid }">账户管理</a> --%>
