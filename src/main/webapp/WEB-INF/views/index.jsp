@@ -12,20 +12,23 @@
 	</head>
 	
 	<body>
-		<div>
-			<img src="eyes_icon.png">
+		<div id="site-name">
+			<img src="image/eyes_icon.png">
 			<h1>See<small>Show me your colorful life</small></h1>
 		</div>
 		<br></br>
 		<div id="head_menu">
 			<div id="fabuForm">
+
 	        <form method="post" action="/fabu" enctype="multipart/form-data">
 	 			<div id="div_content"><input type="text" id="wcontent" class="text_field" placeholder="分享此刻看见" name="wcontent" /></div>
 	 			<div id="div_img"><input type="file" id="img" name="file"></div>
 	            <div id="div_btn_fabu"><input type="submit" id="btn_fabu" value="分享"  /></div>
 	        </form>
              </div>
-	        <div class="searchform">
+	        
+	        <div id="searchform">
+
 	        	<form id="formsearch" name="formsearch" action="/search" method="get">
 					<%-- 搜索:<input type="text" name="q" value="${param.q }"/><input type="submit" value="搜索" /> --%>
 					<span>
