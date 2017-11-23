@@ -12,8 +12,8 @@
 	</head>
 	
 	<body>
-		<div>
-			<img src="eyes_icon.png">
+		<div id="site-name">
+			<img src="image/eyes_icon.png">
 			<h1>See<small>Show me your colorful life</small></h1>
 		</div>
 		<br></br>
@@ -24,7 +24,7 @@
 		            <div id="div_btn_fabu"><input type="submit" id="btn_fabu" value="分享"  /></div>
 		        </form>
 	        </div>
-	        <div class="searchform">
+	        <div id="searchform">
 	        	<form id="formsearch" name="formsearch" action="/search" method="get">
 					<%-- 搜索:<input type="text" name="q" value="${param.q }"/><input type="submit" value="搜索" /> --%>
 					<span>

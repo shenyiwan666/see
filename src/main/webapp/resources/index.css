@@ -14,20 +14,40 @@ table img {
 
 h1 {
 	margin:0;
-	padding:0;
-	color:#111;
-	font:bold 38px/1.2em Arial, Helvetica, sans-serif;
-	letter-spacing:-2px;
+	padding:0 0 0 200px;
+	font-size:40px;
+	font-weight:normal;
+	line-height:1.2em;
+	text-transform:none;
+	letter-spacing:2px;
 }
 
 h1 small {
+	color:#333;
 	display:block;
-	padding:0;
-	font:normal 12px/1.2em Arial, Helvetica, sans-serif;
+	font-size:13px;
+	line-height:1.2em;
 	letter-spacing:normal;
+	text-transform:none;
+	
+   /* 字体颜色渐变效果，debug-ing 
+   	-webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-position: 50%;
+    background-size: 1123px 400px;
+    background-repeat: no-repeat;
+    background-image: url(https://images.apple.com/v/iphone-7/d/images/overview/camera_how_to_shoot_background_large.jpg); */
+
 }
 
-.searchform {
+#searchform {
+	float: right;
+	position: absolute;
+	right: 150px;
+	top:50px;
+}
+
+#searchform {
 	margin:0 0 16px;
 	padding:20px 20px 12px;
 	float:left;
@@ -57,15 +77,15 @@ h1 small {
 	outline:none;
 	border:none;
 	
-	background: url("image/search_bg.png") no-repeat;
-    width: 168px;
+	background: url("image/232.png") no-repeat;
+    width: 140px;
     height: 31px;
 
 }
 #formsearch input.button_search {
-	width:29px;
+	width:31px;
 	height:31px;
-	background: url("image/search.png") no-repeat;
+	background: url("image/222.png") no-repeat;
 	margin:0;
 	padding:0;
 	border:none;
