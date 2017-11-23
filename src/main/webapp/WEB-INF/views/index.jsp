@@ -134,7 +134,7 @@
 			var _sub = $( this );
 			var _com = _sub.prev().val();
 			var comment = _sub.parent().parent().children(".comment");
-			var _ping = $('.wb > .comment_line > a.showcomment');
+			var _ping = _sub.parent().prev().children(".showcomment");
 			$.post(_sub.parent(".commentform").attr('action'),{"comment": _com },function( data ){
 				_ping.html('评论 (' + data.comment + ')' );
 				
