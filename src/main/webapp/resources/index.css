@@ -69,23 +69,23 @@ h1 small {
 }
 #formsearch input.editbox_search {
 	margin:0;
-	padding-left:10px;
+	padding-left:15px;
 	float:left;
-	font-size:12px;
+	font-size:20px;
 	line-height:16px;
 	color:#111111;
 	outline:none;
 	border:none;
 	
-	background: url("image/232.png") no-repeat;
-    width: 140px;
-    height: 31px;
+	background: url("image/search_bg.png") no-repeat;
+    width: 280px;
+    height: 50px;
 
 }
 #formsearch input.button_search {
-	width:31px;
-	height:31px;
-	background: url("image/222.png") no-repeat;
+	width:50px;
+	height:50px;
+	background: url("image/search.png") no-repeat;
 	margin:0;
 	padding:0;
 	border:none;
