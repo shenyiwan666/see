@@ -14,7 +14,7 @@
 	<body>
 		<div>
 			<img src="eyes_icon.png">
-			<h1>See</h1>
+			<h1>See<small>Show me your colorful life</small></h1>
 		</div>
 		<br></br>
 		<div id="head_menu">
@@ -64,9 +64,10 @@
 		</div>
 		
 		<!-- <br/><br/>
-		<p>热门TOP10</p> -->
+		 -->
 		<div class="wrapper-top">
 			<div class="top-inform">
+				<p>热门TOP10</p>
 				<c:set var="weibo" value="${requestScope.weibo}"/>
 				<c:forEach items="${weibo}" var="weibo">
 				<div class="top">
@@ -77,7 +78,6 @@
 				</div>
 				</c:forEach>
 			</div>
-			
 		</div>		
 	</body>
 	<script type="text/javascript">
@@ -135,8 +135,23 @@
 			}
 		});
 	});
-
 	
+/* 	侧边栏滚动效果，拷贝留用，勿动
+	$(function(){
+	    var oDiv = document.getElementById("float"),
+	    H = 0,
+	    Y = oDiv
+	    while (Y) {H += Y.offsetTop; Y = Y.offsetParent}
+	    window.onscroll = function()
+	    {
+	        var s = document.body.scrollTop || document.documentElement.scrollTop
+	        if(s>H) {
+	            oDiv.style = "position:fixed;top:0;"
+	        } else {
+	            oDiv.style = ""
+	        }
+	    }
+	}); */
 
 	</script>
 </html>
