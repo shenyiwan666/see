@@ -75,8 +75,11 @@
 					<div class="clr"></div>
 					<form id="subcom"  class="commentform" method="post"  action="/comment/${w.wid }">
 		 				<!-- <input class="ccontent" type="text" id="ccontent" placeholder="留下你的评论" name="ccontent" /> -->
-		            	<span><textarea rows="2" cols="20" class="ccontent"  id="ccontent" placeholder="留下你的评论" name="ccontent" style="height:20px; width:200px;"></textarea></span>
-		            	<input class="cc"  type="button" id="btn_pinglun"  value="评论"  />
+		            	<div>
+			            	<textarea rows="1" cols="20" class="ccontent"  id="ccontent" placeholder="留下你的评论" name="ccontent" style="height:20px; width:300px;"></textarea>
+			            	<input class="cc"  type="button" id="btn_pinglun"  value="评论"  />
+		            	</div>
+		            	
 					</form>
 					
 					<div class="comment"></div>	

@@ -138,7 +138,7 @@ h1 small {
 
 
 #fabuForm {
-	background: url("image/sha.png") no-repeat;
+	background: url("image/share.png") no-repeat;
 	margin:0;
 	position: absolute;
 	float: left;
@@ -218,6 +218,18 @@ h1 small {
     opacity: 0;
     filter: alpha(opacity: 0);
     cursor: pointer;
+}
+
+#formfabu input.btn_fabu {
+	color: #fff;
+	position:absolute;
+	top:90px;
+	left:10px;
+	font-size: 16px;
+	border: 0;
+	background: none;
+	width:60px;
+	height:30px;
 }
 
 
@@ -301,6 +313,20 @@ h1 small {
 	right:10px;
 	top:5px;
 }
+
+.ccontent {
+	margin:0;
+	padding-left: 10px;
+	padding-top: 5px;
+	overflow:hidden;
+	resize:none;
+}
+
+.cc {
+	margin:0;
+	padding-top:5px;
+}
+
 
 .wrapper-top {
 	width:60px;
