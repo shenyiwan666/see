@@ -60,7 +60,9 @@
 				              <input type="hidden" name="_method" value="put" />
 				              <input type="hidden" name="aid" value="${a.aid }" />
 					          <span>请上传新头像:</span>
-					          <div id="div_img"><input type="file" id="img" name="file"></div>
+					          <div id="div_img"><input type="file" id="img" name="file" onchange="xmTanUploadImg(this)" accept="image/*"></div>
+					          	 <img style="height:100px;"id="fabuimg"/>
+         						 <div id="fabudiv"></div>
 	                          <div id="div_btn_fabu"><input type="submit" id="btn_fabu" value="上传"  /></div>
 				             </form>
 						</td>
@@ -86,6 +88,40 @@
 		
 	</body>
 
+	<script type="text/javascript">	
+		function xmTanUploadImg(obj) {
+	        var file = obj.files[0];
+	        
+	        console.log(obj);console.log(file);
+	        console.log("file.size = " + file.size);  //file.size 单位为byte
+	
+	        var reader = new FileReader();
+	
+	        //读取文件过程方法
+	        reader.onloadstart = function (e) {
+	            console.log("开始读取....");
+	        }
+	        reader.onprogress = function (e) {
+	            console.log("正在读取中....");
+	        }
+	        reader.onabort = function (e) {
+	            console.log("中断读取....");
+	        }
+	        reader.onerror = function (e) {
+	            console.log("读取异常....");
+	        }
+	        reader.onload = function (e) {
+	            console.log("成功读取....");
+	
+	            var img = document.getElementById("fabuimg");
+	            img.src = e.target.result;
+	            //或者 img.src = this.result;  //e.target == this
+	        }
+	
+	        reader.readAsDataURL(file)
+	    }
+	</script>
+	
 </html>
 
 

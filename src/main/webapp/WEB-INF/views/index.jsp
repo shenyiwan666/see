@@ -27,7 +27,7 @@
 	     </div>
 		
 		
-        <div id="searchform" >
+        <div id="searchform">
         	<form id="formsearch" name="formsearch" action="/search" method="get">
 				<%-- 搜索:<input type="text" name="q" value="${param.q }"/><input type="submit" value="搜索" /> --%>
 				<span>
@@ -38,7 +38,19 @@
         </div>
 
 		<br></br>
-		
+		<div id="fabuForm">
+	       <form id="formfabu" method="post" action="/fabu" enctype="multipart/form-data">
+				<span><textarea rows="4" cols="20" id="wcontent" class="text_field" placeholder="分享此刻看见" name="wcontent"  maxlength="140"></textarea>
+				<!-- <input type="text" id="wcontent" class="text_field" placeholder="分享此刻看见" name="wcontent"  maxlength="140"/> -->
+				</span>
+				<a class="share_img"><input type="file" id="img" class="img" name="file"></a>
+				<div class="clr"></div>
+	            <div><input type="submit" id="btn_fabu" class= "btn_fabu" value="发表" /></div>
+	            <!-- <div class="clr"></div> -->
+	            
+	       </form>
+        </div>
+
 <%-- 		
         <c:set var="account" value="${requestScope.account}"/>
         <a href="/account/${account.aid }">账户管理</a> --%>
@@ -187,6 +199,6 @@
 		});
 		
 	});
-	
+
 	</script>
 </html>
