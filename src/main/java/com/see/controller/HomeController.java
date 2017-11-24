@@ -82,9 +82,7 @@ public class HomeController {
 		/*******************上传图片********************/
 	
 		weiboService.insert(aid,weibo);
-		System.out.println("test******************image**********************test");
-		System.out.println(weibo.getImgname());
-		
+
 		return "redirect:/";
 	}	
 	

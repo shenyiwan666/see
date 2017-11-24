@@ -65,6 +65,15 @@
 	FROM
 		weibo w
 		LEFT JOIN account a ON a.aid = w.aid
+	WHERE
+	liked = (
+		SELECT
+			max(liked)
+		FROM
+			weibo
+		WHERE
+			w.aid = aid
+	)
 	ORDER BY liked DESC
 	LIMIT 10
   </select>

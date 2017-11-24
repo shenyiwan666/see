@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50552
 File Encoding         : 65001
 
-Date: 2017-11-15 14:22:33
+Date: 2017-11-24 16:20:58
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -30,14 +30,14 @@ CREATE TABLE `account` (
   `pic` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`aid`),
   UNIQUE KEY `acccount_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=40584 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=58803 DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of account
 -- ----------------------------
-INSERT INTO `account` VALUES ('1', 'syw@163.com', 'xi', '123456', '2', '500', '17', '2.jpg');
-INSERT INTO `account` VALUES ('2', 'K', 'k', 'k', '0', '0', null, null);
-INSERT INTO `account` VALUES ('3', null, null, null, '0', '400', '2', null);
+INSERT INTO `account` VALUES ('1', '1', 'hehe', '1', '2', '500', '17', '3503d397-0e7a-45ed-8331-34a2a0c044de');
+INSERT INTO `account` VALUES ('2', 'K', 'xi', 'k', '0', '0', null, null);
+INSERT INTO `account` VALUES ('3', 'fefewa', '张三', '312312', '0', '400', '2', null);
 INSERT INTO `account` VALUES ('4', 'maliu@gmail.com', '马六', '1234567', '0', '0', '0', '1.jpg');
 INSERT INTO `account` VALUES ('68', 'HLRGDSTWREXDDJ', '哈啊哈', 'OVMGSDTPOMI', '0', '0', '0', '1.jpg');
 INSERT INTO `account` VALUES ('73', 'MOHMULVMLHXNNPONME', 'SJWDUMGVILCBKGS三', 'RCCYZJPHLV', '0', '0', '0', '1.jpg');
@@ -50,7 +50,7 @@ INSERT INTO `account` VALUES ('94', 'QJFJJDFT', 'FDNKFUY三', 'ZKSVAJWLBTBCCNM',
 INSERT INTO `account` VALUES ('95', 'UGNFTGSSBEBYDWEIVJ', 'GMEWCFP三', 'LNICXERLEX', '0', '0', '0', '1.jpg');
 INSERT INTO `account` VALUES ('96', 'DIGCFGVCIDXQSNBUY', 'KFQXENVJLDEKSGQ三', 'HZYZFRBXAVCLMPU', '0', '0', '0', '1.jpg');
 INSERT INTO `account` VALUES ('97', 'DOIIOIXFJF', 'HZEWQOPMIOOXIGFMD', 'MJPPMPDEQN', '0', '0', '0', '1.jpg');
-INSERT INTO `account` VALUES ('98', 'RZPMXEIQYSZU', 'BRXEVOINVTLYZTI', 'SXDHGNSCH', '0', '0', '0', '1.jpg');
+INSERT INTO `account` VALUES ('98', 'RZPMXEIQYSZU', 'BRXEVOINVTLYZTI六', 'SXDHGNSCH', '0', '0', '0', '1.jpg');
 INSERT INTO `account` VALUES ('99', 'KGBVYZFJBMPVMFHMV', 'VZQGP三', 'JYAPSBVH', '0', '0', '0', '1.jpg');
 INSERT INTO `account` VALUES ('102', 'aaaaaa@gmail.com', '张张张张张三三三三', '123456', '0', '0', '0', '1.jpg');
 INSERT INTO `account` VALUES ('104', 'abcdefgh2@gmail.com', '张张张张张2三三三三', '123456', '0', '0', '0', '1.jpg');
@@ -76,3 +76,4 @@ INSERT INTO `account` VALUES ('151', 'abcdefghijklmn@abc.com', '这是测试昵�
 INSERT INTO `account` VALUES ('153', 'sywweiyi@abc.com', '这是添加测试昵称', '654321', null, null, null, '2.jpg');
 INSERT INTO `account` VALUES ('38431', 'shenyiwan@163.com', 'shenyiwan', '123456', null, null, null, null);
 INSERT INTO `account` VALUES ('40583', '1312', '3123', '3123', null, null, null, '418be2a4-04a4-4887-8085-809321246cbe123.jpg');
+INSERT INTO `account` VALUES ('58802', '111', '123', '3123', null, null, null, '786428bc-3c5e-41a8-93a8-75d9107310ea');
