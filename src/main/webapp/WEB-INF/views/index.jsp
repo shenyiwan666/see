@@ -27,7 +27,7 @@
 	     </div>
 		
 		
-        <div id="searchform">
+        <div id="searchform" >
         	<form id="formsearch" name="formsearch" action="/search" method="get">
 				<%-- 搜索:<input type="text" name="q" value="${param.q }"/><input type="submit" value="搜索" /> --%>
 				<span>
@@ -38,14 +38,17 @@
         </div>
 
 		<br></br>
-		<div id="fabuForm">
-	       <form id="formfabu" method="post" action="/fabu" enctype="multipart/form-data">
+		<div id="fabuForm" class= "fabu">
+	       <form id="formfabu" class="formfabu" method="post" action="/fabu" enctype="multipart/form-data">
 				<span><input type="text" id="wcontent" class="text_field" placeholder="分享此刻看见" name="wcontent"  maxlength="140"/></span>
-				
-	            <input type="submit" id="btn_fabu" class= "btn_fabu" value="  " />
+	            <input type="submit"  id="btn_fabu" class= "btn_fabu" value="  " />
 	            <div class="clr"></div>
-	            <div id="div_img"><input type="file" id="img" name="file"></div>
+	            <div id="div_img" class="div_img">
+	            	<input class="file" type="file" id="xdaTanFileImg" name="file" onchange="xmTanUploadImg(this)" accept="image/*"/>
+	            </div>
 	       </form>
+	      <img style="height:100px;"id="fabuimg"/>
+          <div id="fabudiv"></div>
         </div>
 
 <%-- 		
@@ -191,6 +194,40 @@
 		});
 		
 	});
+	
+
+	
+	function xmTanUploadImg(obj) {
+        var file = obj.files[0];
+        
+        console.log(obj);console.log(file);
+        console.log("file.size = " + file.size);  //file.size 单位为byte
+
+        var reader = new FileReader();
+
+        //读取文件过程方法
+        reader.onloadstart = function (e) {
+            console.log("开始读取....");
+        }
+        reader.onprogress = function (e) {
+            console.log("正在读取中....");
+        }
+        reader.onabort = function (e) {
+            console.log("中断读取....");
+        }
+        reader.onerror = function (e) {
+            console.log("读取异常....");
+        }
+        reader.onload = function (e) {
+            console.log("成功读取....");
+
+            var img = document.getElementById("fabuimg");
+            img.src = e.target.result;
+            //或者 img.src = this.result;  //e.target == this
+        }
+
+        reader.readAsDataURL(file)
+    }
 
 	</script>
 </html>
