@@ -138,12 +138,15 @@ h1 small {
 
 
 #fabuForm {
+	background: url("image/sha.png") no-repeat;
 	margin:0;
 	position: absolute;
 	float: left;
 	top:130px;
-	left: 200px;
+	left: 210px;
 	padding: 10px;
+	height:126px;
+	width: 600px;
 }
 #formfabu {
 	margin:0;
@@ -159,20 +162,29 @@ h1 small {
 	background:none;
 }
 
-#formfabu input.wcontent {
+#formfabu .text_field {
 	margin:0;
-	padding-left:15px;
+	/* padding-left:10px;
+	padding-top:10px; */
+	height: 70px; 
+	width: 525px; 
+	font-size: 14px;
 	float:left;
-	font-size:20px;
-	line-height:16px;
 	color:#111111;
 	outline:none;
 	border:none;
+	overflow:hidden;
+	resize:none;
+	background: none;
 	
-	background: url("image/share.png") no-repeat;
-    width: 480px;
+/* 	background: url("image/share.png") no-repeat; */
+    /* width: 480px;
     height: 100px;
+ */
+}
 
+#formfabu .text_field:hover {
+	
 }
 
 /* #formfabu input.btn_fabu {
@@ -188,9 +200,10 @@ h1 small {
 .share_img {
     position: relative;
     display: inline-block;
-    width: 50px;
-    height: 50px;
-    background: #e4e4e4 url("image/camera.png") no-repeat center center;
+    width: 61px;
+    height: 70px;
+    background:none;
+   /*  background: #e4e4e4 url("image/camera(2).png") no-repeat center center; */
     text-align: center;
     line-height: 68px;
     overflow: hidden;
@@ -200,8 +213,8 @@ h1 small {
     position: absolute;
     top: 0;
     left: 0;
-    width: 50px;
-    height: 50px;
+    width: 55px;
+    height: 80px;
     opacity: 0;
     filter: alpha(opacity: 0);
     cursor: pointer;

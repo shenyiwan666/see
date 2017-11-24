@@ -30,7 +30,7 @@ public class FilterController extends HttpServlet implements Filter {
 		HttpServletResponse response=(HttpServletResponse)resp;
 		String URI = request.getRequestURI();
 		
-        if ("/login".equals(URI) || "/register".equals(URI) || URI.endsWith(".css")) {
+        if ("/login".equals(URI) || "/register".equals(URI) || URI.indexOf("resources") > 0) {
             chain.doFilter(request, response);
             return;
         } else {
