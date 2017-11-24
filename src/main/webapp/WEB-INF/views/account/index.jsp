@@ -1,32 +1,18 @@
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>账号管理</title>
-<style type="text/css">
-	table img {
-		width:50px;
-		height: 50px;
-	}
-	.cur {
-		border: 1px solid #000;
-		padding: 3px 5px;
-		color: red;
-	}
-</style>
-</head>
-<body>
-<!--  
-	<form action="/account/" method="get">
-	搜索:<input type="text" name="q" value="${param.q }"/><input type="submit" value="搜索" />
-	</form>
--->
-	<table>
-			
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>账号管理</title>
+		<link rel="stylesheet" type="text/css" href="../resources/account/index.css"/>
+		
+	</head>
+	<body>
+	
+		<table id="table">
+				
 			<tbody>		
 				<c:set var="a" value="${requestScope.account}"/>
 				
@@ -79,22 +65,81 @@
 				             </form>
 						</td>
 					</tr>
-					
-			</tbody>
-		</table>
+					<tr>
+						<td></td>
+						<td>
+							<a href="/" id="finish">完成</a>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			
+		   
+	       <script type="text/javascript">
+				function show() {
+				 var message1 = document.getElementById("nickName").value;
+				 var message2 = document.getElementById("email").value;
+				 var message3 = document.getElementById("password").value;
+				 return true;
+				}
+			</script>
 		
-	    <a href="/">完成</a>
-       <script type="text/javascript">
-			function show() {
-			 var message1 = document.getElementById("nickName").value;
-			 var message2 = document.getElementById("email").value;
-			 var message3 = document.getElementById("password").value;
-			 return true;
-			}
-		</script>
-		
-		
-				
-</body>
+	</body>
 
 </html>
+
+
+<%-- 
+
+
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>主页</title>
+		<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.js"></script>
+		<link rel="stylesheet" type="text/css" href="resources/index.css"/>
+	</head>
+	
+	<body>
+		<div id="site-name">
+			<img src="image/eyes_icon.png">
+			<h1>See<small>Share your colorful life</small></h1>
+		</div>
+		
+		<div class="menu_nav">
+	       <ul>
+	         <li class="active"><a href="index.html"><span>Home Page</span></a></li>
+	         <li><c:set var="account" value="${requestScope.account}"/><a href="/account/${account.aid }"><span>Setting</span></a></li>
+	         <li><a href="about.html"><span>About Us</span></a></li>
+	         <li><a href="contact.html"><span>Contact Us</span></a></li>
+	       </ul>
+	     </div>
+		
+		
+        <div id="searchform">
+        	<form id="formsearch" name="formsearch" action="/search" method="get">
+				搜索:<input type="text" name="q" value="${param.q }"/><input type="submit" value="搜索" />
+				<span>
+	            <input name="q" class="editbox_search" id="editbox_search" maxlength="80" value="${param.q }" type="text" />
+	            </span>
+	            <input name="button_search" class="button_search" type="submit" value="     "/>
+			</form>
+        </div>
+
+		<br></br>
+		<div id="fabuForm">
+	       <form id="formfabu" method="post" action="/fabu" enctype="multipart/form-data">
+				<span><textarea rows="4" cols="20" id="wcontent" class="text_field" placeholder="分享此刻看见" name="wcontent"  maxlength="140"></textarea>
+				<!-- <input type="text" id="wcontent" class="text_field" placeholder="分享此刻看见" name="wcontent"  maxlength="140"/> -->
+				</span>
+				<a class="share_img"><input type="file" id="img" class="img" name="file"></a>
+				<div class="clr"></div>
+	            <div><input type="submit" id="btn_fabu" class= "btn_fabu" value="发表" /></div>
+	            <!-- <div class="clr"></div> -->
+	            
+	       </form>
+        </div>
+		
+	</body>
+	
+</html> --%>

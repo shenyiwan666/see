@@ -51,10 +51,11 @@
 				<div class="wb">
 					<img src="/resources/image/${w.account.pic }"/>
 					<h3><p>${w.account.nickName}</p></h3>
-					<div>
-				   <img src="/resources/image/${w.imgname}"/>
+					<div class="show">
+				   	<img class="img-show" src="/resources/image/${w.imgname}" style="height:250px;"/>
+				    <p class="content-show">${w.wcontent }</p><br/>
 				    </div>
-					<p>${w.wcontent }</p><br/>
+				    <div class="clr"></div>
 					<div class="comment_line">
 						<a class="timer"><fmt:formatDate value="${w.lastUpdateTime}" pattern="yyyy-MM-dd HH:mm:ss" /></a>
 						<a class="liked" href="/like/${w.wid}">推荐(${w.liked })</a>
@@ -63,7 +64,7 @@
 					<div class="clr"></div>
 					<form id="subcom"  class="commentform" method="post"  action="/comment/${w.wid }">
 		 				<!-- <input class="ccontent" type="text" id="ccontent" placeholder="留下你的评论" name="ccontent" /> -->
-		            	<div>
+		            	<div class="comment-input">
 			            	<textarea rows="1" cols="20" class="ccontent"  id="ccontent" placeholder="留下你的评论" name="ccontent" style="height:20px; width:300px;"></textarea>
 			            	<input class="cc"  type="button" id="btn_pinglun"  value="评论"  />
 		            	</div>
