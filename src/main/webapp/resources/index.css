@@ -142,7 +142,7 @@ h1 small {
 	margin:0;
 	position: absolute;
 	float: left;
-	top:130px;
+	top:160px;
 	left: 210px;
 	padding: 10px;
 	height:126px;
@@ -224,7 +224,7 @@ h1 small {
 	color: #fff;
 	position:absolute;
 	top:90px;
-	left:10px;
+	left:12px;
 	font-size: 16px;
 	border: 0;
 	background: none;
@@ -261,7 +261,7 @@ h1 small {
 	color: red;
 }
 .wrapper-wb {
-	width:650px;
+	width:600px;
 	margin: 0 auto;
 }
 
@@ -291,6 +291,10 @@ h1 small {
 .wb > h3 {
 	margin: 0;
 }
+
+
+
+
 .comment_line > a {
 	color:#555555;
 	text-decoration:none;
@@ -322,14 +326,16 @@ h1 small {
 	resize:none;
 }
 
-.cc {
+.comment-input input.cc {
 	margin:0;
-	padding-top:5px;
+	position:relative;
+	paddig-bottom: 10px;
+	left:0;
 }
 
 
 .wrapper-top {
-	width:60px;
+	width:100px;
 	margin: 0 auto;
 }
 
