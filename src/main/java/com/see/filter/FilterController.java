@@ -36,7 +36,7 @@ public class FilterController extends HttpServlet implements Filter {
         } else {
             Object obj = request.getSession().getAttribute("account");
             if (obj == null) {
-                request.getRequestDispatcher("/WEB-INF/views/error.jsp").forward(request, response);
+                request.getRequestDispatcher("/WEB-INF/views/error.html").forward(request, response);
             } else
                 chain.doFilter(request, response);
         }
