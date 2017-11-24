@@ -138,12 +138,15 @@ h1 small {
 
 
 #fabuForm {
+	background: url("image/share.png") no-repeat;
 	margin:0;
 	position: absolute;
 	float: left;
 	top:130px;
-	left: 200px;
+	left: 210px;
 	padding: 10px;
+	height:126px;
+	width: 600px;
 }
 #formfabu {
 	margin:0;
@@ -159,23 +162,32 @@ h1 small {
 	background:none;
 }
 
-#formfabu input.text_file {
+#formfabu .text_field {
 	margin:0;
-	padding-left:15px;
+	/* padding-left:10px;
+	padding-top:10px; */
+	height: 70px; 
+	width: 525px; 
+	font-size: 14px;
 	float:left;
-	font-size:20px;
-	line-height:16px;
 	color:#111111;
 	outline:none;
 	border:none;
+	overflow:hidden;
+	resize:none;
+	background: none;
 	
-	background: url("image/share.png") no-repeat;
-    width: 480px;
+/* 	background: url("image/share.png") no-repeat; */
+    /* width: 480px;
     height: 100px;
-
+ */
 }
 
-#formfabu input.btn_fabu {
+#formfabu .text_field:hover {
+	
+}
+
+/* #formfabu input.btn_fabu {
 	width:50px;
 	height:50px;
 	background: url("image/camera.png") no-repeat;
@@ -183,7 +195,54 @@ h1 small {
 	padding:0;
 	border:none;
 	float:left;
+} */
+
+.share_img {
+    position: relative;
+    display: inline-block;
+    width: 61px;
+    height: 70px;
+    background:none;
+   /*  background: #e4e4e4 url("image/camera(2).png") no-repeat center center; */
+    text-align: center;
+    line-height: 68px;
+    overflow: hidden;
 }
+    
+.share_img input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 55px;
+    height: 80px;
+    opacity: 0;
+    filter: alpha(opacity: 0);
+    cursor: pointer;
+}
+
+#formfabu input.btn_fabu {
+	color: #fff;
+	position:absolute;
+	top:90px;
+	left:10px;
+	font-size: 16px;
+	border: 0;
+	background: none;
+	width:60px;
+	height:30px;
+}
+
+
+/* #formfabu input.img {
+	width:50px;
+	height:50px;
+	background: url("image/camera.png") no-repeat;
+	margin:0;
+	padding:0;
+	border:none;
+	float:left;
+} */
+
 
 .clr {
 	clear:both;
@@ -254,6 +313,20 @@ h1 small {
 	right:10px;
 	top:5px;
 }
+
+.ccontent {
+	margin:0;
+	padding-left: 10px;
+	padding-top: 5px;
+	overflow:hidden;
+	resize:none;
+}
+
+.cc {
+	margin:0;
+	padding-top:5px;
+}
+
 
 .wrapper-top {
 	width:60px;

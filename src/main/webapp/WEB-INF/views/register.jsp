@@ -14,9 +14,9 @@
 			<div id="image_logo"><img src="resources/image/eyes_icon.png"></div>
 			<form id="register-form" action="/register" method="post" enctype="multipart/form-data">
 				<div id="div_email"><input type="email" id="email" class="text_field" placeholder="注册邮箱" name="email" /></div>
-	            <div id="div_username"><input type="username" id="username" class="text_field" placeholder="请输入昵称" name="username"/></div>
+	            <div id="div_username"><input type="nickName" id="nickName" class="text_field" placeholder="请输入昵称" name="nickName"/></div>
 	            <div id="div_password"><input type="password" id="password" class="text_field" placeholder="请输入密码" name="password"></div>
-	            <div id="div_headimage"><a class="btn-head"><input title="" type="file" id="head_image" name="file"></a></div>
+	            <div id="div_headimage"><a class="btn-head"><input title="" type="file" id="head_image" name="file" onchange="xmTanUploadImg(this)" accept="image/*"></a></div>
 	            <div id="div_btn_login"><input type="submit" id="btn_login" value="马上注册"  /></div>
             </form>
 		</div>	
@@ -27,4 +27,38 @@
 			<input type="submit" value="注册"/> -->
 		
 	</body>
+	
+	<script type="text/javascript">	
+		function xmTanUploadImg(obj) {
+	        var file = obj.files[0];
+	        
+	        console.log(obj);console.log(file);
+	        console.log("file.size = " + file.size);  //file.size 单位为byte
+	
+	        var reader = new FileReader();
+	
+	        //读取文件过程方法
+	        reader.onloadstart = function (e) {
+	            console.log("开始读取....");
+	        }
+	        reader.onprogress = function (e) {
+	            console.log("正在读取中....");
+	        }
+	        reader.onabort = function (e) {
+	            console.log("中断读取....");
+	        }
+	        reader.onerror = function (e) {
+	            console.log("读取异常....");
+	        }
+	        reader.onload = function (e) {
+	            console.log("成功读取....");
+	
+	            var img = document.getElementById("fabuimg");
+	            img.src = e.target.result;
+	            //或者 img.src = this.result;  //e.target == this
+	        }
+	
+	        reader.readAsDataURL(file)
+	    }
+	</script>
 </html>

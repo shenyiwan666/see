@@ -14,7 +14,7 @@
 	<body>
 		<div id="site-name">
 			<img src="image/eyes_icon.png">
-			<h1>See<small>Show me your colorful life</small></h1>
+			<h1>See<small>Share your colorful life</small></h1>
 		</div>
 		
 		<div class="menu_nav">
@@ -40,12 +40,25 @@
 		<br></br>
 		<div id="fabuForm" class= "fabu">
 	       <form id="formfabu" class="formfabu" method="post" action="/fabu" enctype="multipart/form-data">
+<<<<<<< .mine
 				<span><input type="text" id="wcontent" class="text_field" placeholder="分享此刻看见" name="wcontent"  maxlength="140"/></span>
 	            <input type="submit"  id="btn_fabu" class= "btn_fabu" value="  " />
 	            <div class="clr"></div>
 	            <div id="div_img" class="div_img">
 	            	<input class="file" type="file" id="xdaTanFileImg" name="file" onchange="xmTanUploadImg(this)" accept="image/*"/>
 	            </div>
+
+
+=======
+				<span><textarea rows="4" cols="20" id="wcontent" class="text_field" placeholder="分享此刻看见" name="wcontent"  maxlength="140"></textarea>
+				<!-- <input type="text" id="wcontent" class="text_field" placeholder="分享此刻看见" name="wcontent"  maxlength="140"/> -->
+				</span>
+				<a class="share_img"><input type="file" id="img" class="img" name="file"></a>
+				<div class="clr"></div>
+	            <div><input type="submit" id="btn_fabu" class= "btn_fabu" value="发表" /></div>
+	            <!-- <div class="clr"></div> -->
+	            
+>>>>>>> .theirs
 	       </form>
 	      <img style="height:100px;"id="fabuimg"/>
           <div id="fabudiv"></div>
@@ -74,8 +87,12 @@
 					</div>
 					<div class="clr"></div>
 					<form id="subcom"  class="commentform" method="post"  action="/comment/${w.wid }">
-		 				<input class="ccontent" type="text" id="ccontent" placeholder="留下你的评论" name="ccontent" />
-		            	<input class="cc"  type="button" id="btn_pinglun"  value="评论"  />
+		 				<!-- <input class="ccontent" type="text" id="ccontent" placeholder="留下你的评论" name="ccontent" /> -->
+		            	<div>
+			            	<textarea rows="1" cols="20" class="ccontent"  id="ccontent" placeholder="留下你的评论" name="ccontent" style="height:20px; width:300px;"></textarea>
+			            	<input class="cc"  type="button" id="btn_pinglun"  value="评论"  />
+		            	</div>
+		            	
 					</form>
 					
 					<div class="comment"></div>	
