@@ -1,0 +1,24 @@
+body {
+	background: url("../image/back.jpg") no-repeat;
+    background-size: 100%;
+}
+#table {
+    width: 800px;
+    height: 386px;
+    background: url("../image/register_bac.png") no-repeat;
+
+    position:absolute;
+    top:50%;
+    left:50%;
+    margin-left: -400px;
+    margin-top: -193px;
+    text-align:center;
+    color : #fff;
+}
+#finish {
+	text-align:right;
+}
+table img {
+	width:50px;
+	height: 50px;
+}

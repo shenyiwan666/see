@@ -14,7 +14,7 @@
 	<body>
 		<div id="site-name">
 			<img src="image/eyes_icon.png">
-			<h1>See<small>Show me your colorful life</small></h1>
+			<h1>See<small>Share your colorful life</small></h1>
 		</div>
 		
 		<div class="menu_nav">
@@ -40,11 +40,14 @@
 		<br></br>
 		<div id="fabuForm">
 	       <form id="formfabu" method="post" action="/fabu" enctype="multipart/form-data">
-				<span><input type="text" id="wcontent" class="text_field" placeholder="分享此刻看见" name="wcontent"  maxlength="140"/></span>
-				
-	            <input type="submit" id="btn_fabu" class= "btn_fabu" value="  " />
-	            <div class="clr"></div>
-	            <div id="div_img"><input type="file" id="img" name="file"></div>
+				<span><textarea rows="4" cols="20" id="wcontent" class="text_field" placeholder="分享此刻看见" name="wcontent"  maxlength="140"></textarea>
+				<!-- <input type="text" id="wcontent" class="text_field" placeholder="分享此刻看见" name="wcontent"  maxlength="140"/> -->
+				</span>
+				<a class="share_img"><input type="file" id="img" class="img" name="file"></a>
+				<div class="clr"></div>
+	            <div><input type="submit" id="btn_fabu" class= "btn_fabu" value="发表" /></div>
+	            <!-- <div class="clr"></div> -->
+	            
 	       </form>
         </div>
 
@@ -60,10 +63,11 @@
 				<div class="wb">
 					<img src="/resources/image/${w.account.pic }"/>
 					<h3><p>${w.account.nickName}</p></h3>
-					<div>
-				   <img src="/resources/image/${w.imgname}"/>
+					<div class="show">
+				   	<img class="img-show" src="/resources/image/${w.imgname}" style="height:250px;"/>
+				    <p class="content-show">${w.wcontent }</p><br/>
 				    </div>
-					<p>${w.wcontent }</p><br/>
+				    <div class="clr"></div>
 					<div class="comment_line">
 						<a class="timer"><fmt:formatDate value="${w.lastUpdateTime}" pattern="yyyy-MM-dd HH:mm:ss" /></a>
 						<a class="liked" href="/like/${w.wid}">推荐(${w.liked })</a>
@@ -71,8 +75,12 @@
 					</div>
 					<div class="clr"></div>
 					<form id="subcom"  class="commentform" method="post"  action="/comment/${w.wid }">
-		 				<input class="ccontent" type="text" id="ccontent" placeholder="留下你的评论" name="ccontent" />
-		            	<input class="cc"  type="button" id="btn_pinglun"  value="评论"  />
+		 				<!-- <input class="ccontent" type="text" id="ccontent" placeholder="留下你的评论" name="ccontent" /> -->
+		            	<div class="comment-input">
+			            	<textarea rows="1" cols="20" class="ccontent"  id="ccontent" placeholder="留下你的评论" name="ccontent" style="height:20px; width:300px;"></textarea>
+			            	<input class="cc"  type="button" id="btn_pinglun"  value="评论"  />
+		            	</div>
+		            	
 					</form>
 					
 					<div class="comment"></div>	
