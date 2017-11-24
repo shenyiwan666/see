@@ -16,6 +16,17 @@
 			<img src="image/eyes_icon.png">
 			<h1>See<small>Show me your colorful life</small></h1>
 		</div>
+		
+		<div class="menu_nav">
+	       <ul>
+	         <li class="active"><a href="index.html"><span>Home Page</span></a></li>
+	         <li><c:set var="account" value="${requestScope.account}"/><a href="/account/${account.aid }"><span>Setting</span></a></li>
+	         <li><a href="about.html"><span>About Us</span></a></li>
+	         <li><a href="contact.html"><span>Contact Us</span></a></li>
+	       </ul>
+	     </div>
+		
+		
         <div id="searchform">
         	<form id="formsearch" name="formsearch" action="/search" method="get">
 				<%-- 搜索:<input type="text" name="q" value="${param.q }"/><input type="submit" value="搜索" /> --%>
@@ -27,17 +38,19 @@
         </div>
 
 		<br></br>
-			<div id="fabuForm">
-	        <form method="post" action="/fabu" enctype="multipart/form-data">
-	 			<div id="div_content"><input type="text" id="wcontent" class="text_field" placeholder="分享此刻看见" name="wcontent" /></div>
-	 			<div id="div_img"><input type="file" id="img" name="file"></div>
-	            <div id="div_btn_fabu"><input type="submit" id="btn_fabu" value="分享"  /></div>
-	        </form>
-             </div>
-	
-		
+		<div id="fabuForm">
+	       <form id="formfabu" method="post" action="/fabu" enctype="multipart/form-data">
+				<span><input type="text" id="wcontent" class="text_field" placeholder="分享此刻看见" name="wcontent"  maxlength="140"/></span>
+				
+	            <input type="submit" id="btn_fabu" class= "btn_fabu" value="  " />
+	            <div class="clr"></div>
+	            <div id="div_img"><input type="file" id="img" name="file"></div>
+	       </form>
+        </div>
+
+<%-- 		
         <c:set var="account" value="${requestScope.account}"/>
-        <a href="/account/${account.aid }">账户管理</a>
+        <a href="/account/${account.aid }">账户管理</a> --%>
    
 		<div class="clr"></div>
         
@@ -128,7 +141,7 @@
 						for(var i=0;i<data.length;i++){
 							$('<p></p>').html(data[i].account.nickName+":"+data[i].ccontent ).appendTo( comment );
 						}
-							$('<a></a>').attr("class","closecomment").css("cursor","pointer").html("收起 ").on('click',function(){
+							$('<a></a>').attr("class","closecomment").css("cursor","pointer").html("  收起 ").on('click',function(){
 								comment.empty();
 							}).appendTo( comment );
 				}, 'json');
@@ -157,13 +170,14 @@
 	        }
 	    }
 	}); */
+	
 	$(function(){
 		$('.wb> #subcom > input.cc').click(function( e ){
 			e.preventDefault();
 			var _sub = $( this );
 			var _com = _sub.prev().val();
 			var comment = _sub.parent().parent().children(".comment");
-			var _ping = _sub.parent().prev().children(".showcomment");
+			var _ping = _sub.parent().prev().prev().children(".showcomment");
 			$.post(_sub.parent(".commentform").attr('action'),{"comment": _com },function( data ){
 				_ping.html('评论 (' + data.comment + ')' );
 				

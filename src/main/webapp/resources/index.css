@@ -44,18 +44,58 @@ h1 small {
 
 }
 
+
+.menu_nav {
+	margin:0;
+	padding:10px 0 0;
+	position: absolute;
+	height:48px;
+	float:right;
+	top: 20px;
+	right: 150px;
+}
+.menu_nav ul {
+	list-style:none;
+	padding:0 0 0 2px;
+	height:48px;
+	float:left;
+	border:2px solid #FF3333;
+	border-radius: 10px;
+}
+.menu_nav ul li {
+	margin:0;
+	padding:0 2px 0 0;
+	float:left;
+	background:no-repeat right center;
+}
+.menu_nav ul li a {
+	display:block;
+	margin:0;
+	padding:18px 20px;
+	font-size:15px;
+	line-height:20px;
+	font-weight:normal;
+	color:#FFCC66;
+	text-decoration:none;
+	text-transform:none;
+	text-align:center;
+}
+.menu_nav ul li.active a, .menu_nav ul li a:hover {
+	text-decoration:none;
+	color:#FF3333;
+}
+
+
 #searchform {
 	float: right;
 	position: absolute;
 	right: 150px;
-	top:35px;
-}
-
-#searchform {
+	top:200px;
 	margin:0 0 16px;
 	padding:20px 20px 12px;
 	float:left;
 }
+
 #formsearch {
 	margin:0;
 	padding:0;
@@ -90,6 +130,55 @@ h1 small {
 	width:50px;
 	height:50px;
 	background: url("image/search.png") no-repeat;
+	margin:0;
+	padding:0;
+	border:none;
+	float:left;
+}
+
+
+#fabuForm {
+	margin:0;
+	position: absolute;
+	float: left;
+	top:130px;
+	left: 200px;
+	padding: 10px;
+}
+#formfabu {
+	margin:0;
+	padding:0;
+	width:auto;
+	height:30px;
+}
+#formfabu span {
+	display:block;
+	margin:0;
+	padding:0;
+	float:left;
+	background:none;
+}
+
+#formfabu input.text_file {
+	margin:0;
+	padding-left:15px;
+	float:left;
+	font-size:20px;
+	line-height:16px;
+	color:#111111;
+	outline:none;
+	border:none;
+	
+	background: url("image/share.png") no-repeat;
+    width: 480px;
+    height: 100px;
+
+}
+
+#formfabu input.btn_fabu {
+	width:50px;
+	height:50px;
+	background: url("image/camera.png") no-repeat;
 	margin:0;
 	padding:0;
 	border:none;
