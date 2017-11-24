@@ -128,7 +128,7 @@
 						for(var i=0;i<data.length;i++){
 							$('<p></p>').html(data[i].account.nickName+":"+data[i].ccontent ).appendTo( comment );
 						}
-							$('<a></a>').attr("class","closecomment").css("cursor","pointer").html("收起 ").on('click',function(){
+							$('<a></a>').attr("class","closecomment").css("cursor","pointer").html("  收起 ").on('click',function(){
 								comment.empty();
 							}).appendTo( comment );
 				}, 'json');
@@ -157,13 +157,14 @@
 	        }
 	    }
 	}); */
+	
 	$(function(){
 		$('.wb> #subcom > input.cc').click(function( e ){
 			e.preventDefault();
 			var _sub = $( this );
 			var _com = _sub.prev().val();
 			var comment = _sub.parent().parent().children(".comment");
-			var _ping = _sub.parent().prev().children(".showcomment");
+			var _ping = _sub.parent().prev().prev().children(".showcomment");
 			$.post(_sub.parent(".commentform").attr('action'),{"comment": _com },function( data ){
 				_ping.html('评论 (' + data.comment + ')' );
 				
