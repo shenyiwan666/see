@@ -159,7 +159,7 @@ h1 small {
 	background:none;
 }
 
-#formfabu input.text_file {
+#formfabu input.wcontent {
 	margin:0;
 	padding-left:15px;
 	float:left;
@@ -175,7 +175,7 @@ h1 small {
 
 }
 
-#formfabu input.btn_fabu {
+/* #formfabu input.btn_fabu {
 	width:50px;
 	height:50px;
 	background: url("image/camera.png") no-repeat;
@@ -183,7 +183,41 @@ h1 small {
 	padding:0;
 	border:none;
 	float:left;
+} */
+
+.share_img {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background: #e4e4e4 url("image/camera.png") no-repeat center center;
+    text-align: center;
+    line-height: 68px;
+    overflow: hidden;
 }
+    
+.share_img input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 50px;
+    opacity: 0;
+    filter: alpha(opacity: 0);
+    cursor: pointer;
+}
+
+
+/* #formfabu input.img {
+	width:50px;
+	height:50px;
+	background: url("image/camera.png") no-repeat;
+	margin:0;
+	padding:0;
+	border:none;
+	float:left;
+} */
+
 
 .clr {
 	clear:both;

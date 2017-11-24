@@ -42,9 +42,9 @@
 	       <form id="formfabu" method="post" action="/fabu" enctype="multipart/form-data">
 				<span><input type="text" id="wcontent" class="text_field" placeholder="分享此刻看见" name="wcontent"  maxlength="140"/></span>
 				
-	            <input type="submit" id="btn_fabu" class= "btn_fabu" value="  " />
+	            <input type="submit" id="btn_fabu" class= "btn_fabu" value="发表" />
 	            <div class="clr"></div>
-	            <div id="div_img"><input type="file" id="img" name="file"></div>
+	            <div><a class="share_img"><input type="file" id="img" class="img" name="file"></a></div>
 	       </form>
         </div>
 
