@@ -127,7 +127,7 @@ FROM
     LEFT JOIN account a  ON a.aid = w.aid
   	<trim prefix="WHERE" prefixOverrides="AND |OR ">
 	  	<if test="value != null">
-			a.nick_name LIKE CONCAT('%', #{value}, '%')	
+			w.wcontent LIKE CONCAT('%', #{value}, '%')	
 		</if>
 	</trim>
   </select>
