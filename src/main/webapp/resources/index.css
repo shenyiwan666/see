@@ -34,7 +34,7 @@ h1 small {
 	letter-spacing:normal;
 	text-transform:none;
 	
-   /* ×ÖÌåÑÕÉ«½¥±äÐ§¹û£¬debug-ing 
+   /* ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½debug-ing 
    	-webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     background-position: 50%;
@@ -270,9 +270,13 @@ h1 small {
 	float: left;
 	top: 300px;
 	left: 200px;
+	width:600px;
+
 }
 
 .wb {
+	border: 4px;
+	width:510px;
 	background:#fff;
 	margin: 10px;
 	padding: 10px 10px 10px 80px;
@@ -341,6 +345,7 @@ h1 small {
 
 
 .top {
+	width: 200px;
 	background:#fff;
 	margin: 10px;
 	padding: 10px 10px 10px 80px;
@@ -349,6 +354,7 @@ h1 small {
 }
 
 .wrapper-top > .top-inform {
+	width: 70px;
 	position:absolute;
 	float: left;
 	top: 300px;
@@ -366,3 +372,5 @@ h1 small {
 .top > h3 {
 	margin: 0;
 }
+
+ 

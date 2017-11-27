@@ -19,7 +19,7 @@
 		
 		<div class="menu_nav">
 	       <ul>
-	         <li class="active"><a href="index.html"><span>Home Page</span></a></li>
+	         <li class="active"><a><span>Home Page</span></a></li>
 	         <li><c:set var="account" value="${requestScope.account}"/><a href="/account/${account.aid }"><span>Setting</span></a></li>
 	         <li><a href="about.html"><span>About Us</span></a></li>
 	         <li><a href="contact.html"><span>Contact Us</span></a></li>
