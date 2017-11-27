@@ -12,7 +12,7 @@ body {
     left:50%;
     margin-left: -400px;
     margin-top: -193px;
-    text-align:center;
+    text-align:left;
     color : #fff;
 }
 #finish {
@@ -21,4 +21,18 @@ body {
 table img {
 	width:50px;
 	height: 50px;
+    border-style:none;
+	}
+btn {
+    border: 1px solid #CCC;
+    width: 60px;
+    margin-left: 224px;
+    text-align: center;
+}
+   .ac_file {
+    width: 61px;
+    position: absolute;
+    cursor: pointer;
+    opacity: 0;
+    margin-left: -47px;
 }

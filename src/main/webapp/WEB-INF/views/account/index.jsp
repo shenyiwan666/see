@@ -60,8 +60,13 @@
 				              <input type="hidden" name="_method" value="put" />
 				              <input type="hidden" name="aid" value="${a.aid }" />
 					          <span>请上传新头像:</span>
-					          <div id="div_img"><input type="file" id="img" name="file" onchange="xmTanUploadImg(this)" accept="image/*"></div>
-					          	 <img style="height:100px;"id="fabuimg"/>
+					         
+					          <div  class="btn" >  
+					                                    浏览
+					          <input type="file" class="ac_file" id="img" name="file" onchange="xmTanUploadImg(this)" accept="image/*">
+					          </div>
+					     
+					          	 <img class="shangchuan" id="fabuimg"/>
          						 <div id="fabudiv"></div>
 	                          <div id="div_btn_fabu"><input type="submit" id="btn_fabu" value="上传"  /></div>
 				             </form>
