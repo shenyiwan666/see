@@ -38,8 +38,8 @@ public interface AccountService {
 	int delete(int aid);
 /************修改********/
 	
+//	Page findAll(int aid,Integer p);
 	List<Weibo> findAll(int aid);
-	
 	
 /************修改********/
 	

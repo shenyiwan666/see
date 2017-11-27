@@ -11,6 +11,7 @@ import com.see.dao.FollowMapper;
 import com.see.entity.Account;
 import com.see.entity.Weibo;
 import com.see.service.AccountService;
+import com.see.vo.FindVO;
 import com.see.vo.Page;
 import com.see.vo.SearchVO;
 
@@ -99,6 +100,20 @@ public class AccountServiceImpl implements AccountService {
 	
 	}
 
+//	@Override
+//	public Page findAll(int aid,Integer p) {
+
+//		Page page = new Page(p);
+//		
+//		int count = accountMapper.countAll(aid);
+//		page.setCount(count);
+//		List<Weibo> weibos = accountMapper.findAll(new FindVO(aid, page.getOffset(), page.getSize()));
+//		
+//		page.setList( weibos );
+//		
+//		return page;
+//	}
+	
 	@Override
 	public List<Weibo> findAll(int aid) {
 		// TODO Auto-generated method stub
