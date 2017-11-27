@@ -61,7 +61,8 @@
 		w.last_update_time,
 		w.service,
 		w.`comment`,
-		w.liked 
+		w.liked,
+		w.imgname 
 	FROM
 		weibo w
 		LEFT JOIN account a ON a.aid = w.aid

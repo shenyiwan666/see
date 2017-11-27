@@ -61,7 +61,10 @@
         	<div class= "dynamic-inform">
         		<c:forEach items="${requestScope.weibos }" var="w">
 				<div class="wb">
-					<img src="/resources/image/${w.account.pic }"/>
+				 <a class="pic1" href="/find/${w.account.aid }">
+		         <img src="/resources/image/${w.account.pic }"/>
+		         </a>
+					
 					<h3><p>${w.account.nickName}</p></h3>
 					<div class="show">
 				   	<img class="img-show" src="/resources/image/${w.imgname}" style="height:250px;"/>
@@ -97,10 +100,12 @@
 				<c:set var="weibo" value="${requestScope.weibo}"/>
 				<c:forEach items="${weibo}" var="weibo">
 				<div class="top">
-					<img src="/resources/image/${weibo.account.pic }"/>
-					<h3><a href="#">${weibo.account.nickName}</a></h3>
-					<a class="follow" href="/follow/${weibo.account.aid}">${weibo.account.follow }</a>
-					<p>${weibo.wcontent }</p>
+				 
+		          <img src="/resources/image/${weibo.imgname }"/>
+		           <p>${weibo.wcontent }</p>
+				   <h3><a class="topnickname" href="#">${weibo.account.nickName}</a></h3>
+				<a class="follow" href="/follow/${weibo.account.aid}">${weibo.account.follow }</a>
+					
 				</div>
 				</c:forEach>
 			</div>

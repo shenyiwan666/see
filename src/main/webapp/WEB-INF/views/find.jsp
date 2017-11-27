@@ -24,7 +24,7 @@
 				position: relative;
 				border-radius: 5px;
 			}
-			.wb > img {
+			.wb > .pic > img {
 				width: 50px;
 				height: 50px;
 				border-radius: 50%;
@@ -35,6 +35,7 @@
 			.wb > h3 {
 				margin: 0;
 			}
+		
 		</style>
 </head>
 <body>
@@ -47,7 +48,10 @@
 			              该用户没有发布过微博。
 			    </c:if>
 			  <c:if test="${not empty w}">
-				<img src="/resources/image/${account.pic }"/>
+			      <a class="pic" href="/find/${account.aid }">
+		          <img src="/resources/image/${account.pic }"/>
+		         </a>
+				
 				<h3><a href="#">${account.nickName }</a></h3>
 				<div>
 				<img src="/resources/image/${w.imgname }"/>

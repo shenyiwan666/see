@@ -18,6 +18,22 @@
 		padding: 3px 5px;
 		color: red;
 	}
+	
+	.users
+	{
+	position:relative;
+	padding-top:10px;
+	padding-left:80px;
+	width: 800px;
+    height: 100px;
+	}
+	.user
+	{
+	 position:relative;
+     display:inline;
+     padding-left:15px;
+	
+	}
 	.wrapper {
 				width:960px;
 				margin: 0 auto;
@@ -29,7 +45,7 @@
 				position: relative;
 				border-radius: 5px;
 			}
-			.wb > img {
+			.wb > .pic > img {
 				width: 50px;
 				height: 50px;
 				border-radius: 50%;
@@ -37,9 +53,28 @@
 				left:10px;
 				top:10px;
 			}
+			.users > .user > .userpic > img
+			{
+			    width: 80px;
+				height: 80px;
+				border-radius: 50%;
+			}
+			.users > .user > .username
+			{
+			position:absolute;
+			top:20px;
+			left:10px;
+            font-size: 14px;
+			}
 			.wb > h3 {
 				margin: 0;
 			}
+			.seperateline
+			{
+			height:15px;
+			background:#cccccc;
+			}
+			
 </style>
 </head>
 <body>
@@ -52,21 +87,23 @@
 	  <div class="users">
 	  <c:forEach items="${accounts}" var="a">
 		  <div class="user">
-		  <a>${a.nickName}</a>
-		  
-		  <a href="/find/${a.aid }">
+		  <a class="userpic" href="/find/${a.aid }">
 		  <img src="/resources/image/${a.pic }"/>
 		  </a>
+		  <a class="username">${a.nickName}</a>
 		  </div>
 	  </c:forEach>
 	  </div>
 	
-	
+	<div class="seperateline"></div>
 	
 		 <div class="wrapper">
 			<c:forEach items="${page.list }" var="w">
 			<div class="wb">
-				<img src="/resources/image/${w.account.pic }"/>
+			    <a class="pic" href="/find/${w.account.aid }">
+		         <img src="/resources/image/${w.account.pic }"/>
+		         </a>
+				
 				<h3><a href="/follow/${w.account.aid}">${w.account.nickName}</a></h3>
 				<div>
 				<img src="/resources/image/${w.imgname }"/>
