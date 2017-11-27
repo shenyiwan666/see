@@ -180,13 +180,14 @@
 	}); */
 	
 	$(function(){
-		$('.wb> #subcom > input.cc').click(function( e ){
+		$('.wb> #subcom > .comment-input > input.cc').click(function( e ){
 			e.preventDefault();
 			var _sub = $( this );
 			var _com = _sub.prev().val();
-			var comment = _sub.parent().parent().children(".comment");
-			var _ping = _sub.parent().prev().prev().children(".showcomment");
-			$.post(_sub.parent(".commentform").attr('action'),{"comment": _com },function( data ){
+			var comment = _sub.parent().parent().parent().children(".comment");
+			var _ping = _sub.parent().parent().prev().prev().children(".showcomment");
+			
+			$.post(_sub.parent().parent(".commentform").attr('action'),{"comment": _com },function( data ){
 				_ping.html('评论 (' + data.comment + ')' );
 				
 				if(comment.html() == ""){
