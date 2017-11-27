@@ -38,24 +38,28 @@ public class HomeController {
 	private WeiboService weiboService;
 	
 	@RequestMapping(value="/",method=RequestMethod.GET)
-	public String home(HttpSession session, Model model) {
+	public String home(HttpSession session, Model model,@RequestParam(defaultValue="1") int p) {
 		
 		if(session.getAttribute("account") != null){
 			
 			int aid = ((Account)session.getAttribute("account")).getAid();
 	
+//			Page page =accountService.findAll(aid,p);
+//		
+//			model.addAttribute("page", page);
+			
 			List<Weibo> weibos =accountService.findAll(aid);
-		
+			
 			model.addAttribute("weibos", weibos);
+			
+			System.out.println(weibos);
 			
 			List<Weibo> weibo = weiboService.findTop(aid);
 	
 			model.addAttribute("weibo", weibo);	
 			
-			
-			
             Account account = (Account)session.getAttribute("account");
-            System.out.println(account);
+           
 			model.addAttribute("account", account);
 		}
 		

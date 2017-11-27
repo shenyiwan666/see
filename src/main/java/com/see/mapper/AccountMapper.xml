@@ -90,11 +90,66 @@
 		email = #{email}
   </select>
   
-  
-  <select id="findAll" parameterType="int" resultMap="accountMap">
+  <!--  
+  <select id="findAll" parameterType="FindVO" resultMap="accountMap">
   	SELECT
 	*
-FROM
+	FROM
+		(
+			SELECT
+				w.*
+			FROM
+				weibo w
+			WHERE
+				EXISTS (
+					SELECT
+						1
+					FROM
+						follow f
+					WHERE
+						w.aid = f.follow_aid
+					AND f.aid = #{id}
+				)
+			OR w.aid =#{id}
+		) t
+	  LEFT JOIN account a ON t.aid = a.aid
+	  ORDER BY
+		t.last_update_time DESC
+	  LIMIT #{offset}, #{size}
+  </select>
+  -->
+  
+   <select id="findAll" parameterType="int" resultMap="accountMap">
+  	SELECT
+	*
+	FROM
+		(
+			SELECT
+				w.*
+			FROM
+				weibo w
+			WHERE
+				EXISTS (
+					SELECT
+						1
+					FROM
+						follow f
+					WHERE
+						w.aid = f.follow_aid
+					AND f.aid = #{id}
+				)
+			OR w.aid =#{id}
+		) t
+	  LEFT JOIN account a ON t.aid = a.aid
+	  ORDER BY
+		t.last_update_time DESC
+  </select>
+  
+  <!--  
+  <select id="countAll" parameterType="int" resultType="int">
+  	SELECT
+		count( 2 ) 
+	FROM
 	(
 		SELECT
 			w.*
@@ -112,10 +167,9 @@ FROM
 			)
 		OR w.aid =#{id}
 	) t
-  LEFT JOIN account a ON t.aid = a.aid
-  ORDER BY
-	t.last_update_time DESC
+	  LEFT JOIN account a ON t.aid = a.aid
   </select>
+  -->
   
   
   

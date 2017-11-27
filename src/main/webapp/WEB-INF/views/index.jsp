@@ -59,13 +59,14 @@
         
         <div class="wrapper-wb">
         	<div class= "dynamic-inform">
+        	<% /* <c:forEach items="${page.list }" var="w"> */%>
         		<c:forEach items="${requestScope.weibos }" var="w">
 				<div class="wb">
 					<img src="/resources/image/${w.account.pic }"/>
 					<h3><p>${w.account.nickName}</p></h3>
 					<div class="show">
-				   	<img class="img-show" src="/resources/image/${w.imgname}" style="height:250px;"/>
-				    <p class="content-show">${w.wcontent }</p><br/>
+					   	<img class="img-show" src="/resources/image/${w.imgname}" style="height:250px;"/>
+					    <p class="content-show">${w.wcontent }</p><br/>
 				    </div>
 				    <div class="clr"></div>
 					<div class="comment_line">
@@ -79,15 +80,38 @@
 		            	<div class="comment-input">
 			            	<textarea rows="1" cols="20" class="ccontent"  id="ccontent" placeholder="留下你的评论" name="ccontent" style="height:20px; width:300px;"></textarea>
 			            	<input class="cc"  type="button" id="btn_pinglun"  value="评论"  />
-		            	</div>
-		            	
+		            	</div> 	
 					</form>
-					
 					<div class="comment"></div>	
 				</div>
 				</c:forEach>
         	</div>
+         <% /*
+        		<div class="page-info">
+					<c:if test="${page.cur gt 1 }">
+						<a href="/?p=1">首页</a>
+						<a href='/?p=${page.cur - 1 }'>上一页</a>
+					</c:if>
+					<c:forEach begin="1" end="${page.total }" var="p">
+					
+						<c:if test="${page.cur eq p }">
+							<a class="cur" href="javascript:void(0);">${p }</a>
+						</c:if>
+						<c:if test="${page.cur ne p }">
+							<a href='/?p=${p }'>${p }</a>
+						</c:if>
+					</c:forEach>
+					<c:set var="last" value="${page.total }"/>
+					<c:if test="${page.cur lt last }">
+						<a href="/?p=${page.total}">末页</a>
+						<a href="/?p=${page.cur + 1 }">下一页</a>
+					</c:if>
+			   </div>
+        */ %>	
 		</div>
+		
+		
+	
 		
 		<!-- <br/><br/>
 		 -->
@@ -104,7 +128,9 @@
 				</div>
 				</c:forEach>
 			</div>
-		</div>		
+		</div>	
+		
+			
 	</body>
 	
 	
