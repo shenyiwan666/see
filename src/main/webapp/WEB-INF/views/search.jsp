@@ -44,7 +44,7 @@
 	 	<p>search relative contents</p>
 		<c:forEach items="${page.list }" var="w">
 		<div class="wb">
-		    <a class="pic" href="/find/${w.account.aid }">
+		     <a class="pic" href="/find/${w.account.aid }">
 	         <img src="/resources/image/${w.account.pic }"/>
 	         </a>
 			<div class="content-for-all">
@@ -98,7 +98,7 @@
 	
 	$(function(){
 		
-		$('.wb > a.liked').click(function( e ){
+		$('.wrapper > .wb > .content-for-all > .comment_line >a.liked').click(function( e ){
 			e.preventDefault();
 			var _a = $( this );
 			$.get(_a.attr('href'), function( data ){
