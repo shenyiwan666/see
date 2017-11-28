@@ -100,8 +100,7 @@
 					<div class="comment"></div>	
 				</div>
 				</c:forEach>
-        	
-        
+
         	<div class="clr"></div>
        		<div class="page-info">
 	      		<div class="page-style">
@@ -124,8 +123,9 @@
 						<a href="/?p=${page.cur + 1 }">下一页</a>
 					</c:if>
 	      		</div>
-				
+	      		<div class="clr"></div>
 		   		</div>
+		   		
 			</div>
 			  
 		</div>
