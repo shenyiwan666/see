@@ -142,10 +142,13 @@
 				<div class="top">
 				 
 		          <img src="/resources/image/${weibo.imgname }"/>
-		           <p>${weibo.wcontent }</p>
-				   <a class="topnickname" href="#">${weibo.account.nickName}</a>  &nbsp &nbsp &nbsp &nbsp
-				   <a class="follow" href="/follow/${weibo.account.aid}">${weibo.account.follow }</a>
-					
+		           <div class="top-content"><p>${weibo.wcontent }</p></div>
+		           <div class="clr0"></div>
+		           <div class="ops-for-top">
+			           <a class="topnickname" href="#">${weibo.account.nickName}</a>
+					   <a class="follow" href="/follow/${weibo.account.aid}">${weibo.account.follow }</a>
+		           </div>
+				   <div class="clr0"></div>
 				</div>
 				</c:forEach>
 			</div>

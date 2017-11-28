@@ -410,6 +410,17 @@ h2 small {
 	margin: 0;
 }
 
+.top > .top-content {
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+}
+
+
+
+
+
+
 .topnickname
 {
 	
@@ -431,7 +442,7 @@ a:link
 	width: 254px;
     height: 126px;
     position: absolute;
-    right: 300px;
+    right: 280px;
     top: 160px;
 	text-color:black;
 	
