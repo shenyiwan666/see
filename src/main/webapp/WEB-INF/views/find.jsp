@@ -17,7 +17,7 @@
 	      <img src="/resources/image/${account.pic }"/>
 	      </a>
           <span class="nickname">
-          ${account.nickName}
+          ${account.nickName} 的主页
           </span> 
         
       </div>

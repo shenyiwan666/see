@@ -99,15 +99,17 @@
 					<div class="comment"></div>	
 				</div>
 				</c:forEach>
-        	</div>
-        	<!-- <div class="clr"></div> -->
-        		<div class="page-info">
-					<c:if test="${page.cur gt 1 }">
+        	
+        
+        	<div class="clr"></div>
+       		<div class="page-info">
+	      		<div class="page-style">
+		      		<c:if test="${page.cur gt 1 }">
 						<a href="/?p=1">首页</a>
 						<a href='/?p=${page.cur - 1 }'>上一页</a>
 					</c:if>
 					<c:forEach begin="1" end="${page.total }" var="p">
-
+	
 						<c:if test="${page.cur eq p }">
 							<a class="cur" href="javascript:void(0);">${p }</a>
 						</c:if>
@@ -120,12 +122,14 @@
 						<a href="/?p=${page.total}">末页</a>
 						<a href="/?p=${page.cur + 1 }">下一页</a>
 					</c:if>
-			   </div>
+	      		</div>
+				
+		   </div>
        
+	
 		</div>
 		
-		
-	
+	</div>
 		
 		<!-- <br/><br/>
 		 -->

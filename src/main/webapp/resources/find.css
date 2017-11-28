@@ -53,7 +53,7 @@ body {
 	line-height:0;
 }
 .wrapper {
-	width:960px;
+	width:860px;
 	margin: 0 auto;
 }
 /* .wb {
@@ -78,7 +78,7 @@ body {
 
 .wb {
 	border: 4px;
-	width:800px;
+	width:700px;
 	background:#fff;
 	margin: 10px;
 	padding: 10px 10px 10px 80px;
