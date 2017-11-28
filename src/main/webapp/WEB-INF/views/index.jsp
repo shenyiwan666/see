@@ -70,8 +70,8 @@
         
         <div class="wrapper-wb">
         	<div class= "dynamic-inform">
-        	<% /* <c:forEach items="${page.list }" var="w"> */%>
-        		<c:forEach items="${requestScope.weibos }" var="w">
+        	 <c:forEach items="${page.list }" var="w"> 
+        		<% /*<c:forEach items="${requestScope.weibos }" var="w">*/%>
 				<div class="wb">
 				 <a class="pic1" href="/find/${w.account.aid }">
 		         <img src="/resources/image/${w.account.pic }"/>
@@ -100,7 +100,7 @@
 				</div>
 				</c:forEach>
         	</div>
-         <% /*
+         
         		<div class="page-info">
 					<c:if test="${page.cur gt 1 }">
 						<a href="/?p=1">首页</a>
@@ -121,7 +121,7 @@
 						<a href="/?p=${page.cur + 1 }">下一页</a>
 					</c:if>
 			   </div>
-        */ %>	
+       
 		</div>
 		
 		

@@ -8,85 +8,26 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>搜索结果</title>
 <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.js"></script>
-<style type="text/css">
-	table img {
-		width:50px;
-		height: 50px;
-	}
-	.cur {
-		border: 1px solid #000;
-		padding: 3px 5px;
-		color: red;
-	}
-	
-	.users
-	{
-	position:relative;
-	padding-top:10px;
-	padding-left:80px;
-	width: 800px;
-    height: 100px;
-	}
-	.user
-	{
-	 position:relative;
-     display:inline;
-     padding-left:15px;
-	
-	}
-	.wrapper {
-				width:960px;
-				margin: 0 auto;
-			}
-			.wb {
-				background:#fff;
-				margin: 10px;
-				padding: 10px 10px 10px 80px;
-				position: relative;
-				border-radius: 5px;
-			}
-			.wb > .pic > img {
-				width: 50px;
-				height: 50px;
-				border-radius: 50%;
-				position: absolute;
-				left:10px;
-				top:10px;
-			}
-			.users > .user > .userpic > img
-			{
-			    width: 80px;
-				height: 80px;
-				border-radius: 50%;
-			}
-			.users > .user > .username
-			{
-			position:absolute;
-			top:20px;
-			left:10px;
-            font-size: 14px;
-			}
-			.wb > h3 {
-				margin: 0;
-			}
-			.seperateline
-			{
-			height:15px;
-			background:#cccccc;
-			}
-			
-</style>
+<link rel="stylesheet" type="text/css" href="resources/search.css"/>
 </head>
 <body>
-	<form action="/search" method="get">
+	<%-- <form action="/search" method="get">
 		搜索:<input type="text" name="q" value="${param.q }"/><input type="submit" value="搜索" />
-	</form>
-	
-	</br>
-	</br>
-	
-	  相关用户：
-	  <div class="users">    
+	</form>--%>
+	<div id="searchform"> 
+       	<form id="formsearch" name="formsearch" action="/search" method="get">
+			<span>
+            <input name="q" class="editbox_search" id="editbox_search" maxlength="80" value="${param.q }" type="text" />
+            </span>
+            <input name="button_search" class="button_search" type="submit" value="     "/>
+		</form>
+    </div>
+	<div class="clr"></div>
+        </br>
+         </br>
+         相关用户：
+	  <div class="users">
+	  <p>search relative users</p>
 	  <c:forEach items="${accounts}" var="a">
 		  <div class="user">
 		  <a class="userpic" href="/find/${a.aid }">
@@ -96,29 +37,41 @@
 		  </div>
 	  </c:forEach>
 	  </div>
-	
+	  
+	<div class="seperateline"></div>
+	<div style="width:1000px;height:1px;margin:0px auto;padding:0px;background-color:#555;overflow:hidden;"></div>
 	<div class="seperateline"></div>
 	</br>
-	相关动态：
-		 <div class="wrapper">
-			<c:forEach items="${page.list }" var="w">
-			<div class="wb">
-			    <a class="pic" href="/find/${w.account.aid }">
-		         <img src="/resources/image/${w.account.pic }"/>
-		         </a>
-				
+         相关动态：
+	 <div class="wrapper">
+	 	<p>search relative contents</p>
+		<c:forEach items="${page.list }" var="w">
+		<div class="wb">
+		    <a class="pic" href="/find/${w.account.aid }">
+	         <img src="/resources/image/${w.account.pic }"/>
+	         </a>
+			<div class="content-for-all">
 				<h3><a href="/follow/${w.account.aid}">${w.account.nickName}</a></h3>
 				<div>
-				<img src="/resources/image/${w.imgname }"/>
+					<img class="img-show" src="/resources/image/${w.imgname}" style="height:250px;"/>
+					<p class="content-show">${w.wcontent }</p><br/>
 				</div>
-				<p>${w.wcontent }</p><br/>
-				<p><fmt:formatDate value="${w.lastUpdateTime}" pattern="yyyy-MM-dd HH:mm:ss" /></p>
-				<a class="liked" href="/like/${w.wid}">推荐(${w.liked })</a>
-				<a>评论(${w.comment})</a>
-				<p>
+				<div class="comment_line">
+					<a class="timer"><fmt:formatDate value="${w.lastUpdateTime}" pattern="yyyy-MM-dd HH:mm:ss" /></a>
+					<a class="liked" href="/like/${w.wid}">推荐(${w.liked })</a>
+					<a class="showcomment" href="/showcomment/${w.wid }">评论(${w.comment})</a>
+				</div>
+				<div class="clr"></div>
 			</div>
-			</c:forEach>
+			
+			
+			<%-- <p><fmt:formatDate value="${w.lastUpdateTime}" pattern="yyyy-MM-dd HH:mm:ss" /></p>
+			<a class="liked" href="/like/${w.wid}">推荐(${w.liked })</a>
+			<a>评论(${w.comment})</a>
+			<p> --%>
 		</div>
+		</c:forEach>
+	</div>
 		
 		
 		<div class="page-info">
