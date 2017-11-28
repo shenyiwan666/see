@@ -5,10 +5,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>搜索结果</title>
-<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.js"></script>
-<link rel="stylesheet" type="text/css" href="resources/search.css"/>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>搜索结果</title>
+	<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.js"></script>
+	<link rel="stylesheet" type="text/css" href="resources/search.css"/>
 </head>
 <body>
 	<%-- <form action="/search" method="get">
