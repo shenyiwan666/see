@@ -58,6 +58,11 @@ public class WeiboServiceImpl implements WeiboService {
 			weibo.setLiked(0);
 			weibo.setComment(0);
 			
+			Account account = accountMapper.findById(aid);
+			System.out.println(account);
+			account.setAllweibo(account.getAllweibo()+1);
+			accountMapper.update(account);
+			
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -128,17 +133,37 @@ public class WeiboServiceImpl implements WeiboService {
 		
 		String s=String.valueOf(followMapper.findFollow(aid, followAid));
 		
+		System.out.println(s);
+		
 		if(s.equals("null")) {
 			
 			Follow follow=new Follow();
 			follow.setAid(aid);
 			follow.setFollowAid(followAid);
 			followMapper.insert(follow);
+			
+			Account account = accountMapper.findById(aid);
+			account.setFollows(account.getFollows()+1);
+			accountMapper.update(account);
+			
+			Account faccount =accountMapper.findById(followAid);
+			faccount.setFans(faccount.getFans()+1);
+			accountMapper.update(faccount);
+
 			return 1;
 			
 		}else {
 			
 			followMapper.delete(followAid);
+			
+			Account account = accountMapper.findById(aid);
+			account.setFollows(account.getFollows()-1);
+			accountMapper.update(account);
+			
+			Account faccount =accountMapper.findById(followAid);
+			faccount.setFans(faccount.getFans()-1);
+			accountMapper.update(faccount);
+			
 			return 0;
 		}
 				
