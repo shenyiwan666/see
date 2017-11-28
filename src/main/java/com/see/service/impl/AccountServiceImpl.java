@@ -100,27 +100,27 @@ public class AccountServiceImpl implements AccountService {
 	
 	}
 
-//	@Override
-//	public Page findAll(int aid,Integer p) {
-
-//		Page page = new Page(p);
-//		
-//		int count = accountMapper.countAll(aid);
-//		page.setCount(count);
-//		List<Weibo> weibos = accountMapper.findAll(new FindVO(aid, page.getOffset(), page.getSize()));
-//		
-//		page.setList( weibos );
-//		
-//		return page;
-//	}
-	
 	@Override
-	public List<Weibo> findAll(int aid) {
-		// TODO Auto-generated method stub
-		List<Weibo> accounts = accountMapper.findAll(aid);
-	
-		return accounts;
+	public Page findAll(int aid,Integer p) {
+
+		Page page = new Page(p);
+		
+		int count = accountMapper.countAll(aid);
+		page.setCount(count);
+		List<Weibo> weibos = accountMapper.findAll(new FindVO(aid, page.getOffset(), page.getSize()));
+		
+		page.setList( weibos );
+		
+		return page;
 	}
+	
+//	@Override
+//	public List<Weibo> findAll(int aid) {
+//		// TODO Auto-generated method stub
+//		List<Weibo> accounts = accountMapper.findAll(aid);
+//	
+//		return accounts;
+//	}
 
 
 	@Override

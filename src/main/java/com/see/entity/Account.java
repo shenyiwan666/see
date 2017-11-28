@@ -12,6 +12,7 @@ public class Account {
 	private Integer fans;
 	private Weibo weibo;
 	private String follow;
+	private Integer allweibo;
 	
 	private List<Weibo> weibos;
 	
@@ -72,10 +73,20 @@ public class Account {
 	public void setFollow(String follow) {
 		this.follow = follow;
 	}
+	
+	
+	public Integer getAllweibo() {
+		return allweibo;
+	}
+	public void setAllweibo(Integer allweibo) {
+		this.allweibo = allweibo;
+	}
 	@Override
 	public String toString() {
-		return "Account [aid=" + aid + ", nickName=" + nickName + ", fans=" + fans + ", weibo=" +weibo+", email=" + email + ", password=" + password
-				+ ", pic=" + pic + ", fans=" + fans + ", weibo=" + weibo + ", follow=" + follow + ", weibos=" + weibos
-				+ "]";
+		return "Account [aid=" + aid + ", nickName=" + nickName + ", email=" + email + ", password=" + password
+				+ ", pic=" + pic + ", fans=" + fans + ", weibo=" + weibo + ", follow=" + follow + ", allweibo="
+				+ allweibo + ", weibos=" + weibos + "]";
 	}
+
+	
 }

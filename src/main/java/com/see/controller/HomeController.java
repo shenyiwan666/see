@@ -44,15 +44,13 @@ public class HomeController {
 			
 			int aid = ((Account)session.getAttribute("account")).getAid();
 	
-//			Page page =accountService.findAll(aid,p);
-//		
-//			model.addAttribute("page", page);
+			Page page =accountService.findAll(aid,p);
+		
+			model.addAttribute("page", page);
 			
-			List<Weibo> weibos =accountService.findAll(aid);
-			
-			model.addAttribute("weibos", weibos);
-			
-			System.out.println(weibos);
+//			List<Weibo> weibos =accountService.findAll(aid);
+//			
+//			model.addAttribute("weibos", weibos);
 			
 			List<Weibo> weibo = weiboService.findTop(aid);
 	
