@@ -82,9 +82,11 @@
 		搜索:<input type="text" name="q" value="${param.q }"/><input type="submit" value="搜索" />
 	</form>
 	
+	</br>
+	</br>
 	
-	
-	  <div class="users">
+	  相关用户：
+	  <div class="users">    
 	  <c:forEach items="${accounts}" var="a">
 		  <div class="user">
 		  <a class="userpic" href="/find/${a.aid }">
@@ -96,7 +98,8 @@
 	  </div>
 	
 	<div class="seperateline"></div>
-	
+	</br>
+	相关动态：
 		 <div class="wrapper">
 			<c:forEach items="${page.list }" var="w">
 			<div class="wb">
