@@ -423,3 +423,21 @@ a:link
    left: 99px;
     top: 88px;
 }
+
+.page-info {
+	position:relative;
+	padding-top: 10px;
+	padding-left: 200px;
+	margin-top:10px;
+}
+
+/* .page-style {
+	position:relative;
+	padding-top: 10px;
+	padding-left: 200px;
+	margin-top:10px;
+} */
+
+
+
+

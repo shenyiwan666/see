@@ -61,8 +61,9 @@
 	          <span class="nickname">
 	          ${account.nickName}
 	          </span> 
-	          
-	         
+	          <p>微博数：${account.allweibo}</p>
+	          <p class="follow">关注数：${account.follows}</p>
+	          <p>粉丝数：${account.fans}</p>
          </div>
    
    
@@ -70,8 +71,8 @@
         
         <div class="wrapper-wb">
         	<div class= "dynamic-inform">
-        	 <c:forEach items="${page.list }" var="w"> 
-        		<% /*<c:forEach items="${requestScope.weibos }" var="w">*/%>
+        	<c:forEach items="${page.list }" var="w"> 
+        		<% /* <c:forEach items="${requestScope.weibos }" var="w">*/%>
 				<div class="wb">
 				 <a class="pic1" href="/find/${w.account.aid }">
 		         <img src="/resources/image/${w.account.pic }"/>
@@ -99,15 +100,17 @@
 					<div class="comment"></div>	
 				</div>
 				</c:forEach>
-        	</div>
-         
-        		<div class="page-info">
-					<c:if test="${page.cur gt 1 }">
+        	
+        
+        	<div class="clr"></div>
+       		<div class="page-info">
+	      		<div class="page-style">
+		      		<c:if test="${page.cur gt 1 }">
 						<a href="/?p=1">首页</a>
 						<a href='/?p=${page.cur - 1 }'>上一页</a>
 					</c:if>
 					<c:forEach begin="1" end="${page.total }" var="p">
-					
+	
 						<c:if test="${page.cur eq p }">
 							<a class="cur" href="javascript:void(0);">${p }</a>
 						</c:if>
@@ -120,12 +123,13 @@
 						<a href="/?p=${page.total}">末页</a>
 						<a href="/?p=${page.cur + 1 }">下一页</a>
 					</c:if>
-			   </div>
-       
+	      		</div>
+				
+		   		</div>
+			</div>
+			  
 		</div>
 		
-		
-	
 		
 		<!-- <br/><br/>
 		 -->
@@ -167,13 +171,15 @@
 		$('.top > a.follow').click(function( e ){
 			e.preventDefault();
 			var _a = $( this );
+			var user = $('.userinfo > p.follow ');
 			$.get(_a.attr('href'), function(data){
-				if(data==1){
+				if(data[0]==1){
 					_a.html( '已关注' );
 				}
-				if(data==0){
+				if(data[0]==0){
 					_a.html( '关注' );
 				}
+				user.html('关注数：'+ data[1]);
 			}, 'json');
 		});
 		
