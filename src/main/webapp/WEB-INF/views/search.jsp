@@ -23,9 +23,7 @@
 		</form>
     </div>
 	<div class="clr"></div>
-        </br>
-         </br>
-         相关用户：
+      
 	  <div class="users">
 	  <p>search relative users</p>
 	  <c:forEach items="${accounts}" var="a">
@@ -41,8 +39,7 @@
 	<div class="seperateline"></div>
 	<div style="width:1000px;height:1px;margin:0px auto;padding:0px;background-color:#555;overflow:hidden;"></div>
 	<div class="seperateline"></div>
-	</br>
-         相关动态：
+	
 	 <div class="wrapper">
 	 	<p>search relative contents</p>
 		<c:forEach items="${page.list }" var="w">

@@ -13,13 +13,12 @@
 <body>
 <div class="wrapper">
 			<c:set var="account" value="${requestScope.account }"/>
+			
 			<c:forEach items="${account.weibos }" var="w">
 			<div class="wb">
 			
-			    <c:if test="${empty w}">
-			              该用户没有发布过微博。
-			    </c:if>
-			  <c:if test="${not empty w}">
+			    
+			  
 			      <a class="pic" href="/find/${account.aid }">
 		          <img src="/resources/image/${account.pic }"/>
 		         </a>
@@ -34,7 +33,7 @@
 				<a class="liked" href="/like/${w.wid}">推荐(${w.liked })</a>
 				<a class="showcomment" href="/showcomment/${w.wid }">评论(${w.comment})</a>
 			</div>
-			</c:if>
+		
 		
 			</c:forEach>
 		</div>
