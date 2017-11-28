@@ -61,8 +61,8 @@
 	          <div class="nickname"><strong>${account.nickName}</strong></div>
 	          <div class="wbs"><strong>${account.allweibo}</strong></div>
 	          <div class="wbs-t">微博</div>
-	          <div class="follow"><strong>${account.follows}</strong></div>
-	          <div class="follow-t">关注</div>
+	          <div class="follows"><strong>${account.follows}</strong></div>
+	          <div class="follows-t">关注</div>
 	          <div class="fans"><strong>${account.fans}</strong></div>
 	          <div class="fans-t">粉丝</div>
          </div>
@@ -143,12 +143,12 @@
 				 
 		          <img src="/resources/image/${weibo.imgname }"/>
 		           <div class="top-content" style="width:180px;height:50px;font-size:15px;"><p>${weibo.wcontent }</p></div>
-		           <div class="clr0"></div>
-		           <div class="ops-for-top">
-			           <a class="topnickname" href="#">${weibo.account.nickName}</a>
+		           <!-- <div class="clr0"></div>
+		           <div class="ops-for-top"> -->
+			           <a class="topnickname" href="#">${weibo.account.nickName}</a> &nbsp&nbsp&nbsp
 					   <a class="follow" href="/follow/${weibo.account.aid}">${weibo.account.follow }</a>
-		           </div>
-				   <div class="clr0"></div>
+		          <!--  </div> -->
+				  <!--  <div class="clr0"></div> -->
 				</div>
 				</c:forEach>
 			</div>
