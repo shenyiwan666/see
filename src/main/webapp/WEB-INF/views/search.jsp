@@ -8,74 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>搜索结果</title>
 <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.js"></script>
-<style type="text/css">
-	table img {
-		width:50px;
-		height: 50px;
-	}
-	.cur {
-		border: 1px solid #000;
-		padding: 3px 5px;
-		color: red;
-	}
-	
-	.users
-	{
-	position:relative;
-	padding-top:10px;
-	padding-left:80px;
-	width: 800px;
-    height: 100px;
-	}
-	.user
-	{
-	 position:relative;
-     display:inline;
-     padding-left:15px;
-	
-	}
-	.wrapper {
-				width:960px;
-				margin: 0 auto;
-			}
-			.wb {
-				background:#fff;
-				margin: 10px;
-				padding: 10px 10px 10px 80px;
-				position: relative;
-				border-radius: 5px;
-			}
-			.wb > .pic > img {
-				width: 50px;
-				height: 50px;
-				border-radius: 50%;
-				position: absolute;
-				left:10px;
-				top:10px;
-			}
-			.users > .user > .userpic > img
-			{
-			    width: 80px;
-				height: 80px;
-				border-radius: 50%;
-			}
-			.users > .user > .username
-			{
-			position:absolute;
-			top:20px;
-			left:10px;
-            font-size: 14px;
-			}
-			.wb > h3 {
-				margin: 0;
-			}
-			.seperateline
-			{
-			height:15px;
-			background:#cccccc;
-			}
-			
-</style>
+<link rel="stylesheet" type="text/css" href="resources/search.css"/>
 </head>
 <body>
 	<form action="/search" method="get">

@@ -8,35 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>用户空间</title>
 <script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.js"></script>
-<style type="text/css">
-			body {
-				margin: 0;
-				background: #ccc;
-			}
-			.wrapper {
-				width:960px;
-				margin: 0 auto;
-			}
-			.wb {
-				background:#fff;
-				margin: 10px;
-				padding: 10px 10px 10px 80px;
-				position: relative;
-				border-radius: 5px;
-			}
-			.wb > .pic > img {
-				width: 50px;
-				height: 50px;
-				border-radius: 50%;
-				position: absolute;
-				left:10px;
-				top:10px;
-			}
-			.wb > h3 {
-				margin: 0;
-			}
-		
-		</style>
+<link rel="stylesheet" type="text/css" href="resources/find.css"/>
 </head>
 <body>
 <div class="wrapper">
