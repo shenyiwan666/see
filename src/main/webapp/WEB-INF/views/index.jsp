@@ -8,24 +8,21 @@
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>主页</title>
 		<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.js"></script>
-		<link rel="stylesheet" type="text/css" href="resources/index.css"/>
+		<link rel="stylesheet" type="text/css" href="resources/indexx.css"/>
 	</head>
 	
 	<body>
 		<div id="site-name">
-			<img src="image/eyes_icon.png">
+			<img src="image/eyes_icon.png"> 
 			<h1>See<small>Share your colorful life</small></h1>
 		</div>
 		
-		<div class="menu_nav">
-	       <ul>
-	         <li class="active"><a><span>Home Page</span></a></li>
-	         <li><c:set var="account" value="${requestScope.account}"/><a href="/account/${account.aid }"><span>Setting</span></a></li>
-	         <li><a href="about.html"><span>About Us</span></a></li>
-	         <li><a href="contact.html"><span>Contact Us</span></a></li>
-	       </ul>
-	     </div>
-		
+		  <c:set var="account" value="${requestScope.account}"/>
+		  
+		  <a class="setting" href="/account/${account.aid }">
+		   <img src="/resources/image/settings.png" />
+		   </a>
+		  
 		
         <div id="searchform">
         	<form id="formsearch" name="formsearch" action="/search" method="get">
@@ -51,9 +48,23 @@
 	       </form>
         </div>
 
-<%-- 		
+        <%-- 		
         <c:set var="account" value="${requestScope.account}"/>
         <a href="/account/${account.aid }">账户管理</a> --%>
+   
+   
+        <div class="userinfo">
+              <a class="userpic" href="/find/${account.aid }">
+		      <img src="/resources/image/${account.pic }"/>
+		      </a>
+		      </br>
+	          <span class="nickname">
+	          ${account.nickName}
+	          </span> 
+	          
+	         
+         </div>
+   
    
 		<div class="clr"></div>
         
@@ -127,8 +138,8 @@
 				 
 		          <img src="/resources/image/${weibo.imgname }"/>
 		           <p>${weibo.wcontent }</p>
-				   <h3><a class="topnickname" href="#">${weibo.account.nickName}</a></h3>
-				<a class="follow" href="/follow/${weibo.account.aid}">${weibo.account.follow }</a>
+				   <a class="topnickname" href="#">${weibo.account.nickName}</a>  &nbsp &nbsp &nbsp &nbsp
+				   <a class="follow" href="/follow/${weibo.account.aid}">${weibo.account.follow }</a>
 					
 				</div>
 				</c:forEach>
