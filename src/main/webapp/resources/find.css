@@ -32,15 +32,15 @@ body {
 }
 .userinfo > .nickname
 {
-	position:absolute;
-    left: 300px;
-    top: 50px;
-    color:#333;
-	display:block;
-	font-size:20px;
-	line-height:1.2em;
-	letter-spacing:normal;
-	text-transform:none;
+	position: absolute;
+    left: 280px;
+    top: 60px;
+    color: #333;
+	display: block;
+	font-size: 25px;
+	line-height: 1.2em;
+	letter-spacing: normal;
+	text-transform: none;
 }
 
 .clr {

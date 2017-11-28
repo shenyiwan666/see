@@ -18,7 +18,7 @@
 	      </a>
           <span class="nickname">
           ${account.nickName} 的主页
-          </span> 
+          </span>
         
       </div>
       <div class="clr"></div>
