@@ -423,3 +423,22 @@ a:link
    left: 99px;
     top: 88px;
 }
+
+.page-info {
+	position:relative;
+	padding-top: 10px;
+	margin:10px;
+	width:auto;
+	height:80px;
+}
+
+.page-style {
+	/* position:absolute;
+	left:10px; */
+	margin:0;
+	text-align: center;
+}
+
+
+
+

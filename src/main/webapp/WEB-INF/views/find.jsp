@@ -11,8 +11,19 @@
 	<link rel="stylesheet" type="text/css" href="../resources/find.css"/>
 </head>
 <body>
+	<c:set var="account" value="${requestScope.account }"/>
+	 <div class="userinfo">
+	      <a class="userpic" href="/find/${account.aid }">
+	      <img src="/resources/image/${account.pic }"/>
+	      </a>
+          <span class="nickname">
+          ${account.nickName} 的主页
+          </span> 
+        
+      </div>
+      <div class="clr"></div>
 	<div class="wrapper">
-		<c:set var="account" value="${requestScope.account }"/>
+		
 		<c:forEach items="${account.weibos }" var="w">
 		<div class="wb">
 <%-- 		
