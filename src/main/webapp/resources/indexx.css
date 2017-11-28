@@ -384,7 +384,7 @@ h2 small {
 .top {
 	width: 200px;
 	background:#fff;
-	margin: 10px;
+	margin: 5px;
 	padding: 10px 10px 10px 80px;
 	position: relative;
 	border-radius: 5px;
@@ -450,7 +450,7 @@ a:link
 	width: 254px;
     height: 126px;
     position: absolute;
-    right: 280px;
+    left: 883px;
     top: 160px;
 	text-color:black;
 	
@@ -539,6 +539,11 @@ a:link
 	left:10px; */
 	margin:0;
 	text-align: center;
+}
+
+.page-style > a {
+	color:#555;
+	border: none;
 }
 
 .clr0 {
