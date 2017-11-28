@@ -12,27 +12,52 @@ body {
     left:50%;
     margin-left: -400px;
     margin-top: -193px;
-    text-align:left;
+    text-align: center;
     color : #fff;
 }
 #finish {
-	text-align:right;
+	text-align: center;
 }
 table img {
 	width:50px;
 	height: 50px;
     border-style:none;
 	}
-btn {
+.btn {
     border: 1px solid #CCC;
     width: 60px;
     margin-left: 224px;
     text-align: center;
 }
-   .ac_file {
+.ac_file {
     width: 61px;
     position: absolute;
     cursor: pointer;
     opacity: 0;
     margin-left: -47px;
 }
+
+#btn_login{
+    font-size: 24px;
+    font-family: "微软雅黑";
+    color: white;
+    background: url("../image/btn_login_bac.png");
+
+    width: 330px;
+    line-height: 55px;
+    text-align: center;
+
+    border: 0;
+}
+
+
+#fabuimg{
+	position: relative;
+	padding-right:5px;
+}
+
+
+
+
+
+
