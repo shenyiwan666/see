@@ -3,6 +3,7 @@ package com.see.controller;
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -56,7 +57,7 @@ public class HomeController {
 	
 			model.addAttribute("weibo", weibo);	
 			
-            Account account = (Account)session.getAttribute("account");
+            Account account = accountService.findById(aid);
            
 			model.addAttribute("account", account);
 		}
@@ -65,7 +66,7 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value="/fabu",method=RequestMethod.POST)
-	public String fabu(HttpSession session,Weibo weibo,HttpServletRequest request, MultipartFile file) throws ParseException, IllegalStateException, IOException {
+	public String fabu(HttpSession session,Weibo weibo,HttpServletRequest request, MultipartFile file,Model model) throws ParseException, IllegalStateException, IOException {
 		int aid = ((Account)session.getAttribute("account")).getAid();
 		
 		/*******************上传图片********************/
@@ -84,6 +85,7 @@ public class HomeController {
 		/*******************上传图片********************/
 	
 		weiboService.insert(aid,weibo);
+	
 
 		return "redirect:/";
 	}	
@@ -97,11 +99,16 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value="/follow/{aid}")
-	public @ResponseBody int follow(@PathVariable("aid") int aid,Model model,HttpSession session) {
+	public @ResponseBody List<Integer> follow(@PathVariable("aid") int aid,Model model,HttpSession session) {
 		
 		int useraid = ((Account)session.getAttribute("account")).getAid();
 		
-		return weiboService.setFollow(useraid, aid);
+		List<Integer> follow = new ArrayList<Integer>();
+		
+		follow.add(weiboService.setFollow(useraid, aid));
+		follow.add(accountService.findById(useraid).getFollows());
+		
+		return follow;
 	}
 	
 	@RequestMapping(value="/search",method=RequestMethod.GET)

@@ -28,6 +28,8 @@
 		<result column="email" property="email"/>
 		<result column="password" property="password"/>
 		<result column="fans" property="fans"/>
+		<result column="weibo" property="allweibo" />
+		<result column="follow" property="follows" />
 		<collection property="weibos" ofType="Weibo">
 			<id column="wid" property="wid"/>
 			<result column="wcontent" property="wcontent"/>
@@ -44,11 +46,16 @@
 			
 			
 			<id column="aid" property="aid" />
+			<result column="email" property="email" />
 			<result column="nick_name" property="nickName" />
+			<result column="password" property="password" />
 			<result column="fans" property="fans" />
 			<result column="pic" property="pic" />
+			<result column="weibo" property="allweibo" />
+			<result column="follow" property="follows" />
 			
 		</resultMap>
+		
 		
 		
 
@@ -60,6 +67,8 @@
 		a.fans,
 		a.email,
 		a.password,
+		a.follow,
+		a.weibo,
 		w.wid,
 		w.wcontent,
 		w.last_update_time,
@@ -77,12 +86,15 @@
  
   
    
-  <select id="findByEmail" parameterType="String" resultType="Account">
+  <select id="findByEmail" parameterType="String" resultMap="accountsMap">
   	SELECT
 		aid,
 		email,
 		nick_name,
 		`password`,
+		follow,
+		fans,
+		weibo,
 		pic 
 	FROM
 		account 
@@ -90,7 +102,7 @@
 		email = #{email}
   </select>
   
- 
+
   <select id="findAll" parameterType="FindVO" resultMap="accountMap">
   	SELECT
 	*
@@ -117,8 +129,8 @@
 		t.last_update_time DESC
 	  LIMIT #{offset}, #{size}
   </select>
- 
-   <!--  
+
+   <!--   
    <select id="findAll" parameterType="int" resultMap="accountMap">
   	SELECT
 	*
@@ -144,7 +156,7 @@
 	  ORDER BY
 		t.last_update_time DESC
   </select>
-   -->
+    -->
    
   <select id="countAll" parameterType="int" resultType="int">
   	SELECT
@@ -234,7 +246,7 @@
   	<selectKey order="BEFORE" keyProperty="aid" resultType="int">
   		select TIME_TO_SEC(NOW())
   	</selectKey>
-  	INSERT INTO ACCOUNT(aid,email,nick_name,`password`,pic) VALUES(#{aid},#{email},#{nickName},#{password},#{pic})
+  	INSERT INTO ACCOUNT(aid,email,nick_name,`password`,pic,follow,fans,weibo) VALUES(#{aid},#{email},#{nickName},#{password},#{pic},#{follows},#{fans},#{allweibo})
   </insert>
   
   <update id="update" parameterType="Account">
@@ -250,10 +262,16 @@
   			`password` = #{password}, 
   		</if>
   		<if test="pic != null">
-  			pic = #{pic},
+  			pic =  #{pic},
   		</if>
   		<if test="fans != null">
-  			fans = fans +  #{fans}
+  			fans =   #{fans},
+  		</if>
+  		<if test="follows != null">
+  			follow=  #{follows},
+  		</if>
+  		<if test="fans != null">
+  			weibo=  #{allweibo},
   		</if>
   	</set>
   	WHERE AID = #{aid}

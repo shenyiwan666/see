@@ -82,6 +82,10 @@ public class AccountServiceImpl implements AccountService {
 	public int insert(Account account) {
 		// TODO Auto-generated method stub
 		
+		account.setFollows(0);
+		account.setFans(0);
+		account.setAllweibo(0);
+		
 		int user=accountMapper.insert(account);
 		if( user != 1 ) {
 			throw new RuntimeException("注册失败");

@@ -66,8 +66,10 @@ public class SessionController {
 			file.transferTo(new File(target, pic ));
 			
 			account.setPic(pic);
+			account.setFollows(0);
+			account.setFans(0);
+			account.setAllweibo(0);
 			
-			System.out.println(account);
 			accountService.insert(account);
 		
 			
