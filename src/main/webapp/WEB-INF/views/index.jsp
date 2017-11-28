@@ -242,7 +242,7 @@
 					alert("评论成功 ");
 				}else{
 					$('<p></p>').html(data.comments.account.nickName+":"+data.comments.ccontent).prependTo( comment );
-					alert("评论success");
+					alert("评论成功");
 				}
 			}, 'json');
 		});
