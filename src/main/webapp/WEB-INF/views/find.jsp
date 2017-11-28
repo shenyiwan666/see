@@ -5,68 +5,69 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>用户空间</title>
-<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.js"></script>
-<style type="text/css">
-			body {
-				margin: 0;
-				background: #ccc;
-			}
-			.wrapper {
-				width:960px;
-				margin: 0 auto;
-			}
-			.wb {
-				background:#fff;
-				margin: 10px;
-				padding: 10px 10px 10px 80px;
-				position: relative;
-				border-radius: 5px;
-			}
-			.wb > .pic > img {
-				width: 50px;
-				height: 50px;
-				border-radius: 50%;
-				position: absolute;
-				left:10px;
-				top:10px;
-			}
-			.wb > h3 {
-				margin: 0;
-			}
-		
-		</style>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>用户空间</title>
+	<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.js"></script>
+	<link rel="stylesheet" type="text/css" href="../resources/find.css"/>
 </head>
 <body>
-<div class="wrapper">
-			<c:set var="account" value="${requestScope.account }"/>
-			<c:forEach items="${account.weibos }" var="w">
-			<div class="wb">
+	<div class="wrapper">
+		<c:set var="account" value="${requestScope.account }"/>
+		<c:forEach items="${account.weibos }" var="w">
+		<div class="wb">
+<%-- 		
+		    <c:if test="${empty w}">
+		              该用户没有发布过微博。
+		    </c:if>
+		  <c:if test="${not empty w}" --%>>
+		      <%-- <a class="pic" href="/find/${account.aid }">
+	          <img src="/resources/image/${account.pic }"/>
+	         </a>
 			
-			    <c:if test="${empty w}">
-			              该用户没有发布过微博。
-			    </c:if>
-			  <c:if test="${not empty w}">
-			      <a class="pic" href="/find/${account.aid }">
-		          <img src="/resources/image/${account.pic }"/>
-		         </a>
-				
-				<h3><a href="#">${account.nickName }</a></h3>
-				<div>
-				<img src="/resources/image/${w.imgname }"/>
-				</div>
-				<p>${w.wcontent }</p>
-				
-				<a class="timer"><fmt:formatDate value="${w.lastUpdateTime}" pattern="yyyy-MM-dd HH:mm:ss" /></a> <br/>
-				<a class="liked" href="/like/${w.wid}">推荐(${w.liked })</a>
-				<a class="showcomment" href="/showcomment/${w.wid }">评论(${w.comment})</a>
+			<h3><a href="#">${account.nickName }</a></h3>
+			<div>
+			<img src="/resources/image/${w.imgname }" style="heiht:250px;"/>
 			</div>
-			</c:if>
-		
-			</c:forEach>
+			<p>${w.wcontent }</p>
+			
+			<a class="timer"><fmt:formatDate value="${w.lastUpdateTime}" pattern="yyyy-MM-dd HH:mm:ss" /></a> <br/>
+			<a class="liked" href="/like/${w.wid}">推荐(${w.liked })</a>
+			<a class="showcomment" href="/showcomment/${w.wid }">评论(${w.comment})</a> --%>
+			
+			
+			
+			
+			<a class="pic1" href="/find/${w.account.aid }">
+		         <img src="/resources/image/${w.account.pic }"/>
+		         </a>		
+					<h3><p>${w.account.nickName}</p></h3>
+					<div class="show">
+					   	<img class="img-show" src="/resources/image/${w.imgname}" style="height:250px;"/>
+					    <p class="content-show">${w.wcontent }</p><br/>
+				    </div>
+				    <div class="clr"></div>
+					<div class="comment_line">
+						<a class="timer"><fmt:formatDate value="${w.lastUpdateTime}" pattern="yyyy-MM-dd HH:mm:ss" /></a>
+						<a class="liked" href="/like/${w.wid}">推荐(${w.liked })</a>
+						<a class="showcomment" href="/showcomment/${w.wid }">评论(${w.comment})</a>
+					</div>
+					<div class="clr"></div>
+					<form id="subcom"  class="commentform" method="post"  action="/comment/${w.wid }">
+		 				<!-- <input class="ccontent" type="text" id="ccontent" placeholder="留下你的评论" name="ccontent" /> -->
+		            	<div class="comment-input">
+			            	<textarea rows="1" cols="20" class="ccontent"  id="ccontent" placeholder="留下你的评论" name="ccontent" style="height:20px; width:300px;"></textarea>
+			            	<input class="cc"  type="button" id="btn_pinglun"  value="评论"  />
+		            	</div> 	
+					</form>
+					<div class="comment"></div>
+	
+<%-- 		</c:if> --%>
 		</div>
-	</body>
+		</c:forEach>	
+		
+		
+	</div>
+</body>
 <script type="text/javascript">
 	
 	$(function(){
