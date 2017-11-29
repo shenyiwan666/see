@@ -160,17 +160,26 @@ public class AccountServiceImpl implements AccountService {
 	@Override
 	public int updatenickName(Account account) {
 		// TODO Auto-generated method stub
-		
-		accountMapper.updatenickName(account);
-		return 0;
+		String nick = String.valueOf(accountMapper.findByNickname(account.getNickName()));
+		if(nick.equals("null")) {
+			accountMapper.updatenickName(account);
+			return 1;
+		}else {
+			return 0;
+		}
 	}
 
 
 	@Override
 	public int updateemail(Account account) {
 		// TODO Auto-generated method stub
-		accountMapper.updateemail(account);
-		return 0;
+		String email = String.valueOf(accountMapper.findByemail(account.getEmail()));
+		if(email.equals("null")) {
+			accountMapper.updateemail(account);
+			return 1;
+		}else {
+			return 0;
+		}
 	}
 
 
