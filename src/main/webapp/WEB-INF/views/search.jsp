@@ -14,7 +14,7 @@
 <body>
 	<div id="site-name">
 		<!-- <img src="image/eyes_icon.png">  -->
-		<h1><a herf="">See<small>Share your colorful life</small></a></h1>
+		<h1>See<small>Share your colorful life</small></h1>
 	</div>
 
 	<%-- <form action="/search" method="get">
@@ -27,10 +27,11 @@
             </span>
             <input name="button_search" class="button_search" type="submit" value="     "/>
 		</form>
-    </div>
-     <a class="home" href="http://127.0.0.1:8080/">
+		<a class="home" href="http://127.0.0.1:8080/">
 		   <img src="/resources/image/home.png" />
 		</a>
+    </div>
+     
     
 	<div class="clr"></div>
 
@@ -38,9 +39,11 @@
 	  <p class="title">search relative users</p>
 	  <c:forEach items="${accounts}" var="a">
 		  <div class="user">
+		  
 		  	<a class="userpic" href="/find/${a.aid }"><img src="/resources/image/${a.pic }"/></a>
 		  	<a class="username">${a.nickName}</a>
 		  	<a class="follow" href="/follow/${a.aid}">${a.follow }</a>
+		  	
 		  </div> 
 	  </c:forEach>
 	  </div>
@@ -76,7 +79,7 @@
 		            		<div style="display:inline;height:36px;">
 		            			<textarea rows="1" cols="20" class="ccontent"  id="ccontent" placeholder="留下你的评论" name="ccontent" style="height:20px; width:300px;"></textarea>
 		            		</div>
-		            		<div style="display:inline;">
+		            		<div style="display:inline;" class="ping">
 		            			<input class="cc"  type="button" id="btn_pinglun"  value="评论"  />
 		            		</div>
 		            </div> 	
@@ -179,14 +182,14 @@
 	
 	
 	$(function(){
-		$('.wrapper > .wb > .content-for-all > #subcom > .comment-input > input.cc').click(function( e ){
+		$('.wrapper > .wb > .content-for-all > #subcom > .comment-input > .ping > input.cc').click(function( e ){
 			e.preventDefault();
 			var _sub = $( this );
-			var _com = _sub.prev().val();
-			var comment = _sub.parent().parent().parent().children(".comment");
-			var _ping = _sub.parent().parent().prev().prev().children(".showcomment");
+			var _com = _sub.parent().prev().children(".ccontent").val();
+			var comment = _sub.parent().parent().parent().parent().children(".comment");
+			var _ping = _sub.parent().parent().parent().prev().prev().children(".showcomment");
 			
-			$.post(_sub.parent().parent(".commentform").attr('action'),{"comment": _com },function( data ){
+			$.post(_sub.parent().parent().parent(".commentform").attr('action'),{"comment": _com },function( data ){
 				_ping.html('评论 (' + data.comment + ')' );
 				
 				if(comment.html() == ""){
