@@ -97,13 +97,13 @@
 <script type="text/javascript">
 	
 	$(function(){
-		
-		$('.wb > a.liked').click(function( e ){
+		$('.wrapper > .wb > .ontent-for-all > .comment_line > a.liked').click(function( e ){
 			e.preventDefault();
 			var _a = $( this );
+			alert("ok!");
 			$.get(_a.attr('href'), function( data ){
 				_a.html( '推荐(' + data + ')' );
-			}, 'json');
+			}, 'json');s
 		});
 		
 	});
