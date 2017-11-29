@@ -17,7 +17,7 @@
 	            <div id="div_username"><input type="nickName" id="nickName" class="text_field" placeholder="请输入昵称" name="nickName"/></div>
 	            <div id="div_password"><input type="password" id="password" class="text_field" placeholder="请输入密码" name="password"></div>
 	            <div id="div_headimage"><a class="btn-head"><input title="" type="file" id="head_image" name="file" onchange="xmTanUploadImg(this)" accept="image/*"></a></div>
-	            <img style="height:100px;"id="fabuimg"/>
+	            <img style="height:50px; width:50px; border-style:solid;border-width:1px; border-color:#555;" id="fabuimg"/>
          		<div id="fabudiv"></div>
 	            <div id="div_btn_login"><input type="submit" id="btn_login" value="马上注册"  /></div>
             </form>
@@ -62,5 +62,8 @@
 	
 	        reader.readAsDataURL(file)
 	    }
+		
+		
+		
 	</script>
 </html>
