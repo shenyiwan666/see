@@ -93,6 +93,7 @@
 					<div class="clr"></div>
 					<form id="subcom"  class="commentform" method="post"  action="/comment/${w.wid }">
 		 				<!-- <input class="ccontent" type="text" id="ccontent" placeholder="留下你的评论" name="ccontent" /> -->
+
 		            	<div class="comment-input">
 		            		<div style="display:inline;height:36px;">
 		            			<textarea rows="1" cols="20" class="ccontent"  id="ccontent" placeholder="留下你的评论" name="ccontent" style="height:20px; width:300px;"></textarea>
@@ -102,7 +103,9 @@
 		            		</div>
 			            	
 		            	</div> 	
+
 					</form>
+
 					<div class="comment"></div>	
 				</div>
 				</c:forEach>
@@ -117,7 +120,7 @@
 					<c:forEach begin="1" end="${page.total }" var="p">
 	
 						<c:if test="${page.cur eq p }">
-							<a class="cur" href="javascript:void(0);">${p }</a>
+							<a class="cur" href="javascript:void(0);" style="color:blue; text-decoration:underline;">${p }</a>
 						</c:if>
 						<c:if test="${page.cur ne p }">
 							<a href='/?p=${p }'>${p }</a>
