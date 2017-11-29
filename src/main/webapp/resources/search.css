@@ -13,7 +13,7 @@ table img {
 	height: 50px;
 }
 
-p {
+.title {
 	margin:10px;
 	color:#333;
 	display:block;
@@ -90,15 +90,15 @@ p {
 	position:relative;
 	padding-top:10px;
 	padding-left:235px;
-	width: 800px;
-	height: 180px;
+	width: 900px;
+	height: auto;
 }
 .user
 {
  	position:relative;
     display:inline;
     padding-left:15px;
-
+    height:100px;
 }
 .wrapper {
 	width:960px;
@@ -137,6 +137,14 @@ p {
 	left:10px;
     font-size: 14px;
 }
+
+.users > .user > .follow {
+	position:absolute;
+	top:40px;
+	left:30px;
+    font-size: 14px;
+}
+
 .wb > h3 {
 	margin: 0;
 }
