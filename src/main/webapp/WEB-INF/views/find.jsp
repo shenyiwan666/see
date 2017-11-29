@@ -26,11 +26,11 @@
 		
 		<c:forEach items="${account.weibos }" var="w">
 		<div class="wb">
-<%-- 		
+           <%-- 		
 		    <c:if test="${empty w}">
 		              该用户没有发布过微博。
 		    </c:if>
-		  <c:if test="${not empty w}" --%>>
+		  <c:if test="${not empty w}" --%>
 		      <%-- <a class="pic" href="/find/${account.aid }">
 	          <img src="/resources/image/${account.pic }"/>
 	         </a>
@@ -48,10 +48,10 @@
 			
 			
 			
-			<a class="pic1" href="/find/${w.account.aid }">
-		         <img src="/resources/image/${w.account.pic }"/>
+			<a class="pic1" href="/find/${account.aid }">
+		         <img src="/resources/image/${account.pic }"/>
 		         </a>		
-					<h3><p>${w.account.nickName}</p></h3>
+					<h3><p>${account.nickName}</p></h3>
 					<div class="show">
 					   	<img class="img-show" src="/resources/image/${w.imgname}" style="height:250px;"/>
 					    <p class="content-show">${w.wcontent }</p><br/>
