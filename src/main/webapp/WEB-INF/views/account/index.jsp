@@ -74,7 +74,7 @@
 					<tr>
 						<td></td>
 						<td>
-							<input type="submit" id="btn_login" value="确定" 
+							<input type="submit" id="btn_login" value="完成" 
 							onclick="javascript:top.location.href='/'"/>
 						</td>
 					</tr>
