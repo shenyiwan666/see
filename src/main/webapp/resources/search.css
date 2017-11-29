@@ -13,6 +13,33 @@ table img {
 	height: 50px;
 }
 
+h1 {
+	margin:0;
+	padding:0 0 0 200px;
+	font-size:50px;
+	font-weight:normal;
+	line-height:1.2em;
+	text-transform:none;
+	letter-spacing:2px;
+}
+
+h1 small {
+	color:#333;
+	display:block;
+	font-size:16px;
+	line-height:1.2em;
+	letter-spacing:normal;
+	text-transform:none;
+}
+
+#site-name {
+	position:absolute;
+	float:left;
+	top: 20px;
+	left: -45px;
+}
+
+
 .title {
 	margin:10px;
 	color:#333;
@@ -29,10 +56,11 @@ table img {
 	color: red;
 }
 
+
 #searchform {
 	position:relative;
 	padding-top:10px;
-	padding-left:200px;
+	padding-left:500px;
 	margin:0 0 16px;
 	width: auto;
 	height: 100px;
@@ -41,7 +69,7 @@ table img {
 #formsearch {
 	float: left;
 	position: absolute;
-	left: 300px;
+	left: 855px;
 	top:50px;
 	margin:0;
 	padding:0;
@@ -82,9 +110,6 @@ table img {
 	float:left;
 }
 
-
-
-
 .users
 {
 	position:relative;
@@ -96,6 +121,7 @@ table img {
 .user
 {
  	position:relative;
+ 	margin-top:20px;
     display:inline;
     padding-left:15px;
     height:100px;

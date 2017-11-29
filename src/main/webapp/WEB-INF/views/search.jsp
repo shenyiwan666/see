@@ -8,9 +8,15 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>搜索结果</title>
 	<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.js"></script>
-	<link rel="stylesheet" type="text/css" href="resources/search.css"/>
+	<link rel="stylesheet" type="text/css" href="../resources/search.css"/>
+
 </head>
 <body>
+	<div id="site-name">
+		<!-- <img src="image/eyes_icon.png">  -->
+		<h1><a herf="">See<small>Share your colorful life</small></a></h1>
+	</div>
+
 	<%-- <form action="/search" method="get">
 		搜索:<input type="text" name="q" value="${param.q }"/><input type="submit" value="搜索" />
 	</form>--%>

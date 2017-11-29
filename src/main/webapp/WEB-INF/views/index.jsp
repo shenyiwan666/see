@@ -13,7 +13,7 @@
 	
 	<body>
 		<div id="site-name">
-			<img src="image/eyes_icon.png"> 
+			<!-- <img src="image/eyes_icon.png">  -->
 			<h1>See<small>Share your colorful life</small></h1>
 		</div>
 		
@@ -144,7 +144,7 @@
 		 -->
 		<div class="wrapper-top">
 			<div class="top-inform">
-				<p>热门TOP10</p>
+				<p><small>热门</small><strong>TOP10</strong></p>
 				<c:set var="weibo" value="${requestScope.weibo}"/>
 				<c:forEach items="${weibo}" var="weibo">
 				<div class="top">
