@@ -62,7 +62,7 @@
 					          <span>请上传新头像:</span>
 					         
 					          <div  class="btn" >  
-					                                    浏览
+					          <button> 浏览 </button>
 					          <input type="file" class="ac_file" id="img" name="file" onchange="xmTanUploadImg(this)" accept="image/*">
 					          </div>
 					          	 <img class="shangchuan" id="fabuimg"/>

@@ -112,12 +112,11 @@ body {
 } */
 
 .btn-head {
-    position: absolute;
-    left:100px;
+    position: relative;
     display: inline-block;
-    width: 50px;
-    height: 50px;
-    background: #e4e4e4 url("image/head_icon.png") no-repeat;
+    width: 70px;
+    height: 55px;
+    background: url("image/up.png") no-repeat center center;
     text-align: center;
     line-height: 68px;
     overflow: hidden;
@@ -191,11 +190,6 @@ body {
 }
 
 #div_btn_login{
-    margin-top: 75px;
+    margin-top: 15px;
 }
 
-#fabuimg {
-	position: absolute;
-	top:170px;
-	left:160px;
-}
