@@ -57,13 +57,14 @@
               <a class="userpic" href="/find/${account.aid }">
 		      <img src="/resources/image/${account.pic }"/>
 		      </a>
-		      </br>
-	          <span class="nickname">
-	          ${account.nickName}
-	          </span> 
-	          <p>微博数：${account.allweibo}</p>
-	          <p class="follow">关注数：${account.follows}</p>
-	          <p>粉丝数：${account.fans}</p>
+		      <div class="clr0"></div>
+	          <div class="nickname"><strong>${account.nickName}</strong></div>
+	          <div class="wbs"><strong>${account.allweibo}</strong></div>
+	          <div class="wbs-t">微博</div>
+	          <div class="follows"><strong class="fol">${account.follows}</strong></div>
+	          <div class="follows-t">关注</div>
+	          <div class="fans"><strong>${account.fans}</strong></div>
+	          <div class="fans-t">粉丝</div>
          </div>
    
    
@@ -92,16 +93,19 @@
 					<div class="clr"></div>
 					<form id="subcom"  class="commentform" method="post"  action="/comment/${w.wid }">
 		 				<!-- <input class="ccontent" type="text" id="ccontent" placeholder="留下你的评论" name="ccontent" /> -->
-		            	<div class="comment-input">
-			            	<textarea rows="1" cols="20" class="ccontent"  id="ccontent" placeholder="留下你的评论" name="ccontent" style="height:20px; width:300px;"></textarea>
-			            	<input class="cc"  type="button" id="btn_pinglun"  value="评论"  />
-		            	</div> 	
+		            	<div class="comment-form">
+			            	<div class="comment-input">
+				            	<textarea rows="1" cols="20" class="ccontent"  id="ccontent" placeholder="留下你的评论" name="ccontent" style="height:20px; width:300px;"></textarea>	
+			            	</div>
+			            	<div class="comment-click" style="padding-top:0px;"><input class="cc"  type="button" id="btn_pinglun"  value="评论"  /></div>
+		            	</div>
+		            	
 					</form>
+
 					<div class="comment"></div>	
 				</div>
 				</c:forEach>
-        	
-        
+
         	<div class="clr"></div>
        		<div class="page-info">
 	      		<div class="page-style">
@@ -112,7 +116,7 @@
 					<c:forEach begin="1" end="${page.total }" var="p">
 	
 						<c:if test="${page.cur eq p }">
-							<a class="cur" href="javascript:void(0);">${p }</a>
+							<a class="cur" href="javascript:void(0);" style="color:blue; text-decoration:underline;">${p }</a>
 						</c:if>
 						<c:if test="${page.cur ne p }">
 							<a href='/?p=${p }'>${p }</a>
@@ -124,8 +128,9 @@
 						<a href="/?p=${page.cur + 1 }">下一页</a>
 					</c:if>
 	      		</div>
-				
+	      		<div class="clr"></div>
 		   		</div>
+		   		
 			</div>
 			  
 		</div>
@@ -141,10 +146,13 @@
 				<div class="top">
 				 
 		          <img src="/resources/image/${weibo.imgname }"/>
-		           <p>${weibo.wcontent }</p>
-				   <a class="topnickname" href="#">${weibo.account.nickName}</a>  &nbsp &nbsp &nbsp &nbsp
-				   <a class="follow" href="/follow/${weibo.account.aid}">${weibo.account.follow }</a>
-					
+		           <div class="top-content" style="width:180px;height:40px;font-size:12px;"><p>${weibo.wcontent }</p></div>
+		           <!-- <div class="clr0"></div>
+		           <div class="ops-for-top"> -->&nbsp
+			           <a class="topnickname" href="#">${weibo.account.nickName}</a> &nbsp&nbsp&nbsp
+					   <a class="follow" href="/follow/${weibo.account.aid}">${weibo.account.follow }</a>
+		          <!--  </div> -->
+				  <!--  <div class="clr0"></div> -->
 				</div>
 				</c:forEach>
 			</div>
@@ -171,7 +179,7 @@
 		$('.top > a.follow').click(function( e ){
 			e.preventDefault();
 			var _a = $( this );
-			var user = $('.userinfo > p.follow ');
+			var user = $('.userinfo > .follows >strong.fol');
 			$.get(_a.attr('href'), function(data){
 				if(data[0]==1){
 					_a.html( '已关注' );
@@ -179,7 +187,7 @@
 				if(data[0]==0){
 					_a.html( '关注' );
 				}
-				user.html('关注数：'+ data[1]);
+				user.html(data[1]);
 			}, 'json');
 		});
 		
@@ -242,7 +250,7 @@
 					alert("评论成功 ");
 				}else{
 					$('<p></p>').html(data.comments.account.nickName+":"+data.comments.ccontent).prependTo( comment );
-					alert("评论success");
+					alert("评论成功");
 				}
 			}, 'json');
 		});

@@ -33,7 +33,7 @@ public interface AccountService {
 	 * @return  List<Account>
 	 */
 	Page search(String q, Integer p, int aid);
-	List<Account> searchuser(String q);
+	List<Account> searchuser(String q,int aid);
 	
 	int delete(int aid);
 /************修改********/

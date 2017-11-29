@@ -65,7 +65,6 @@
 					          <button> 浏览 </button>
 					          <input type="file" class="ac_file" id="img" name="file" onchange="xmTanUploadImg(this)" accept="image/*">
 					          </div>
-					     
 					          	 <img class="shangchuan" id="fabuimg"/>
          						 <div id="fabudiv"></div>
 	                          <div id="div_btn_fabu"><input type="submit" id="btn_fabu" value="上传"  /></div>
@@ -75,7 +74,8 @@
 					<tr>
 						<td></td>
 						<td>
-							<a href="/" id="finish">完成</a>
+							<input type="submit" id="btn_login" value="确定" 
+							onclick="javascript:top.location.href='/'"/>
 						</td>
 					</tr>
 				</tbody>

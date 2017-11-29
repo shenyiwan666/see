@@ -121,7 +121,7 @@ public class HomeController {
 		model.addAttribute("page", page);
 		System.out.println(page);
 		
-		List<Account> accounts=accountService.searchuser(q);
+		List<Account> accounts=accountService.searchuser(q,useraid);
 		System.out.println(accounts);
 		model.addAttribute("accounts", accounts);
 		
