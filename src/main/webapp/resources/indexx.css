@@ -367,14 +367,28 @@ h2 small {
 	resize:none;
 }
 
-.comment-input input.cc {
+/* .comment-input > input.cc {
 	margin:0;
 	position:relative;
 	paddig-bottom: 10px;
 	left:0;
+} */
+
+/* .div_inline {
+	display:inline-block;
 }
 
-
+.commentform > div {
+	float:left;
+}
+ */
+ 
+ .comment > a.closecomment {
+ 	text-decoration:underline;
+ 	color:blue;
+ }
+ 
+ 
 .wrapper-top {
 	width:100px;
 	margin: 0 auto;
@@ -542,8 +556,14 @@ a:link
 }
 
 .page-style > a {
-	color:#555;
+	color:#333;
 	border: none;
+}
+
+
+.page-style a:hover {
+	text-decoration:none;
+	color:blue;
 }
 
 .clr0 {
