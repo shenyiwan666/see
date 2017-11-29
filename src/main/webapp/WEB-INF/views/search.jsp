@@ -63,8 +63,12 @@
 				<form id="subcom"  class="commentform" method="post"  action="/comment/${w.wid }">
 		 				<!-- <input class="ccontent" type="text" id="ccontent" placeholder="留下你的评论" name="ccontent" /> -->
 		            <div class="comment-input">
-			            <textarea rows="1" cols="20" class="ccontent"  id="ccontent" placeholder="留下你的评论" name="ccontent" style="height:20px; width:300px;"></textarea>
-			            <input class="cc"  type="button" id="btn_pinglun"  value="评论"  />
+		            		<div style="display:inline;height:36px;">
+		            			<textarea rows="1" cols="20" class="ccontent"  id="ccontent" placeholder="留下你的评论" name="ccontent" style="height:20px; width:300px;"></textarea>
+		            		</div>
+		            		<div style="display:inline;">
+		            			<input class="cc"  type="button" id="btn_pinglun"  value="评论"  />
+		            		</div>
 		            </div> 	
 				</form>
 				<div class="comment"></div>
@@ -77,29 +81,34 @@
 			<p> --%>
 		</div>
 		</c:forEach>
-	</div>
-		
-		
+		<div class="clr"></div>
 		<div class="page-info">
-			<c:if test="${page.cur gt 1 }">
-				<a href="/search/?p=1&q=${ param.q }">首页</a>
-				<a href='/search/?p=${page.cur - 1 }&q=${ param.q }'>上一页</a>
-			</c:if>
-			<c:forEach begin="1" end="${page.total }" var="p">
-			
-				<c:if test="${page.cur eq p }">
-					<a class="cur" href="javascript:void(0);">${p }</a>
+			<div class= "page-style">
+				<c:if test="${page.cur gt 1 }">
+					<a href="/search/?p=1&q=${ param.q }">首页</a>
+					<a href='/search/?p=${page.cur - 1 }&q=${ param.q }'>上一页</a>
 				</c:if>
-				<c:if test="${page.cur ne p }">
-					<a href='/search/?p=${p }&q=${ param.q }'>${p }</a>
+				<c:forEach begin="1" end="${page.total }" var="p">
+				
+					<c:if test="${page.cur eq p }">
+						<a class="cur" href="javascript:void(0);" style="color:blue;text-decoration: underline;">${p }</a>
+					</c:if>
+					<c:if test="${page.cur ne p }">
+						<a href='/search/?p=${p }&q=${ param.q }'>${p }</a>
+					</c:if>
+				</c:forEach>
+				<c:set var="last" value="${page.total }"/>
+				<c:if test="${page.cur lt last }">
+					<a href="/search/?p=${page.total}&q=${param.q}">末页</a>
+					<a href="/search/?p=${page.cur + 1 }&q=${param.q}">下一页</a>
 				</c:if>
-			</c:forEach>
-			<c:set var="last" value="${page.total }"/>
-			<c:if test="${page.cur lt last }">
-				<a href="/search/?p=${page.total}&q=${param.q}">末页</a>
-				<a href="/search/?p=${page.cur + 1 }&q=${param.q}">下一页</a>
-			</c:if>
+			</div>
+			<div class="clr"></div>
 		</div>
+		
+		<div class="seperateline"></div>
+	</div>
+
 </body>
 
 

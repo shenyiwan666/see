@@ -173,6 +173,16 @@ table img {
 }
 
 
+.ccontent {
+	margin:0;
+	padding-left: 10px;
+	padding-top: 5px;
+	overflow:hidden;
+	resize:none;
+	position: relative;
+    bottom: -9px;
+}
+
 .seperateline
 {
 	clear:both;
@@ -192,6 +202,26 @@ table img {
 	height:10px;
 	font-size:0;
 	line-height:0;
+}
+
+
+.page-style {
+	/* position:absolute;
+	left:10px; */
+	margin:0;
+	text-align: center;
+}
+
+.page-style > a {
+	text-decoration:none;
+	color:#333;
+	border: none;
+}
+
+
+.page-style a:hover {
+	text-decoration:none;
+	color:blue;
 }
 
 
