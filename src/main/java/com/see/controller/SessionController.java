@@ -1,12 +1,18 @@
 package com.see.controller;
 
+import java.awt.Font;
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.SQLException;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import javax.swing.plaf.FontUIResource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -54,7 +60,7 @@ public class SessionController {
 	
 
 	@RequestMapping(value="/register",method=RequestMethod.POST)
-	public String register(Account account, HttpServletRequest request, MultipartFile file) throws IllegalStateException, IOException {
+	public String register(Account account, HttpServletRequest request,HttpServletResponse response, MultipartFile file) throws IllegalStateException, IOException {
 	
 			String path = request.getServletContext().getRealPath("/resources/image");
 			System.out.println(path);
@@ -66,19 +72,17 @@ public class SessionController {
 			file.transferTo(new File(target, pic ));
 			
 			account.setPic(pic);
-			account.setFollows(0);
-			account.setFans(0);
-			account.setAllweibo(0);
+		
+			int result= accountService.insert(account);	
 			
-			accountService.insert(account);
-		
-			
-			return "redirect:/login";
-	
-		
-		
-		
+			if(result == 1) {
+				return "redirect:/login";
+			}else {
+				UIManager.put("OptionPane.buttonFont", new FontUIResource(new Font("微软雅黑", Font.BOLD, 13)));
+				UIManager.put("OptionPane.messageFont", new FontUIResource(new Font("微软雅黑", Font.BOLD, 13)));
+				JOptionPane.showMessageDialog(null, "邮箱或昵称已被注册！", "注册失败", JOptionPane.WARNING_MESSAGE); 
+				return  "redirect:/register";
+			}	
 	}
 	
-
 }
