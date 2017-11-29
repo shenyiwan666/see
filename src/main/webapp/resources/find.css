@@ -138,6 +138,8 @@ body {
 	padding-top: 5px;
 	overflow:hidden;
 	resize:none;
+	position: relative;
+    bottom: -9px;
 }
 
 .comment-input input.cc {
