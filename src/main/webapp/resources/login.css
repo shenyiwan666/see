@@ -88,7 +88,7 @@ body {
 }
 
 #username{
-    background: url("image/user.png") no-repeat 5px center;
+    background: url("image/email.png") no-repeat 5px center;
 }
 
 #password{
@@ -134,7 +134,7 @@ body {
 }
 
 #div_password{
-    margin-top: 75px ;
+    margin-top: 55px ;
 }
 
 #div_forget{
@@ -143,6 +143,6 @@ body {
 }
 
 #div_btn_login{
-    margin-top: 80px;
+    margin-top: 55px;
 }
 

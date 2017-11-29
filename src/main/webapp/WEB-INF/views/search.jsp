@@ -25,24 +25,24 @@
 	<div class="clr"></div>
 
 	  <div class="users">
-	  <p>search relative users</p>
+	  <p class="title">search relative users</p>
 	  <c:forEach items="${accounts}" var="a">
 		  <div class="user">
-		 	 <a class="userpic" href="/find/${a.aid }">
-		 	 	<img src="/resources/image/${a.pic }"/>
-		     </a>
-		  	 <a class="username">${a.nickName}</a>
-		  </div>
-		  <a class="follow" href="/follow/${a.aid}">${a.follow }</a>
+		  	<a class="userpic" href="/find/${a.aid }"><img src="/resources/image/${a.pic }"/></a>
+		  	<a class="username">${a.nickName}</a>
+		  	<a class="follow" href="/follow/${a.aid}">${a.follow }</a>
+		  </div> 
 	  </c:forEach>
 	  </div>
-	  
+
+	<div class="seperateline"></div>
+	<div class="seperateline"></div>
 	<div class="seperateline"></div>
 	<div style="width:1000px;height:1px;margin:0px auto;padding:0px;background-color:#555;overflow:hidden;"></div>
 	<div class="seperateline"></div>
 	
 	 <div class="wrapper">
-	 	<p>search relative contents</p>
+	 	<p class="title">search relative contents</p>
 		<c:forEach items="${page.list }" var="w">
 		<div class="wb">
 		     <a class="pic" href="/find/${w.account.aid }">
