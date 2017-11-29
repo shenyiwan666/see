@@ -62,5 +62,8 @@
 	
 	        reader.readAsDataURL(file)
 	    }
+		
+		
+		
 	</script>
 </html>

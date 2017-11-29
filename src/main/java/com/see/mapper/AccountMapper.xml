@@ -102,6 +102,38 @@
 		email = #{email}
   </select>
   
+   <select id="findByemail" parameterType="String" resultType="Boolean">
+  	SELECT
+		aid,
+		email,
+		nick_name,
+		`password`,
+		follow,
+		fans,
+		weibo,
+		pic 
+	FROM
+		account 
+	WHERE
+		email = #{email}
+  </select>
+  
+   <select id="findByNickname" parameterType="String" resultType="Boolean">
+  	SELECT
+		aid,
+		email,
+		nick_name,
+		`password`,
+		follow,
+		fans,
+		weibo,
+		pic 
+	FROM
+		account 
+	WHERE
+		nick_name = #{NickName}
+  </select>
+  
 
   <select id="findAll" parameterType="FindVO" resultMap="accountMap">
   	SELECT

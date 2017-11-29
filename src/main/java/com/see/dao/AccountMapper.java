@@ -15,6 +15,9 @@ public interface AccountMapper {
 	
 	Account findByEmail(String email);
 	
+	Boolean findByNickname(String NickName);
+	Boolean findByemail(String email);
+	
 	List<Weibo> findAll(FindVO fvo);
 	//List<Weibo> findAll(int aid);
 	int count(String q);
