@@ -278,11 +278,11 @@
   	<selectKey order="BEFORE" keyProperty="aid" resultType="int">
   		select TIME_TO_SEC(NOW())
   	</selectKey>
-  	INSERT INTO ACCOUNT(aid,email,nick_name,`password`,pic,follow,fans,weibo) VALUES(#{aid},#{email},#{nickName},#{password},#{pic},#{follows},#{fans},#{allweibo})
+  	INSERT INTO account(aid,email,nick_name,`password`,pic,follow,fans,weibo) VALUES(#{aid},#{email},#{nickName},#{password},#{pic},#{follows},#{fans},#{allweibo})
   </insert>
   
   <update id="update" parameterType="Account">
-  	UPDATE ACCOUNT
+  	UPDATE account
   	<set>
   		<if test="email != null">
   			 email=#{email}, 
@@ -310,7 +310,7 @@
   </update>
   
    <update id="updatenickName" parameterType="Account">
-  	UPDATE ACCOUNT
+  	UPDATE account
   	<set>
   		
   		<if test="nickName != null">
@@ -320,7 +320,7 @@
   	WHERE AID = #{aid}
   </update>
   <update id="updateemail" parameterType="Account">
-  	UPDATE ACCOUNT
+  	UPDATE account
   	<set>
   		
   		<if test="email != null">
@@ -331,7 +331,7 @@
   </update>
   
   <update id="updatepassword" parameterType="Account">
-  	UPDATE ACCOUNT
+  	UPDATE account
   	<set>
   		
   		<if test="password != null">
@@ -341,7 +341,7 @@
   	WHERE AID = #{aid}
   </update>
   <update id="updatepic" parameterType="Account">
-  	UPDATE ACCOUNT
+  	UPDATE account
   	<set>
   		
   		<if test="pic != null">
@@ -354,7 +354,7 @@
   
   
   <delete id="delete" parameterType="_int">
-  		DELETE FROM ACCOUNT WHERE aid = #{id}
+  		DELETE FROM account WHERE aid = #{id}
   </delete>
   
 </mapper>

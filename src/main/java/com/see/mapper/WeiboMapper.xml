@@ -96,7 +96,7 @@
   </select>
   
   <update id="update" parameterType="Weibo">
-  	UPDATE WEIBO
+  	UPDATE weibo
   	<set>
   		<if test="wcontent != null">
   			 `wcontent`=#{wcontent}, 
@@ -121,7 +121,7 @@
   	<selectKey order="BEFORE" keyProperty="wid" resultType="int">
   		select TIME_TO_SEC(NOW())
   	</selectKey>
-  	INSERT INTO WEIBO(wid,aid,wcontent,last_update_time,liked,comment,imgname) VALUES(#{wid},#{aid},#{wcontent},#{lastUpdateTime},#{liked},#{comment},#{imgname})
+  	INSERT INTO weibo(wid,aid,wcontent,last_update_time,liked,comment,imgname) VALUES(#{wid},#{aid},#{wcontent},#{lastUpdateTime},#{liked},#{comment},#{imgname})
   </insert>
   
    

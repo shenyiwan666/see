@@ -21,7 +21,7 @@
   </delete>
 
    <insert id="insert" parameterType="Liked" keyProperty="aid">
- 	 INSERT INTO LIKED(aid,wid,ltime)VALUES(#{aid},#{wid},#{ltime})
+ 	 INSERT INTO liked(aid,wid,ltime)VALUES(#{aid},#{wid},#{ltime})
    </insert>
    
   

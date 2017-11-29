@@ -36,11 +36,11 @@
 	
   
    <delete id="delete" parameterType="_int">
-  		DELETE FROM COMMENT WHERE aid = #{aid}
+  		DELETE FROM comment WHERE aid = #{aid}
    </delete>
 
    <insert id="insert" parameterType="Comment" keyProperty="cid">
- 	 INSERT INTO COMMENT(aid,wid,ccontent,ctime)VALUES(#{aid},#{wid},#{ccontent},#{ctime})
+ 	 INSERT INTO comment(aid,wid,ccontent,ctime)VALUES(#{aid},#{wid},#{ccontent},#{ctime})
    </insert>
    
   
