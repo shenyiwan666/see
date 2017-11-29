@@ -28,6 +28,10 @@
             <input name="button_search" class="button_search" type="submit" value="     "/>
 		</form>
     </div>
+     <a class="home" href="http://127.0.0.1:8080/">
+		   <img src="/resources/image/home.png" />
+		</a>
+    
 	<div class="clr"></div>
 
 	  <div class="users">
