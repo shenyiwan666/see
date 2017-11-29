@@ -133,7 +133,7 @@
 	});
 	
 	$(function(){
-		$('.users > a.follow').click(function( e ){
+		$('.users > .user > a.follow').click(function( e ){
 			e.preventDefault();
 			var _a = $( this );
 			$.get(_a.attr('href'), function(data){

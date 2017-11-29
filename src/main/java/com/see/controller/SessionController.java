@@ -48,6 +48,9 @@ public class SessionController {
 		} catch (Exception e) {
 			// TODO: handle exception
 			model.addAttribute("msg",e.getMessage());
+			UIManager.put("OptionPane.buttonFont", new FontUIResource(new Font("微软雅黑", Font.BOLD, 13)));
+			UIManager.put("OptionPane.messageFont", new FontUIResource(new Font("微软雅黑", Font.BOLD, 13)));
+			JOptionPane.showMessageDialog(null, "账号或密码错误！", "登陆失败", JOptionPane.WARNING_MESSAGE); 
 			return "login";
 		}
 		

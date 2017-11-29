@@ -48,8 +48,8 @@
 			
 			
 			
-			<a class="pic1" href="/find/${account.aid }">
-		         <img src="/resources/image/${account.pic }"/>
+				 <a class="pic1" href="/find/${account.aid }">
+		         	<img src="/resources/image/${account.pic }"/>
 		         </a>		
 					<h3><p>${account.nickName}</p></h3>
 					<div class="show">
@@ -69,7 +69,7 @@
 		            		<div style="display:inline;height:36px;">
 		            			<textarea rows="1" cols="20" class="ccontent"  id="ccontent" placeholder="留下你的评论" name="ccontent" style="height:20px; width:300px;"></textarea>
 		            		</div>
-		            		<div style="display:inline;">
+		            		<div style="display:inline;" class="ping">
 			            		<input class="cc"  type="button" id="btn_pinglun"  value="评论"  />
 		            		</div>
 		            	</div> 	
@@ -87,11 +87,58 @@
 	
 	$(function(){
 		
-		$('.wb > a.liked').click(function( e ){
+		$('.wb > .comment_line > a.liked').click(function( e ){
 			e.preventDefault();
 			var _a = $( this );
 			$.get(_a.attr('href'), function( data ){
 				_a.html( '推荐(' + data + ')' );
+			}, 'json');
+		});
+		
+	});
+	
+	$(function(){
+		var i=0;
+		$('.wb > .comment_line > a.showcomment').click(
+			function( e ){
+				e.preventDefault();
+				var _a = $( this );
+				if(i==0){
+				$.get(_a.attr('href'), function(data){
+					var comment = _a.parent().parent().children(".comment");
+						for(var i=0;i<data.length;i++){
+							$('<p></p>').html(data[i].account.nickName+":"+data[i].ccontent ).appendTo( comment );
+						}
+							$('<a></a>').attr("class","closecomment").css("cursor","pointer").html("  收起 ").on('click',function(){
+								comment.empty();
+							}).appendTo( comment );
+				}, 'json');
+				i=1;
+			}else{
+				var comment = _a.parent().parent().children(".comment");
+				comment.empty();
+				i=0;
+			}
+		});
+	});
+	
+	$(function(){
+		$('.wb> #subcom > .comment-input > .ping > input.cc').click(function( e ){
+			e.preventDefault();
+			var _sub = $( this );
+			var _com = _sub.parent().prev().children(".ccontent").val();
+			var comment = _sub.parent().parent().parent().parent().children(".comment");
+			var _ping = _sub.parent().parent().parent().prev().prev().children(".showcomment");
+			
+			$.post(_sub.parent().parent().parent(".commentform").attr('action'),{"comment": _com },function( data ){
+				_ping.html('评论 (' + data.comment + ')' );
+				
+				if(comment.html() == ""){
+					alert("评论成功 ");
+				}else{
+					$('<p></p>').html(data.comments.account.nickName+":"+data.comments.ccontent).prependTo( comment );
+					alert("评论成功");
+				}
 			}, 'json');
 		});
 		
