@@ -61,7 +61,7 @@
 	          <div class="nickname"><strong>${account.nickName}</strong></div>
 	          <div class="wbs"><strong>${account.allweibo}</strong></div>
 	          <div class="wbs-t">微博</div>
-	          <div class="follows"><strong>${account.follows}</strong></div>
+	          <div class="follows"><strong class="fol">${account.follows}</strong></div>
 	          <div class="follows-t">关注</div>
 	          <div class="fans"><strong>${account.fans}</strong></div>
 	          <div class="fans-t">粉丝</div>
@@ -175,7 +175,7 @@
 		$('.top > a.follow').click(function( e ){
 			e.preventDefault();
 			var _a = $( this );
-			var user = $('.userinfo > p.follow ');
+			var user = $('.userinfo > .follows >strong.fol');
 			$.get(_a.attr('href'), function(data){
 				if(data[0]==1){
 					_a.html( '已关注' );
@@ -183,7 +183,7 @@
 				if(data[0]==0){
 					_a.html( '关注' );
 				}
-				user.html('关注数：'+ data[1]);
+				user.html(data[1]);
 			}, 'json');
 		});
 		

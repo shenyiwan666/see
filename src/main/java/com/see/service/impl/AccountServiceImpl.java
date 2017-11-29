@@ -128,9 +128,26 @@ public class AccountServiceImpl implements AccountService {
 
 
 	@Override
-	public List<Account> searchuser(String q) {
+	public List<Account> searchuser(String q,int aid) {
 		// TODO Auto-generated method stub
 		 List<Account> accounts=accountMapper.searchuser(q);
+		 
+		 for(int i=0;i<accounts.size();i++) {
+			 int finduser=accounts.get(i).getAid();
+			 String s=String.valueOf(followMapper.findFollow(aid, finduser));
+			 
+			 if(s.equals("null")) {
+					accounts.get(i).setFollow("关注");
+				}else {
+					accounts.get(i).setFollow("已关注");
+				}
+				
+				if(finduser==aid) {
+					accounts.get(i).setFollow("");
+				}
+			 
+		 }
+		 
 		 return accounts;
 	}
 
