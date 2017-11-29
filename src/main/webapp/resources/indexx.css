@@ -365,12 +365,13 @@ h2 small {
 	padding-top: 5px;
 	overflow:hidden;
 	resize:none;
+	position: relative;
+    bottom: -9px;
 }
 
 .comment-input input.cc {
 	margin:0;
 	position:relative;
-	paddig-bottom: 10px;
 	left:0;
 }
 
