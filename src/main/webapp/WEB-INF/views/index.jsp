@@ -60,7 +60,7 @@
 		      <div class="clr0"></div>
 	          <div class="nickname"><strong>${account.nickName}</strong></div>
 	          <div class="wbs"><strong>${account.allweibo}</strong></div>
-	          <div class="wbs-t">微博</div>
+	          <div class="wbs-t">分享</div>
 	          <div class="follows"><strong class="fol">${account.follows}</strong></div>
 	          <div class="follows-t">关注</div>
 	          <div class="fans"><strong>${account.fans}</strong></div>
