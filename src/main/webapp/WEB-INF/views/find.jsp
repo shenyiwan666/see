@@ -26,11 +26,11 @@
 		
 		<c:forEach items="${account.weibos }" var="w">
 		<div class="wb">
-<%-- 		
+           <%-- 		
 		    <c:if test="${empty w}">
 		              该用户没有发布过微博。
 		    </c:if>
-		  <c:if test="${not empty w}" --%>>
+		  <c:if test="${not empty w}" --%>
 		      <%-- <a class="pic" href="/find/${account.aid }">
 	          <img src="/resources/image/${account.pic }"/>
 	         </a>
@@ -48,10 +48,10 @@
 			
 			
 			
-			<a class="pic1" href="/find/${w.account.aid }">
-		         <img src="/resources/image/${w.account.pic }"/>
+			<a class="pic1" href="/find/${account.aid }">
+		         <img src="/resources/image/${account.pic }"/>
 		         </a>		
-					<h3><p>${w.account.nickName}</p></h3>
+					<h3><p>${account.nickName}</p></h3>
 					<div class="show">
 					   	<img class="img-show" src="/resources/image/${w.imgname}" style="height:250px;"/>
 					    <p class="content-show">${w.wcontent }</p><br/>
@@ -66,8 +66,12 @@
 					<form id="subcom"  class="commentform" method="post"  action="/comment/${w.wid }">
 		 				<!-- <input class="ccontent" type="text" id="ccontent" placeholder="留下你的评论" name="ccontent" /> -->
 		            	<div class="comment-input">
-			            	<textarea rows="1" cols="20" class="ccontent"  id="ccontent" placeholder="留下你的评论" name="ccontent" style="height:20px; width:300px;"></textarea>
-			            	<input class="cc"  type="button" id="btn_pinglun"  value="评论"  />
+		            		<div style="display:inline;height:36px;">
+		            			<textarea rows="1" cols="20" class="ccontent"  id="ccontent" placeholder="留下你的评论" name="ccontent" style="height:20px; width:300px;"></textarea>
+		            		</div>
+		            		<div style="display:inline;">
+			            		<input class="cc"  type="button" id="btn_pinglun"  value="评论"  />
+		            		</div>
 		            	</div> 	
 					</form>
 					<div class="comment"></div>

@@ -2,6 +2,7 @@ package com.see.service.impl;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -86,12 +87,16 @@ public class AccountServiceImpl implements AccountService {
 		account.setFans(0);
 		account.setAllweibo(0);
 		
-		int user=accountMapper.insert(account);
-		if( user != 1 ) {
-			throw new RuntimeException("注册失败");
+		String email = String.valueOf(accountMapper.findByemail(account.getEmail()));
+		String nick = String.valueOf(accountMapper.findByNickname(account.getNickName()));
+
+		if( email.equals("null") && nick.equals("null") ) {
+			accountMapper.insert(account);
+			return 1;
+		}else {
+			
+			return 0;
 		}
-		
-		return user;
 	}
 
 	
