@@ -27,9 +27,9 @@
     <div id="loginForm">
         <form method="post" action="/login">
 
-            <div id="div_username">邮箱：<input type="text" id="username" class="text_field" placeholder="请输入账号" name="email" /></div>
+            <div id="div_username"><input type="text" id="username" class="text_field" placeholder="请输入账号" name="email" /></div>
 
-            <div id="div_password">密码：<input type="password" id="password" class="text_field" placeholder="请输入密码" name="password"/></div>
+            <div id="div_password"><input type="password" id="password" class="text_field" placeholder="请输入密码" name="password"/></div>
 
             <div id="div_forget"><a id="forget_pwd" href="forget_pwd.html" target="_blank">忘记密码？</a></div>
 

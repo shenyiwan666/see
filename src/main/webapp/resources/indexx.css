@@ -73,6 +73,13 @@ h2 small {
 
 }
 
+#site-name {
+	position:absolute;
+	float:left;
+	top: 20px;
+	left: -45px;
+}
+
 
 .menu_nav {
 	margin:0;
@@ -118,8 +125,8 @@ h2 small {
 #searchform {
 	float: right;
 	position: absolute;
-	right: 100px;
-	top:40px;
+	right: 200px;
+	top:30px;
 	margin:0 0 16px;
 	padding:20px 20px 12px;
 	float:left;
@@ -414,12 +421,12 @@ h2 small {
 }
 
 .top > img {
-	width: 50px;
+	width: 70px;
 	height: 50px;
-	border-radius: 50%;
+/* 	border-radius: 50%; */
 	position: absolute;
 	left:10px;
-	top:10px;
+	top:15px;
 }
 .top > h3 {
 	margin: 0;
@@ -456,8 +463,8 @@ a:link
 {
 	width: 30px;
     position: absolute;
-    right: 50px;
-    top: 70px;
+    right: 150px;
+    top: 60px;
 }
 .userinfo
 {
@@ -481,7 +488,7 @@ a:link
 .userinfo > .nickname
 {
 	color: #333;
-	top:63px;
+	top:68px;
 	position:absolute;
 	/* 
     top: 70px;
@@ -559,6 +566,7 @@ a:link
 .page-style > a {
 	color:#333;
 	border: none;
+	text-decoration:none;
 }
 
 

@@ -8,9 +8,15 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<title>搜索结果</title>
 	<script src="https://cdn.bootcss.com/jquery/2.2.4/jquery.js"></script>
-	<link rel="stylesheet" type="text/css" href="resources/search.css"/>
+	<link rel="stylesheet" type="text/css" href="../resources/search.css"/>
+
 </head>
 <body>
+	<div id="site-name">
+		<!-- <img src="image/eyes_icon.png">  -->
+		<h1>See<small>Share your colorful life</small></h1>
+	</div>
+
 	<%-- <form action="/search" method="get">
 		搜索:<input type="text" name="q" value="${param.q }"/><input type="submit" value="搜索" />
 	</form>--%>
@@ -21,7 +27,12 @@
             </span>
             <input name="button_search" class="button_search" type="submit" value="     "/>
 		</form>
+		<a class="home" href="http://127.0.0.1:8080/">
+		   <img src="/resources/image/home.png" />
+		</a>
     </div>
+     
+    
 	<div class="clr"></div>
 
 	  <div class="users">
@@ -65,8 +76,12 @@
 				<form id="subcom"  class="commentform" method="post"  action="/comment/${w.wid }">
 		 				<!-- <input class="ccontent" type="text" id="ccontent" placeholder="留下你的评论" name="ccontent" /> -->
 		            <div class="comment-input">
-			            <textarea rows="1" cols="20" class="ccontent"  id="ccontent" placeholder="留下你的评论" name="ccontent" style="height:20px; width:300px;"></textarea>
-			            <input class="cc"  type="button" id="btn_pinglun"  value="评论"  />
+		            		<div style="display:inline;height:36px;">
+		            			<textarea rows="1" cols="20" class="ccontent"  id="ccontent" placeholder="留下你的评论" name="ccontent" style="height:20px; width:300px;"></textarea>
+		            		</div>
+		            		<div style="display:inline;" class="ping">
+		            			<input class="cc"  type="button" id="btn_pinglun"  value="评论"  />
+		            		</div>
 		            </div> 	
 				</form>
 				<div class="comment"></div>
@@ -79,29 +94,34 @@
 			<p> --%>
 		</div>
 		</c:forEach>
-	</div>
-		
-		
+		<div class="clr"></div>
 		<div class="page-info">
-			<c:if test="${page.cur gt 1 }">
-				<a href="/search/?p=1&q=${ param.q }">首页</a>
-				<a href='/search/?p=${page.cur - 1 }&q=${ param.q }'>上一页</a>
-			</c:if>
-			<c:forEach begin="1" end="${page.total }" var="p">
-			
-				<c:if test="${page.cur eq p }">
-					<a class="cur" href="javascript:void(0);">${p }</a>
+			<div class= "page-style">
+				<c:if test="${page.cur gt 1 }">
+					<a href="/search/?p=1&q=${ param.q }">首页</a>
+					<a href='/search/?p=${page.cur - 1 }&q=${ param.q }'>上一页</a>
 				</c:if>
-				<c:if test="${page.cur ne p }">
-					<a href='/search/?p=${p }&q=${ param.q }'>${p }</a>
+				<c:forEach begin="1" end="${page.total }" var="p">
+				
+					<c:if test="${page.cur eq p }">
+						<a class="cur" href="javascript:void(0);" style="color:blue;text-decoration: underline;">${p }</a>
+					</c:if>
+					<c:if test="${page.cur ne p }">
+						<a href='/search/?p=${p }&q=${ param.q }'>${p }</a>
+					</c:if>
+				</c:forEach>
+				<c:set var="last" value="${page.total }"/>
+				<c:if test="${page.cur lt last }">
+					<a href="/search/?p=${page.total}&q=${param.q}">末页</a>
+					<a href="/search/?p=${page.cur + 1 }&q=${param.q}">下一页</a>
 				</c:if>
-			</c:forEach>
-			<c:set var="last" value="${page.total }"/>
-			<c:if test="${page.cur lt last }">
-				<a href="/search/?p=${page.total}&q=${param.q}">末页</a>
-				<a href="/search/?p=${page.cur + 1 }&q=${param.q}">下一页</a>
-			</c:if>
+			</div>
+			<div class="clr"></div>
 		</div>
+		
+		<div class="seperateline"></div>
+	</div>
+
 </body>
 
 
@@ -120,7 +140,7 @@
 	});
 	
 	$(function(){
-		$('.users > a.follow').click(function( e ){
+		$('.users > .user > a.follow').click(function( e ){
 			e.preventDefault();
 			var _a = $( this );
 			$.get(_a.attr('href'), function(data){
@@ -162,14 +182,14 @@
 	
 	
 	$(function(){
-		$('.wrapper > .wb > .content-for-all > #subcom > .comment-input > input.cc').click(function( e ){
+		$('.wrapper > .wb > .content-for-all > #subcom > .comment-input > .ping > input.cc').click(function( e ){
 			e.preventDefault();
 			var _sub = $( this );
-			var _com = _sub.prev().val();
-			var comment = _sub.parent().parent().parent().children(".comment");
-			var _ping = _sub.parent().parent().prev().prev().children(".showcomment");
+			var _com = _sub.parent().prev().children(".ccontent").val();
+			var comment = _sub.parent().parent().parent().parent().children(".comment");
+			var _ping = _sub.parent().parent().parent().prev().prev().children(".showcomment");
 			
-			$.post(_sub.parent().parent(".commentform").attr('action'),{"comment": _com },function( data ){
+			$.post(_sub.parent().parent().parent(".commentform").attr('action'),{"comment": _com },function( data ){
 				_ping.html('评论 (' + data.comment + ')' );
 				
 				if(comment.html() == ""){

@@ -1,12 +1,16 @@
 package com.see.controller;
 
 
+import java.awt.Font;
 import java.io.File;
 import java.io.IOException;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
+import javax.swing.plaf.FontUIResource;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -56,16 +60,24 @@ public class AccountController {
 	public String updatenickName(@PathVariable("aid") int aid,Account account,HttpSession session)
 	{
 		
-		accountService.updatenickName(account);
-		System.out.println(account);
+		int result =accountService.updatenickName(account);
+		if(result == 0) {
+			UIManager.put("OptionPane.buttonFont", new FontUIResource(new Font("微软雅黑", Font.BOLD, 13)));
+			UIManager.put("OptionPane.messageFont", new FontUIResource(new Font("微软雅黑", Font.BOLD, 13)));
+			JOptionPane.showMessageDialog(null, "昵称已被使用！", "修改失败", JOptionPane.WARNING_MESSAGE); 
+		}
 		return "redirect:/account/{aid}";
 	}
 	@RequestMapping(value="/account/updateemail/{aid}", method=RequestMethod.POST)
 	public String updateemail(@PathVariable("aid") int aid,Account account,HttpSession session)
 	{
 		
-		accountService.updateemail(account);
-		System.out.println(account);
+		int result=accountService.updateemail(account);
+		if(result == 0) {
+			UIManager.put("OptionPane.buttonFont", new FontUIResource(new Font("微软雅黑", Font.BOLD, 13)));
+			UIManager.put("OptionPane.messageFont", new FontUIResource(new Font("微软雅黑", Font.BOLD, 13)));
+			JOptionPane.showMessageDialog(null, "邮箱已被注册！", "修改失败", JOptionPane.WARNING_MESSAGE); 
+		}
 		return "redirect:/account/{aid}";
 	}
 	@RequestMapping(value="/account/updatepassword/{aid}", method=RequestMethod.POST)
