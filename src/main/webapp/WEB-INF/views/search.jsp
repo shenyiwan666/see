@@ -14,7 +14,7 @@
 <body>
 	<div id="site-name">
 		<!-- <img src="image/eyes_icon.png">  -->
-		<h1><a href="">See<small>Share your colorful life</small></a></h1>
+		<h1>See<small>Share your colorful life</small></h1>
 	</div>
 
 	<%-- <form action="/search" method="get">
@@ -27,10 +27,11 @@
             </span>
             <input name="button_search" class="button_search" type="submit" value="     "/>
 		</form>
-    </div>
-     <a class="home" href="http://127.0.0.1:8080/">
+		<a class="home" href="http://127.0.0.1:8080/">
 		   <img src="/resources/image/home.png" />
 		</a>
+    </div>
+     
     
 	<div class="clr"></div>
 

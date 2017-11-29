@@ -256,7 +256,7 @@ h1 small {
 .home > img
 {
 	width: 30px;
-    position: absolute;
+    position: relative;
     right: 150px;
     top: 60px;
 }
